@@ -1,11 +1,13 @@
 package com.vir.isekai
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class IsekaiApplication
+@EnableEncryptableProperties
+class App
 
 fun main(args: Array<String>) {
-	runApplication<IsekaiApplication>(*args)
+	runApplication<App>(*args)
 }

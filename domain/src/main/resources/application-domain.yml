@@ -1,0 +1,45 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: ENC(hxCAs/yV5ETBal+XyTOYFXiDmR39boRH5mXns3t6tVSzS89pRPlDURh8uiixa6Qd)
+    username: ENC(7IP2puGkXHgco1sETUYaIQ==)
+    password: ENC(fx1OgWZxV7dB0yf+Z0EaXqEzN+4M/RiF)
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 1
+    locations: classpath:db/migration/local
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: ENC(hxCAs/yV5ETBal+XyTOYFXiDmR39boRH5mXns3t6tVSzS89pRPlDURh8uiixa6Qd)
+    username: ENC(7IP2puGkXHgco1sETUYaIQ==)
+    password: ENC(fx1OgWZxV7dB0yf+Z0EaXqEzN+4M/RiF)
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 1
+    locations: classpath:db/migration/dev
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: ENC(hxCAs/yV5ETBal+XyTOYFXiDmR39boRH5mXns3t6tVSzS89pRPlDURh8uiixa6Qd)
+    username: ENC(7IP2puGkXHgco1sETUYaIQ==)
+    password: ENC(fx1OgWZxV7dB0yf+Z0EaXqEzN+4M/RiF)
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 1
+    locations: classpath:db/migration/prod

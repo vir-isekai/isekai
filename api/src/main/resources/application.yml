@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    include: domain
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: true
+  jackson:
+    deserialization:
+      fail-on-null-for-primitives: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: env
