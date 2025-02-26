@@ -11,7 +11,7 @@ dependencies {
 	kapt("jakarta.annotation:jakarta.annotation-api")
 	kapt("jakarta.persistence:jakarta.persistence-api")
 
-    implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
+	implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
 }
 
 tasks.named("bootJar") {
