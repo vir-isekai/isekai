@@ -3,7 +3,7 @@ spring:
     include: domain
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
