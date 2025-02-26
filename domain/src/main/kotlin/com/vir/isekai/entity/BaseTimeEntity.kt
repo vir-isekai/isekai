@@ -13,8 +13,8 @@ import java.time.LocalDateTime
 class BaseTimeEntity {
 	@CreatedDate
 	@Column(updatable = false)
-	lateinit var regDt: LocalDateTime
+	lateinit var createdAt: LocalDateTime
 
 	@LastModifiedDate
-	lateinit var chgDt: LocalDateTime
+	lateinit var lastModifiedAt: LocalDateTime
 }
