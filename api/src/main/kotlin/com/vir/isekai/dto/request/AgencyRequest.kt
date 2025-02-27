@@ -7,7 +7,7 @@ import java.time.LocalDate
 class AgencyRequest {
 	data class Save(
 		val name: String,
-		val loginImageUrl: String,
+		val logoImageUrl: String,
 		val nation: Nation,
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
@@ -15,7 +15,7 @@ class AgencyRequest {
 		fun toCommand(): AgencyCommand.Save {
 			return AgencyCommand.Save(
 				name,
-				loginImageUrl,
+				logoImageUrl,
 				nation,
 				establishedDate,
 				closedDate,

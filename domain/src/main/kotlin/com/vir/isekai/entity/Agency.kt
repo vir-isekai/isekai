@@ -25,16 +25,16 @@ class Agency(
 ) : BaseTimeEntity() {
 	constructor(
 		name: String,
-		loginImageUrl: String,
+		logoImageUrl: String,
 		nation: Nation,
 		establishedDate: LocalDate,
 		closedDate: LocalDate? = null,
 	) : this(
 		null,
-		"",
-		"",
-		Nation.NONE,
-		LocalDate.now(),
-		null,
+		name,
+		logoImageUrl,
+		nation,
+		establishedDate,
+		closedDate,
 	)
 }
