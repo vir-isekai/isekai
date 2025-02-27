@@ -19,7 +19,22 @@ class Agency(
 	@Enumerated(EnumType.STRING)
 	val nation: Nation,
 
-	val establishedDate: LocalDate,
+	val establishedDate: LocalDate? = null,
 
 	val closedDate: LocalDate? = null,
-) : BaseTimeEntity()
+) : BaseTimeEntity() {
+	constructor(
+		name: String,
+		logoImageUrl: String,
+		nation: Nation,
+		establishedDate: LocalDate,
+		closedDate: LocalDate? = null,
+	) : this(
+		null,
+		name,
+		logoImageUrl,
+		nation,
+		establishedDate,
+		closedDate,
+	)
+}
