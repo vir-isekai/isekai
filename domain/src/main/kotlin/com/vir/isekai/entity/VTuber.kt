@@ -1,7 +1,5 @@
-package com.vir.isekai.entity.member
+package com.vir.isekai.entity
 
-import com.vir.isekai.entity.Agency
-import com.vir.isekai.entity.BaseTimeEntity
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.RaceType
 import jakarta.persistence.*
@@ -14,13 +12,13 @@ class VTuber(
 	@Column(name = "v_tuber_id")
 	val id: Long? = null,
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	val member: Member,
+// 	@ManyToOne(fetch = FetchType.LAZY)
+// 	@JoinColumn(name = "member_id")
+// 	val member: Member,
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
 	@JoinColumn(name = "agency_id")
-	val agency: Agency,
+	val agency: Agency? = null,
 
 	val name: String,
 
