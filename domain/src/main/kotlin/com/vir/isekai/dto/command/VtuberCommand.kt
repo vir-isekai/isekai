@@ -27,4 +27,14 @@ class VtuberCommand {
 			)
 		}
 	}
+
+	data class Detail(
+		val vtuberId: Long,
+		val name: String,
+		val age: Int,
+		val height: Int,
+		val fandom: String?,
+		var race: RaceType,
+		val platform: Platform,
+	)
 }

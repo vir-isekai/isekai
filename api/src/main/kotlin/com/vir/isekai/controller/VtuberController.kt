@@ -1,7 +1,6 @@
 package com.vir.isekai.controller
 
 import com.vir.isekai.dto.CommonResponse
-import com.vir.isekai.dto.command.AgencyCommand
 import com.vir.isekai.dto.request.VtuberDTO
 import com.vir.isekai.facade.VtuberFacade
 import org.springframework.web.bind.annotation.*
@@ -14,8 +13,8 @@ class VtuberController(
 	@GetMapping("/{vtuberId}")
 	fun getVtuberById(
 		@PathVariable vtuberId: Long,
-	): CommonResponse<AgencyCommand.Detail> {
-		return CommonResponse.ok()
+	): CommonResponse<VtuberDTO.DetailResponse> {
+		return CommonResponse.ok(vtuberFacade.getVtuberById(vtuberId))
 	}
 
 	@PostMapping

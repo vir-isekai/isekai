@@ -26,4 +26,26 @@ class VtuberDTO {
 			)
 		}
 	}
+
+	data class DetailResponse(
+		val name: String,
+		val age: Int,
+		val height: Int,
+		val fandom: String?,
+		var race: RaceType,
+		val platform: Platform,
+	) {
+		companion object {
+			fun from(command: VtuberCommand.Detail): DetailResponse {
+				return DetailResponse(
+					command.name,
+					command.age,
+					command.height,
+					command.fandom,
+					command.race,
+					command.platform,
+				)
+			}
+		}
+	}
 }
