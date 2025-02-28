@@ -1,7 +1,8 @@
 package com.vir.isekai.controller
 
 import com.vir.isekai.dto.CommonResponse
-import com.vir.isekai.dto.request.AgencyRequest
+import com.vir.isekai.dto.command.AgencyCommand
+import com.vir.isekai.dto.request.AgencyDTO
 import com.vir.isekai.facade.AgencyFacade
 import org.springframework.web.bind.annotation.*
 
@@ -13,13 +14,13 @@ class AgencyController(
 	@GetMapping("/{agencyId}")
 	fun getAgencyById(
 		@PathVariable agencyId: Long,
-	) {
-		agencyFacade.getAgencyById(agencyId)
+	): CommonResponse<AgencyCommand.Detail> {
+		return CommonResponse.ok(agencyFacade.getAgencyById(agencyId))
 	}
 
 	@PostMapping
 	fun saveAgency(
-		@RequestBody request: AgencyRequest.Save,
+		@RequestBody request: AgencyDTO.SaveRequest,
 	): CommonResponse<Nothing> {
 		agencyFacade.saveAgency(request)
 

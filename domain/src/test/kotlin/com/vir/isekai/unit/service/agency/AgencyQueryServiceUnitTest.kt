@@ -1,4 +1,4 @@
-package com.vir.isekai.unit.service
+package com.vir.isekai.unit.service.agency
 
 import com.vir.isekai.dto.command.AgencyCommand
 import com.vir.isekai.entity.Agency

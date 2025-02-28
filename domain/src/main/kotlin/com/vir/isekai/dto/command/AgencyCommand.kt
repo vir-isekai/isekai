@@ -22,4 +22,13 @@ class AgencyCommand {
 			)
 		}
 	}
+
+	data class Detail(
+		val agencyId: Long,
+		val name: String,
+		val logoImageUrl: String,
+		val nation: Nation,
+		val establishedDate: LocalDate,
+		val closedDate: LocalDate?,
+	)
 }

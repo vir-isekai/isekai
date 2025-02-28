@@ -4,8 +4,8 @@ import com.vir.isekai.dto.command.AgencyCommand
 import com.vir.isekai.entity.enums.Nation
 import java.time.LocalDate
 
-class AgencyRequest {
-	data class Save(
+class AgencyDTO {
+	data class SaveRequest(
 		val name: String,
 		val logoImageUrl: String,
 		val nation: Nation,
