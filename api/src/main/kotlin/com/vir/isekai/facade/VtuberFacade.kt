@@ -11,7 +11,7 @@ class VtuberFacade(
 	private val vtuberCommandService: VtuberCommandService,
 ) {
 	fun getVtuberById(vtuberId: Long): VtuberDTO.DetailResponse {
-		val command = vtuberCommandService.getVtuberById(vtuberId) ?: throw IllegalArgumentException()
+		val command = vtuberCommandService.getVtuberById(vtuberId)
 		return VtuberDTO.DetailResponse.from(command)
 	}
 

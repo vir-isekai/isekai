@@ -22,4 +22,26 @@ class AgencyDTO {
 			)
 		}
 	}
+
+	data class DetailResponse(
+		val agencyId: Long,
+		val name: String,
+		val logoImageUrl: String,
+		val nation: Nation,
+		val establishedDate: LocalDate,
+		val closedDate: LocalDate?,
+	) {
+		companion object {
+			fun from(command: AgencyCommand.Detail): DetailResponse {
+				return DetailResponse(
+					command.agencyId,
+					command.name,
+					command.logoImageUrl,
+					command.nation,
+					command.establishedDate,
+					command.closedDate,
+				)
+			}
+		}
+	}
 }

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 class VtuberCommandService(
 	private val vtuberCustomRepository: VtuberCustomRepository,
 ) {
-	fun getVtuberById(vtuberId: Long): VtuberCommand.Detail? {
-		return vtuberCustomRepository.getVtuberById(vtuberId)
+	fun getVtuberById(vtuberId: Long): VtuberCommand.Detail {
+		return vtuberCustomRepository.getVtuberById(vtuberId) ?: throw IllegalArgumentException()
 	}
 }
