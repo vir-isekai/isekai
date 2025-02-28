@@ -5,4 +5,8 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional(rollbackFor = [Exception::class])
-class AgencyCommandService
+class AgencyCommandService {
+	fun getAgencyById(agencyId: Long) {
+		TODO("Not yet implemented")
+	}
+}
