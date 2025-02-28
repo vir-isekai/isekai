@@ -6,15 +6,11 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "v_tuber")
-class VTuber(
+class Vtuber(
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "v_tuber_id")
 	val id: Long? = null,
-
-// 	@ManyToOne(fetch = FetchType.LAZY)
-// 	@JoinColumn(name = "member_id")
-// 	val member: Member,
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
 	@JoinColumn(name = "agency_id")

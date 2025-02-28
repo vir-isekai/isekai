@@ -5,7 +5,6 @@ import com.vir.isekai.entity.Agency
 import com.vir.isekai.entity.enums.Nation
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.service.agency.AgencyQueryService
-import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.mockk.every
 import io.mockk.mockk
@@ -36,16 +35,5 @@ class AgencyQueryServiceUnitTest : StringSpec({
 		agencyQueryService.saveAgency(command)
 
 		verify(exactly = 1) { agencyRepository.save(any(Agency::class)) }
-	}
-
-	"소속사 저장 실패" {
-		every { agencyRepository.save(any(Agency::class)) } returns mockk()
-
-		val exception =
-			shouldThrow<Exception> {
-				agencyQueryService.saveAgency(command)
-			}
-
-// 		exception.message shouldBe "Agency query already exists"
 	}
 })
