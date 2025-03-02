@@ -4,8 +4,8 @@ import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.RaceType
 
-class VtuberDTO {
-	data class SaveRequest(
+class VtuberRequest {
+	data class Save(
 		val agencyId: Long?,
 		val name: String,
 		val age: Int,
@@ -24,28 +24,6 @@ class VtuberDTO {
 				race,
 				platform,
 			)
-		}
-	}
-
-	data class DetailResponse(
-		val name: String,
-		val age: Int,
-		val height: Int,
-		val fandom: String?,
-		var race: RaceType,
-		val platform: Platform,
-	) {
-		companion object {
-			fun from(command: VtuberCommand.Detail): DetailResponse {
-				return DetailResponse(
-					command.name,
-					command.age,
-					command.height,
-					command.fandom,
-					command.race,
-					command.platform,
-				)
-			}
 		}
 	}
 }
