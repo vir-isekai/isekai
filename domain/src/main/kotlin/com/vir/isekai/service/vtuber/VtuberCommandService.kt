@@ -13,4 +13,8 @@ class VtuberCommandService(
 	fun getVtuberById(vtuberId: Long): VtuberCommand.Detail {
 		return vtuberCustomRepository.getVtuberById(vtuberId) ?: throw IllegalArgumentException()
 	}
+
+	fun getVtubersByAgencyId(agencyId: Long): List<VtuberCommand.Simple> {
+		return vtuberCustomRepository.getVtubersByAgencyId(agencyId)
+	}
 }

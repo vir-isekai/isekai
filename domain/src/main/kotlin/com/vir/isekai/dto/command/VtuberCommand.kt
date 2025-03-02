@@ -1,5 +1,6 @@
 package com.vir.isekai.dto.command
 
+import com.vir.isekai.entity.Agency
 import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.RaceType
@@ -14,10 +15,10 @@ class VtuberCommand {
 		val race: RaceType,
 		val platForm: Platform,
 	) {
-		fun toEntity(): Vtuber {
+		fun toEntity(agency: Agency?): Vtuber {
 			return Vtuber(
 				null,
-				null,
+				agency,
 				name,
 				age,
 				height,
@@ -36,5 +37,10 @@ class VtuberCommand {
 		val fandom: String?,
 		var race: RaceType,
 		val platform: Platform,
+	)
+
+	data class Simple(
+		val vtuberId: Long,
+		val name: String,
 	)
 }

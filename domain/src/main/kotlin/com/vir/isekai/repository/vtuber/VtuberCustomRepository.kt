@@ -3,6 +3,7 @@ package com.vir.isekai.repository.vtuber
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.vir.isekai.dto.command.VtuberCommand
+import com.vir.isekai.entity.QAgency.*
 import com.vir.isekai.entity.QVtuber.vtuber
 import org.springframework.stereotype.Repository
 
@@ -27,5 +28,21 @@ class VtuberCustomRepository(
 			.from(vtuber)
 			.where(vtuber.id.eq(vtuberId))
 			.fetchOne()
+	}
+
+	fun getVtubersByAgencyId(agencyId: Long): List<VtuberCommand.Simple> {
+		return queryFactory
+			.select(
+				Projections.constructor(
+					VtuberCommand.Simple::class.java,
+					vtuber.id,
+					vtuber.name,
+				),
+			)
+			.from(vtuber)
+			.join(agency)
+			.on(agency.id.eq(vtuber.agency.id))
+			.where(agency.id.eq(agencyId))
+			.fetch()
 	}
 }
