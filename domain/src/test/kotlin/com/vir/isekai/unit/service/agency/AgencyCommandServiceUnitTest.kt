@@ -20,8 +20,7 @@ class AgencyCommandServiceUnitTest : StringSpec({
 	"소속사 상세 조회 성공" {
 		every { agencyCustomRepository.getAgencyById(1L) } returns mockk()
 
-		agencyCommandService
-			.getAgencyById(1L)
+		agencyCommandService.getAgencyById(1L)
 
 		verify(exactly = 1) { agencyCustomRepository.getAgencyById(1L) }
 	}

@@ -16,13 +16,15 @@ class Vtuber(
 	@JoinColumn(name = "agency_id")
 	val agency: Agency? = null,
 
+	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
+	@JoinColumn(name = "fandom_id")
+	val fandom: Fandom? = null,
+
 	val name: String,
 
 	val age: Int,
 
 	val height: Int,
-
-	val fandom: String? = null,
 
 	@Enumerated(EnumType.STRING)
 	val race: RaceType,

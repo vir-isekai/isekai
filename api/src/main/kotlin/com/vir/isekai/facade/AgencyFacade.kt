@@ -15,7 +15,6 @@ class AgencyFacade(
 ) {
 	fun getAgencyById(agencyId: Long): AgencyResponse.Detail {
 		val command = agencyCommandService.getAgencyById(agencyId)
-
 		val vtubers = vtuberCommandService.getVtubersByAgencyId(agencyId)
 
 		return AgencyResponse.Detail.from(command, vtubers)

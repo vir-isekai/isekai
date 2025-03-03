@@ -4,6 +4,7 @@ import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.RaceType
+import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.vtuber.VtuberRepository
 import com.vir.isekai.service.vtuber.VtuberQueryService
 import io.kotest.core.spec.style.StringSpec
@@ -13,11 +14,12 @@ import io.mockk.verify
 
 class VtuberQueryServiceUnitTest : StringSpec({
 	val vtuberRepository: VtuberRepository = mockk()
+	val agencyRepository: AgencyRepository = mockk()
 
 	lateinit var vtuberQueryService: VtuberQueryService
 
 	beforeTest {
-		vtuberQueryService = VtuberQueryService(vtuberRepository)
+		vtuberQueryService = VtuberQueryService(vtuberRepository, agencyRepository)
 	}
 
 	val command =
@@ -26,7 +28,7 @@ class VtuberQueryServiceUnitTest : StringSpec({
 			"버튜버1",
 			4,
 			160,
-			"아르냥",
+			null,
 			RaceType.HUMAN,
 			Platform.CHZZK,
 		)

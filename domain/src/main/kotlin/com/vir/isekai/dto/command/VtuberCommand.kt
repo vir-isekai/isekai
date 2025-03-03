@@ -1,6 +1,7 @@
 package com.vir.isekai.dto.command
 
 import com.vir.isekai.entity.Agency
+import com.vir.isekai.entity.Fandom
 import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.RaceType
@@ -11,7 +12,7 @@ class VtuberCommand {
 		val name: String,
 		val age: Int,
 		val height: Int,
-		val fandom: String?,
+		val fandom: Fandom?,
 		val race: RaceType,
 		val platForm: Platform,
 	) {
@@ -19,10 +20,10 @@ class VtuberCommand {
 			return Vtuber(
 				null,
 				agency,
+				null,
 				name,
 				age,
 				height,
-				fandom,
 				race,
 				platForm,
 			)

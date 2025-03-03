@@ -13,6 +13,7 @@ class VtuberFacade(
 ) {
 	fun getVtuberById(vtuberId: Long): VtuberResponse.Detail {
 		val command = vtuberCommandService.getVtuberById(vtuberId)
+
 		return VtuberResponse.Detail.from(command)
 	}
 

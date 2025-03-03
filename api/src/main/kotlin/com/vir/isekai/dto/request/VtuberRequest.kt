@@ -1,6 +1,7 @@
 package com.vir.isekai.dto.request
 
 import com.vir.isekai.dto.command.VtuberCommand
+import com.vir.isekai.entity.Fandom
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.RaceType
 
@@ -10,7 +11,7 @@ class VtuberRequest {
 		val name: String,
 		val age: Int,
 		val height: Int,
-		val fandom: String?,
+		val fandom: Fandom?,
 		var race: RaceType,
 		val platform: Platform,
 	) {
