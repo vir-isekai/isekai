@@ -14,10 +14,10 @@ import java.time.LocalDate
 class AgencyQueryServiceUnitTest : StringSpec({
 	val agencyRepository: AgencyRepository = mockk()
 
-	lateinit var agencyQueryService: AgencyQueryService
+	lateinit var service: AgencyQueryService
 
 	beforeTest {
-		agencyQueryService = AgencyQueryService(agencyRepository)
+		service = AgencyQueryService(agencyRepository)
 	}
 
 	val command =
@@ -32,7 +32,7 @@ class AgencyQueryServiceUnitTest : StringSpec({
 	"소속사 저장 성공" {
 		every { agencyRepository.save(any(Agency::class)) } returns mockk()
 
-		agencyQueryService.saveAgency(command)
+		service.saveAgency(command)
 
 		verify(exactly = 1) { agencyRepository.save(any(Agency::class)) }
 	}

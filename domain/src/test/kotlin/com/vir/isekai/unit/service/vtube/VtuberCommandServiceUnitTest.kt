@@ -11,16 +11,16 @@ import io.mockk.verify
 class VtuberCommandServiceUnitTest : StringSpec({
 	val vtuberCustomRepository: VtuberCustomRepository = mockk()
 
-	lateinit var vtuberCommandService: VtuberCommandService
+	lateinit var service: VtuberCommandService
 
 	beforeTest {
-		vtuberCommandService = VtuberCommandService(vtuberCustomRepository)
+		service = VtuberCommandService(vtuberCustomRepository)
 	}
 
 	"버튜버 상세 조회 성공" {
 		every { vtuberCustomRepository.getVtuberById(1L) } returns mockk()
 
-		vtuberCommandService.getVtuberById(1L)
+		service.getVtuberById(1L)
 
 		verify(exactly = 1) { vtuberCustomRepository.getVtuberById(1L) }
 	}
@@ -29,7 +29,7 @@ class VtuberCommandServiceUnitTest : StringSpec({
 		every { vtuberCustomRepository.getVtuberById(1L) } returns null
 
 		shouldThrow<IllegalArgumentException> {
-			vtuberCommandService.getVtuberById(1L)
+			service.getVtuberById(1L)
 		}
 	}
 })

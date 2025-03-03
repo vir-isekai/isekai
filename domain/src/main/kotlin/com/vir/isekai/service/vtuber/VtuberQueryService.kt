@@ -18,7 +18,7 @@ class VtuberQueryService(
 
 		val agency =
 			if (agencyId != null) {
-				agencyRepository.findByIdOrNull(command.agencyId) ?: throw IllegalArgumentException()
+				agencyRepository.findByIdOrNull(agencyId) ?: throw IllegalArgumentException()
 			} else {
 				null
 			}

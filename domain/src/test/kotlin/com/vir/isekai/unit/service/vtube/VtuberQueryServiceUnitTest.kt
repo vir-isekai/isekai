@@ -16,10 +16,10 @@ class VtuberQueryServiceUnitTest : StringSpec({
 	val vtuberRepository: VtuberRepository = mockk()
 	val agencyRepository: AgencyRepository = mockk()
 
-	lateinit var vtuberQueryService: VtuberQueryService
+	lateinit var service: VtuberQueryService
 
 	beforeTest {
-		vtuberQueryService = VtuberQueryService(vtuberRepository, agencyRepository)
+		service = VtuberQueryService(vtuberRepository, agencyRepository)
 	}
 
 	val command =
@@ -35,7 +35,7 @@ class VtuberQueryServiceUnitTest : StringSpec({
 
 	"버튜버 저장 성공" {
 		every { vtuberRepository.save(any(Vtuber::class)) } returns mockk()
-		vtuberQueryService.saveVtuber(command)
+		service.saveVtuber(command)
 		verify(exactly = 1) { vtuberRepository.save(any(Vtuber::class)) }
 	}
 })

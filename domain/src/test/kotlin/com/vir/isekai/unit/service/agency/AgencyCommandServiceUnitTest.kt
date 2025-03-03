@@ -11,16 +11,16 @@ import io.mockk.verify
 class AgencyCommandServiceUnitTest : StringSpec({
 	val agencyCustomRepository: AgencyCustomRepository = mockk()
 
-	lateinit var agencyCommandService: AgencyCommandService
+	lateinit var service: AgencyCommandService
 
 	beforeTest {
-		agencyCommandService = AgencyCommandService(agencyCustomRepository)
+		service = AgencyCommandService(agencyCustomRepository)
 	}
 
 	"소속사 상세 조회 성공" {
 		every { agencyCustomRepository.getAgencyById(1L) } returns mockk()
 
-		agencyCommandService.getAgencyById(1L)
+		service.getAgencyById(1L)
 
 		verify(exactly = 1) { agencyCustomRepository.getAgencyById(1L) }
 	}
@@ -29,7 +29,7 @@ class AgencyCommandServiceUnitTest : StringSpec({
 		every { agencyCustomRepository.getAgencyById(1L) } returns null
 
 		shouldThrow<IllegalArgumentException> {
-			agencyCommandService.getAgencyById(1L)
+			service.getAgencyById(1L)
 		}
 	}
 })
