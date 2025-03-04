@@ -11,6 +11,16 @@ class FandomCommand {
 		val name: String,
 		val logoImageUrl: String,
 	) {
+		fun toEntity(): Fandom {
+			return Fandom(
+				null,
+				null,
+				null,
+				name,
+				logoImageUrl,
+			)
+		}
+
 		fun toEntityWithAgency(agency: Agency): Fandom {
 			return Fandom(
 				null,

@@ -12,6 +12,9 @@ class Agency(
 	@Column(name = "agency_id")
 	val id: Long? = null,
 
+	@OneToOne(mappedBy = "agency", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+	var fandom: Fandom? = null,
+
 	val name: String,
 
 	val logoImageUrl: String,
@@ -30,6 +33,7 @@ class Agency(
 		establishedDate: LocalDate,
 		closedDate: LocalDate? = null,
 	) : this(
+		null,
 		null,
 		name,
 		logoImageUrl,

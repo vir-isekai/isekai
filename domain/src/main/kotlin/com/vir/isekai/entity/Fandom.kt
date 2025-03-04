@@ -12,13 +12,23 @@ class Fandom(
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
 	@JoinColumn(name = "agency_id")
-	val agency: Agency? = null,
+	var agency: Agency? = null,
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
 	@JoinColumn(name = "v_tuber_id")
-	val vtuber: Vtuber? = null,
+	var vtuber: Vtuber? = null,
 
 	val name: String,
 
 	val logoImageUrl: String,
-) : BaseTimeEntity()
+) : BaseTimeEntity() {
+	fun linkAgency(agency: Agency) {
+		this.agency = agency
+		agency.fandom = this
+	}
+
+	fun linkVtuber(vtuber: Vtuber) {
+		this.vtuber = vtuber
+		vtuber.fandom = this
+	}
+}

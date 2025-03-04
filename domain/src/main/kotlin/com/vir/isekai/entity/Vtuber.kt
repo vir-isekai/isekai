@@ -15,11 +15,10 @@ class Vtuber(
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
 	@JoinColumn(name = "agency_id")
-	val agency: Agency? = null,
+	var agency: Agency? = null,
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
-	@JoinColumn(name = "fandom_id")
-	val fandom: Fandom? = null,
+	@OneToOne(mappedBy = "vtuber", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+	var fandom: Fandom? = null,
 
 	val name: String,
 
