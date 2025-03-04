@@ -7,4 +7,9 @@ class ChannelCommand {
 		val type: ChannelType,
 		val url: String,
 	)
+
+	data class Simple(
+		val type: ChannelType,
+		val url: String,
+	)
 }
