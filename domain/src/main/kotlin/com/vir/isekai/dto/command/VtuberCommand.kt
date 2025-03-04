@@ -3,6 +3,7 @@ package com.vir.isekai.dto.command
 import com.vir.isekai.entity.Agency
 import com.vir.isekai.entity.Fandom
 import com.vir.isekai.entity.Vtuber
+import com.vir.isekai.entity.enums.Generation
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.Race
 
@@ -13,6 +14,7 @@ class VtuberCommand {
 		val age: Int,
 		val height: Int,
 		val fandom: Fandom?,
+		val generation: Generation,
 		val race: Race,
 		val platForm: Platform,
 	) {
@@ -24,6 +26,7 @@ class VtuberCommand {
 				name,
 				age,
 				height,
+				generation,
 				race,
 				platForm,
 			)

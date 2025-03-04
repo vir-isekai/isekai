@@ -15,10 +15,10 @@ class Fandom(
 	val agency: Agency? = null,
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-	@JoinColumn(name = "vtuber_id")
+	@JoinColumn(name = "v_tuber_id")
 	val vtuber: Vtuber? = null,
 
 	val name: String,
 
 	val logoImageUrl: String,
-)
+) : BaseTimeEntity()

@@ -1,5 +1,6 @@
 package com.vir.isekai.entity
 
+import com.vir.isekai.entity.enums.Generation
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.Race
 import jakarta.persistence.*
@@ -27,7 +28,7 @@ class Vtuber(
 	val height: Int,
 
 	@Enumerated(EnumType.STRING)
-	val generation: com.vir.isekai.entity.enums.Generation,
+	val generation: Generation,
 
 	@Enumerated(EnumType.STRING)
 	val race: Race,

@@ -2,6 +2,7 @@ package com.vir.isekai.dto.request
 
 import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.Fandom
+import com.vir.isekai.entity.enums.Generation
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.Race
 
@@ -12,6 +13,7 @@ class VtuberRequest {
 		val age: Int,
 		val height: Int,
 		val fandom: Fandom?,
+		val generation: Generation,
 		var race: Race,
 		val platform: Platform,
 	) {
@@ -22,6 +24,7 @@ class VtuberRequest {
 				age,
 				height,
 				fandom,
+				generation,
 				race,
 				platform,
 			)
