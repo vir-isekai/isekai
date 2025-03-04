@@ -8,9 +8,8 @@ import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.vtuber.VtuberRepository
 import com.vir.isekai.service.vtuber.VtuberQueryService
 import io.kotest.core.spec.style.StringSpec
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
+import io.mockk.*
+import org.springframework.data.repository.findByIdOrNull
 
 class VtuberQueryServiceUnitTest : StringSpec({
 	val vtuberRepository: VtuberRepository = mockk()
@@ -24,8 +23,8 @@ class VtuberQueryServiceUnitTest : StringSpec({
 
 	val command =
 		VtuberCommand.Save(
-			1L,
-			"버튜버1",
+			null,
+			"버튜버",
 			4,
 			160,
 			null,
@@ -33,9 +32,32 @@ class VtuberQueryServiceUnitTest : StringSpec({
 			Platform.CHZZK,
 		)
 
-	"버튜버 저장 성공" {
+	val commandWithAgency =
+		VtuberCommand.Save(
+			1L,
+			"소속버튜버",
+			4,
+			160,
+			null,
+			RaceType.HUMAN,
+			Platform.CHZZK,
+		)
+
+	"소속 없는 버튜버 저장 성공" {
 		every { vtuberRepository.save(any(Vtuber::class)) } returns mockk()
+
 		service.saveVtuber(command)
+
+		verify(exactly = 1) { vtuberRepository.save(any(Vtuber::class)) }
+	}
+
+	"소속 있는 버튜버 저장 성공" {
+		every { agencyRepository.findByIdOrNull(commandWithAgency.agencyId) } returns mockk()
+		every { vtuberRepository.save(any(Vtuber::class)) } returns mockk()
+
+		service.saveVtuber(commandWithAgency)
+
+		verify(exactly = 1) { agencyRepository.findByIdOrNull(commandWithAgency.agencyId) }
 		verify(exactly = 1) { vtuberRepository.save(any(Vtuber::class)) }
 	}
 })
