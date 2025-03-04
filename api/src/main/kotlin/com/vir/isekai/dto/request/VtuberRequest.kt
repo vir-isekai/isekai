@@ -3,7 +3,7 @@ package com.vir.isekai.dto.request
 import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.Fandom
 import com.vir.isekai.entity.enums.Platform
-import com.vir.isekai.entity.enums.RaceType
+import com.vir.isekai.entity.enums.Race
 
 class VtuberRequest {
 	data class Save(
@@ -12,7 +12,7 @@ class VtuberRequest {
 		val age: Int,
 		val height: Int,
 		val fandom: Fandom?,
-		var race: RaceType,
+		var race: Race,
 		val platform: Platform,
 	) {
 		fun toCommand(): VtuberCommand.Save {

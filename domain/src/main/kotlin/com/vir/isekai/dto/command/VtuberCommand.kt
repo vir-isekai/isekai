@@ -4,7 +4,7 @@ import com.vir.isekai.entity.Agency
 import com.vir.isekai.entity.Fandom
 import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.entity.enums.Platform
-import com.vir.isekai.entity.enums.RaceType
+import com.vir.isekai.entity.enums.Race
 
 class VtuberCommand {
 	data class Save(
@@ -13,7 +13,7 @@ class VtuberCommand {
 		val age: Int,
 		val height: Int,
 		val fandom: Fandom?,
-		val race: RaceType,
+		val race: Race,
 		val platForm: Platform,
 	) {
 		fun toEntity(agency: Agency?): Vtuber {
@@ -36,7 +36,7 @@ class VtuberCommand {
 		val age: Int,
 		val height: Int,
 		val fandom: String?,
-		var race: RaceType,
+		var race: Race,
 		val platform: Platform,
 	)
 

@@ -3,7 +3,7 @@ package com.vir.isekai.unit.service.vtube
 import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.entity.enums.Platform
-import com.vir.isekai.entity.enums.RaceType
+import com.vir.isekai.entity.enums.Race
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.vtuber.VtuberRepository
 import com.vir.isekai.service.vtuber.VtuberQueryService
@@ -29,7 +29,7 @@ class VtuberQueryServiceUnitTest : StringSpec({
 			4,
 			160,
 			null,
-			RaceType.HUMAN,
+			Race.HUMAN,
 			Platform.CHZZK,
 		)
 
@@ -40,7 +40,7 @@ class VtuberQueryServiceUnitTest : StringSpec({
 			4,
 			160,
 			null,
-			RaceType.HUMAN,
+			Race.HUMAN,
 			Platform.CHZZK,
 		)
 
