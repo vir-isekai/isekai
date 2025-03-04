@@ -10,10 +10,12 @@ class Fandom(
 	@Column(name = "fandom_id")
 	val id: Long? = null,
 
-	@OneToOne(mappedBy = "fandom", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+	@JoinColumn(name = "agency_id")
 	val agency: Agency? = null,
 
-	@OneToOne(mappedBy = "fandom", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+	@JoinColumn(name = "vtuber_id")
 	val vtuber: Vtuber? = null,
 
 	val name: String,

@@ -12,10 +12,6 @@ class Agency(
 	@Column(name = "agency_id")
 	val id: Long? = null,
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
-	@JoinColumn(name = "fandom_id")
-	val fandom: Fandom? = null,
-
 	val name: String,
 
 	val logoImageUrl: String,
@@ -34,7 +30,6 @@ class Agency(
 		establishedDate: LocalDate,
 		closedDate: LocalDate? = null,
 	) : this(
-		null,
 		null,
 		name,
 		logoImageUrl,

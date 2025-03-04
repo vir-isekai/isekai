@@ -1,6 +1,7 @@
 package com.vir.isekai.dto.response
 
 import com.vir.isekai.dto.command.AgencyCommand
+import com.vir.isekai.dto.command.FandomCommand
 import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.enums.Nation
 import java.time.LocalDate
@@ -13,12 +14,14 @@ class AgencyResponse {
 		val nation: Nation,
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
-		val vtubers: List<VtuberCommand.Simple>,
+		val vtubersInfo: List<VtuberCommand.Simple>,
+		val fandomInfo: FandomCommand.Simple?,
 	) {
 		companion object {
 			fun from(
 				command: AgencyCommand.Detail,
 				vtubers: List<VtuberCommand.Simple>,
+				fandomCommand: FandomCommand.Simple,
 			): Detail {
 				return Detail(
 					command.agencyId,
@@ -28,6 +31,7 @@ class AgencyResponse {
 					command.establishedDate,
 					command.closedDate,
 					vtubers,
+					fandomCommand,
 				)
 			}
 		}
