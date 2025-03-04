@@ -14,15 +14,31 @@ class AgencyResponse {
 		val nation: Nation,
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
-		val vtubersInfo: List<VtuberCommand.Simple>,
-		val fandomInfo: FandomCommand.Simple?,
+		val vtuberInfos: List<VtuberInfo>,
+		val fandomInfo: FandomInfo?,
 	) {
 		companion object {
 			fun from(
 				command: AgencyCommand.Detail,
-				vtubers: List<VtuberCommand.Simple>,
-				fandomCommand: FandomCommand.Simple,
+				vtuberCommands: List<VtuberCommand.Simple>,
+				fandomCommand: FandomCommand.Simple?,
 			): Detail {
+				val vtuberInfos =
+					vtuberCommands.map { it ->
+						VtuberInfo(
+							it.vtuberId,
+							it.name,
+						)
+					}
+
+				val fandomInfo =
+					fandomCommand?.let {
+						FandomInfo(
+							it.fandomId,
+							it.name,
+						)
+					}
+
 				return Detail(
 					command.agencyId,
 					command.name,
@@ -30,15 +46,20 @@ class AgencyResponse {
 					command.nation,
 					command.establishedDate,
 					command.closedDate,
-					vtubers,
-					fandomCommand,
+					vtuberInfos,
+					fandomInfo,
 				)
 			}
 		}
 	}
 
-	data class Vtuber(
+	data class VtuberInfo(
 		val vtuberId: Long,
+		val name: String,
+	)
+
+	data class FandomInfo(
+		val fandomId: Long,
 		val name: String,
 	)
 }

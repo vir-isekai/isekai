@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 class FandomCommandService(
 	private val fandomCustomRepository: FandomCustomRepository,
 ) {
-	fun getFandomByAgencyId(agencyId: Long): FandomCommand.Simple {
-		return fandomCustomRepository.getFandomByAgencyId(agencyId) ?: throw IllegalArgumentException()
+	fun getFandomByAgencyId(agencyId: Long): FandomCommand.Simple? {
+		return fandomCustomRepository.getFandomByAgencyId(agencyId) ?: null
 	}
 }
