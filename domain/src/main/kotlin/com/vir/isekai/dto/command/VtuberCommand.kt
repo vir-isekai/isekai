@@ -10,19 +10,22 @@ import com.vir.isekai.entity.enums.Race
 class VtuberCommand {
 	data class Save(
 		val agencyId: Long?,
+		val fandomId: Long?,
 		val name: String,
 		val age: Int,
 		val height: Int,
-		val fandom: Fandom?,
 		val generation: Generation,
 		val race: Race,
 		val platForm: Platform,
 	) {
-		fun toEntity(agency: Agency?): Vtuber {
+		fun toEntity(
+			agency: Agency?,
+			fandom: Fandom?,
+		): Vtuber {
 			return Vtuber(
 				null,
 				agency,
-				null,
+				fandom,
 				name,
 				age,
 				height,
