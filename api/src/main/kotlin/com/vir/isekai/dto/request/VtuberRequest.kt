@@ -8,7 +8,6 @@ import com.vir.isekai.entity.enums.Race
 class VtuberRequest {
 	data class Save(
 		val agencyId: Long?,
-		val fandomId: Long?,
 		val name: String,
 		val age: Int,
 		val height: Int,
@@ -19,7 +18,6 @@ class VtuberRequest {
 		fun toCommand(): VtuberCommand.Save {
 			return VtuberCommand.Save(
 				agencyId,
-				fandomId,
 				name,
 				age,
 				height,

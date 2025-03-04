@@ -21,13 +21,11 @@ class FandomQueryService(
 
 		if (agencyId !== null) {
 			val agency = agencyRepository.findByIdOrNull(agencyId) ?: throw IllegalArgumentException()
-
 			val fandom = fandomRepository.save(command.toEntityWithAgency(agency))
 
 			fandom.linkAgency(agency)
 		} else if (vtuberId !== null) {
 			val vtuber = vtuberRepository.findByIdOrNull(vtuberId) ?: throw IllegalArgumentException()
-
 			val fandom = fandomRepository.save(command.toEntityWithVtuber(vtuber))
 
 			fandom.linkVtuber(vtuber)

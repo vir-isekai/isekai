@@ -11,6 +11,10 @@ class FandomCommandService(
 	private val fandomCustomRepository: FandomCustomRepository,
 ) {
 	fun getFandomByAgencyId(agencyId: Long): FandomCommand.Simple? {
-		return fandomCustomRepository.getFandomByAgencyId(agencyId) ?: null
+		return fandomCustomRepository.getFandomByAgencyId(agencyId)
+	}
+
+	fun getFandomByVtuberId(vtuberId: Long): FandomCommand.Simple? {
+		return fandomCustomRepository.getFandomByVtuberId(vtuberId)
 	}
 }

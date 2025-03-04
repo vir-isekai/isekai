@@ -1,16 +1,15 @@
 package com.vir.isekai.unit.service.fandom
 
 import com.vir.isekai.dto.command.FandomCommand
+import com.vir.isekai.entity.Agency
 import com.vir.isekai.entity.Fandom
+import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.fandom.FandomRepository
 import com.vir.isekai.repository.vtuber.VtuberRepository
 import com.vir.isekai.service.fandom.FandomQueryService
 import io.kotest.core.spec.style.StringSpec
-import io.mockk.clearMocks
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
+import io.mockk.*
 import org.springframework.data.repository.findByIdOrNull
 
 class FandomQueryServiceUnitTest : StringSpec({
@@ -47,24 +46,32 @@ class FandomQueryServiceUnitTest : StringSpec({
 		)
 
 	"소속사 팬덤 저장 성공" {
-		every { agencyRepository.findByIdOrNull(1L) } returns mockk()
-		every { fandomRepository.save(any(Fandom::class)) } returns mockk()
+		val mockAgency = mockk<Agency>()
+		val mockkFandom = mockk<Fandom>()
+
+		every { agencyRepository.findByIdOrNull(1L) } returns mockAgency
+		every { fandomRepository.save(any(Fandom::class)) } returns mockkFandom
+		every { mockkFandom.linkAgency(mockAgency) } just Runs
 
 		service.saveFandom(commandWithAgency)
 
 		verify(exactly = 1) { agencyRepository.findByIdOrNull(1L) }
-		verify(exactly = 0) { vtuberRepository.findByIdOrNull(1L) }
 		verify(exactly = 1) { fandomRepository.save(any(Fandom::class)) }
+		verify(exactly = 1) { mockkFandom.linkAgency(mockAgency) }
 	}
 
 	"버튜버 팬덤 저장 성공" {
-		every { vtuberRepository.findByIdOrNull(1L) } returns mockk()
-		every { fandomRepository.save(any(Fandom::class)) } returns mockk()
+		val mockVtuber = mockk<Vtuber>()
+		val mockkFandom = mockk<Fandom>()
+
+		every { vtuberRepository.findByIdOrNull(1L) } returns mockVtuber
+		every { fandomRepository.save(any(Fandom::class)) } returns mockkFandom
+		every { mockkFandom.linkVtuber(mockVtuber) } just Runs
 
 		service.saveFandom(commandWithVtuber)
 
-		verify(exactly = 0) { agencyRepository.findByIdOrNull(1L) }
 		verify(exactly = 1) { vtuberRepository.findByIdOrNull(1L) }
 		verify(exactly = 1) { fandomRepository.save(any(Fandom::class)) }
+		verify(exactly = 1) { mockkFandom.linkVtuber(mockVtuber) }
 	}
 })

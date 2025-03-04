@@ -3,7 +3,7 @@ package com.vir.isekai.repository.vtuber
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.vir.isekai.dto.command.VtuberCommand
-import com.vir.isekai.entity.QAgency.*
+import com.vir.isekai.entity.QAgency.agency
 import com.vir.isekai.entity.QVtuber.vtuber
 import org.springframework.stereotype.Repository
 
@@ -20,7 +20,6 @@ class VtuberCustomRepository(
 					vtuber.name,
 					vtuber.age,
 					vtuber.height,
-					vtuber.fandom,
 					vtuber.race,
 					vtuber.platform,
 				),
