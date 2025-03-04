@@ -11,6 +11,7 @@ class AgencyCommand {
 		val nation: Nation,
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
+		val channelInfos: List<ChannelCommand.Save>,
 	) {
 		fun toEntity(): Agency {
 			return Agency(

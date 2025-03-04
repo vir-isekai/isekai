@@ -19,8 +19,8 @@ class Channel(
 	@JoinColumn(name = "v_tuber_id")
 	var vtuber: Vtuber? = null,
 
-	val url: String,
-
 	@Enumerated(EnumType.STRING)
 	val type: ChannelType,
+
+	val url: String,
 ) : BaseTimeEntity()
