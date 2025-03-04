@@ -1,6 +1,6 @@
 package com.vir.isekai.entity.enums
 
-enum class Platform(
+enum class ChannelType(
 	override val description: String,
 ) : Describable {
 	CHZZK("치지직"),

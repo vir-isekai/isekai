@@ -1,24 +1,25 @@
 package com.vir.isekai.entity
 
+import com.vir.isekai.entity.enums.Generation
 import com.vir.isekai.entity.enums.Platform
-import com.vir.isekai.entity.enums.RaceType
+import com.vir.isekai.entity.enums.Race
 import jakarta.persistence.*
+import java.time.LocalDate
 
 @Entity
 @Table(name = "v_tuber")
-class VTuber(
+class Vtuber(
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "v_tuber_id")
 	val id: Long? = null,
 
-// 	@ManyToOne(fetch = FetchType.LAZY)
-// 	@JoinColumn(name = "member_id")
-// 	val member: Member,
-
 	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
 	@JoinColumn(name = "agency_id")
-	val agency: Agency? = null,
+	var agency: Agency? = null,
+
+	@OneToOne(mappedBy = "vtuber", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+	var fandom: Fandom? = null,
 
 	val name: String,
 
@@ -26,11 +27,16 @@ class VTuber(
 
 	val height: Int,
 
-	val fandom: String? = null,
+	@Enumerated(EnumType.STRING)
+	val generation: Generation,
 
 	@Enumerated(EnumType.STRING)
-	val race: RaceType,
+	val race: Race,
 
 	@Enumerated(EnumType.STRING)
 	val platform: Platform,
+
+	val debutDate: LocalDate? = null,
+
+	val graduateDate: LocalDate? = null,
 ) : BaseTimeEntity()

@@ -11,6 +11,7 @@ class AgencyCommand {
 		val nation: Nation,
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
+		val channelInfos: List<ChannelCommand.Save>,
 	) {
 		fun toEntity(): Agency {
 			return Agency(
@@ -22,4 +23,13 @@ class AgencyCommand {
 			)
 		}
 	}
+
+	data class Detail(
+		val agencyId: Long,
+		val name: String,
+		val logoImageUrl: String,
+		val nation: Nation,
+		val establishedDate: LocalDate,
+		val closedDate: LocalDate?,
+	)
 }
