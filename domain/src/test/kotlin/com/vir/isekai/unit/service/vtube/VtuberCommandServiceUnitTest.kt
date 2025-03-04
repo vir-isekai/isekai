@@ -4,6 +4,7 @@ import com.vir.isekai.repository.vtuber.VtuberCustomRepository
 import com.vir.isekai.service.vtuber.VtuberCommandService
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
+import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -14,6 +15,7 @@ class VtuberCommandServiceUnitTest : StringSpec({
 	lateinit var service: VtuberCommandService
 
 	beforeTest {
+		clearMocks(vtuberCustomRepository)
 		service = VtuberCommandService(vtuberCustomRepository)
 	}
 

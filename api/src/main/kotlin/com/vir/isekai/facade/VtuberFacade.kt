@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class VtuberFacade(
-	private val vtuberQueryService: VtuberQueryService,
 	private val vtuberCommandService: VtuberCommandService,
+	private val vtuberQueryService: VtuberQueryService,
 ) {
 	fun getVtuberById(vtuberId: Long): VtuberResponse.Detail {
 		val command = vtuberCommandService.getVtuberById(vtuberId)

@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service
 @Service
 @Transactional(rollbackOn = [Exception::class])
 class VtuberQueryService(
-	private val vtuberRepository: VtuberRepository,
 	private val agencyRepository: AgencyRepository,
+	private val vtuberRepository: VtuberRepository,
 ) {
 	fun saveVtuber(command: VtuberCommand.Save) {
 		val agencyId = command.agencyId

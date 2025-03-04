@@ -12,13 +12,14 @@ import io.mockk.*
 import org.springframework.data.repository.findByIdOrNull
 
 class VtuberQueryServiceUnitTest : StringSpec({
-	val vtuberRepository: VtuberRepository = mockk()
 	val agencyRepository: AgencyRepository = mockk()
+	val vtuberRepository: VtuberRepository = mockk()
 
 	lateinit var service: VtuberQueryService
 
 	beforeTest {
-		service = VtuberQueryService(vtuberRepository, agencyRepository)
+		clearMocks(agencyRepository, vtuberRepository)
+		service = VtuberQueryService(agencyRepository, vtuberRepository)
 	}
 
 	val command =
