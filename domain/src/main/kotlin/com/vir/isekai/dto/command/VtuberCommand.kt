@@ -5,6 +5,7 @@ import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.entity.enums.Generation
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.Race
+import java.time.LocalDate
 
 class VtuberCommand {
 	data class Save(
@@ -38,6 +39,8 @@ class VtuberCommand {
 		val height: Int,
 		var race: Race,
 		val platform: Platform,
+		val debutDate: LocalDate?,
+		val graduateDate: LocalDate?,
 	)
 
 	data class Simple(

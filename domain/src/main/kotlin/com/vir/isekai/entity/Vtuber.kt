@@ -4,6 +4,7 @@ import com.vir.isekai.entity.enums.Generation
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.Race
 import jakarta.persistence.*
+import java.time.LocalDate
 
 @Entity
 @Table(name = "v_tuber")
@@ -34,4 +35,8 @@ class Vtuber(
 
 	@Enumerated(EnumType.STRING)
 	val platform: Platform,
+
+	val debutDate: LocalDate? = null,
+
+	val graduateDate: LocalDate? = null,
 ) : BaseTimeEntity()

@@ -4,6 +4,7 @@ import com.vir.isekai.dto.command.FandomCommand
 import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.enums.Platform
 import com.vir.isekai.entity.enums.Race
+import java.time.LocalDate
 
 class VtuberResponse {
 	data class Detail(
@@ -13,6 +14,8 @@ class VtuberResponse {
 		val fandom: FandomInfo?,
 		var race: Race,
 		val platform: Platform,
+		val debutDate: LocalDate?,
+		val graduateDate: LocalDate?,
 	) {
 		companion object {
 			fun from(
@@ -34,6 +37,8 @@ class VtuberResponse {
 					fandomInfo,
 					command.race,
 					command.platform,
+					command.debutDate,
+					command.graduateDate,
 				)
 			}
 		}

@@ -22,6 +22,8 @@ class VtuberCustomRepository(
 					vtuber.height,
 					vtuber.race,
 					vtuber.platform,
+					vtuber.debutDate,
+					vtuber.graduateDate,
 				),
 			)
 			.from(vtuber)

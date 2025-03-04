@@ -1,4 +1,4 @@
-package com.vir.isekai.unit.service.vtube
+package com.vir.isekai.unit.service.vtuber
 
 import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.Vtuber
