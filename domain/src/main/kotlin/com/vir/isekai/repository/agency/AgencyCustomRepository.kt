@@ -10,6 +10,20 @@ import org.springframework.stereotype.Repository
 class AgencyCustomRepository(
 	private val queryFactory: JPAQueryFactory,
 ) {
+	fun getAgencies(): List<AgencyCommand.Entry> {
+		return queryFactory
+			.select(
+				Projections.constructor(
+					AgencyCommand.Entry::class.java,
+					agency.id,
+					agency.name,
+					agency.logoImageUrl,
+				),
+			)
+			.from(agency)
+			.fetch()
+	}
+
 	fun getAgencyById(agencyId: Long): AgencyCommand.Detail? {
 		return queryFactory
 			.select(

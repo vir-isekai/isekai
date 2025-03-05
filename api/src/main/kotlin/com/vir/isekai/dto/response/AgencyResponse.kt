@@ -9,6 +9,24 @@ import com.vir.isekai.entity.enums.Nation
 import java.time.LocalDate
 
 class AgencyResponse {
+	data class Entry(
+		val agencyId: Long,
+		val name: String,
+		val logoImageUrl: String,
+	) {
+		companion object {
+			fun from(commands: List<AgencyCommand.Entry>): List<Entry> {
+				return commands.map {
+					Entry(
+						it.agencyId,
+						it.name,
+						it.logoImageUrl,
+					)
+				}
+			}
+		}
+	}
+
 	data class Detail(
 		val agencyId: Long,
 		val name: String,

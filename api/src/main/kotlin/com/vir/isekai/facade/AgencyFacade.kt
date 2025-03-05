@@ -17,6 +17,12 @@ class AgencyFacade(
 	private val fandomCommandService: FandomCommandService,
 	private val vtuberCommandService: VtuberCommandService,
 ) {
+	fun getAgencies(): List<AgencyResponse.Entry> {
+		val agencyCommands = agencyCommandService.getAgencies()
+
+		return AgencyResponse.Entry.from(agencyCommands)
+	}
+
 	fun getAgencyById(agencyId: Long): AgencyResponse.Detail {
 		val agencyCommand = agencyCommandService.getAgencyById(agencyId)
 		val vtuberCommand = vtuberCommandService.getVtubersByAgencyId(agencyId)

@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.*
 class AgencyController(
 	private val agencyFacade: AgencyFacade,
 ) {
+	@GetMapping
+	fun getAgencies(): CommonResponse<List<AgencyResponse.Entry>> {
+		return CommonResponse.ok(agencyFacade.getAgencies())
+	}
+
 	@GetMapping("/{agencyId}")
 	fun getAgencyById(
 		@PathVariable agencyId: Long,
