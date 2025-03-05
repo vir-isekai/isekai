@@ -9,6 +9,7 @@ class VtuberRequest {
 	data class Save(
 		val agencyId: Long?,
 		val name: String,
+		val profileImageUrl: String,
 		val age: Int,
 		val height: Int,
 		val generation: Generation,
@@ -19,6 +20,7 @@ class VtuberRequest {
 			return VtuberCommand.Save(
 				agencyId,
 				name,
+				profileImageUrl,
 				age,
 				height,
 				generation,

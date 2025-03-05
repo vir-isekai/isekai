@@ -23,6 +23,8 @@ class Vtuber(
 
 	val name: String,
 
+	val profileImageUrl: String,
+
 	val age: Int,
 
 	val height: Int,

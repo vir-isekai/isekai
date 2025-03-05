@@ -50,6 +50,7 @@ class AgencyResponse {
 						VtuberInfo(
 							it.vtuberId,
 							it.name,
+							it.logoImageUrl,
 						)
 					}
 
@@ -58,6 +59,7 @@ class AgencyResponse {
 						FandomInfo(
 							it.fandomId,
 							it.name,
+							it.logoImageUrl,
 						)
 					}
 
@@ -87,11 +89,13 @@ class AgencyResponse {
 	data class VtuberInfo(
 		val vtuberId: Long,
 		val name: String,
+		val logoImageUrl: String,
 	)
 
 	data class FandomInfo(
 		val fandomId: Long,
 		val name: String,
+		val logoImageUrl: String,
 	)
 
 	data class ChannelInfo(

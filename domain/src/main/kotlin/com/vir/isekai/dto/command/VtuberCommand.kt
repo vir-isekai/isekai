@@ -11,6 +11,7 @@ class VtuberCommand {
 	data class Save(
 		val agencyId: Long?,
 		val name: String,
+		val profileImageUrl: String,
 		val age: Int,
 		val height: Int,
 		val generation: Generation,
@@ -23,6 +24,7 @@ class VtuberCommand {
 				agency,
 				null,
 				name,
+				profileImageUrl,
 				age,
 				height,
 				generation,
@@ -46,10 +48,12 @@ class VtuberCommand {
 	data class Simple(
 		val vtuberId: Long,
 		val name: String,
+		val logoImageUrl: String,
 	)
 
 	data class FandomInfo(
 		val fandomId: Long?,
 		val name: String?,
+		val logoImageUrl: String,
 	)
 }
