@@ -15,7 +15,7 @@ class VtuberCommand {
 		val age: Int,
 		val height: Int,
 		val generation: Generation,
-		val race: Race,
+		val race: String,
 		val platForm: Platform,
 	) {
 		fun toEntity(agency: Agency?): Vtuber {
@@ -55,5 +55,13 @@ class VtuberCommand {
 		val fandomId: Long?,
 		val name: String?,
 		val logoImageUrl: String,
+	)
+
+	data class WithAgency(
+		val vtuberId: Long,
+		val vtuberName: String,
+		val logoImageUrl: String,
+		val agencyId: Long,
+		val agencyName: String,
 	)
 }

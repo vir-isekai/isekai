@@ -2,7 +2,6 @@ package com.vir.isekai.entity
 
 import com.vir.isekai.entity.enums.Generation
 import com.vir.isekai.entity.enums.Platform
-import com.vir.isekai.entity.enums.Race
 import jakarta.persistence.*
 import java.time.LocalDate
 
@@ -32,8 +31,7 @@ class Vtuber(
 	@Enumerated(EnumType.STRING)
 	val generation: Generation,
 
-	@Enumerated(EnumType.STRING)
-	val race: Race,
+	val race: String,
 
 	@Enumerated(EnumType.STRING)
 	val platform: Platform,

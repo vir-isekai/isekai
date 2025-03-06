@@ -10,11 +10,11 @@ import org.springframework.stereotype.Repository
 class AgencyCustomRepository(
 	private val queryFactory: JPAQueryFactory,
 ) {
-	fun getAgencies(): List<AgencyCommand.Entry> {
+	fun getAgencies(): List<AgencyCommand.Simple> {
 		return queryFactory
 			.select(
 				Projections.constructor(
-					AgencyCommand.Entry::class.java,
+					AgencyCommand.Simple::class.java,
 					agency.id,
 					agency.name,
 					agency.logoImageUrl,
@@ -39,6 +39,13 @@ class AgencyCustomRepository(
 			)
 			.from(agency)
 			.where(agency.id.eq(agencyId))
+			.fetchOne()
+	}
+
+	fun getAgencyCount(): Long? {
+		return queryFactory
+			.select(agency.id.count())
+			.from(agency)
 			.fetchOne()
 	}
 }

@@ -15,7 +15,7 @@ class AgencyResponse {
 		val logoImageUrl: String,
 	) {
 		companion object {
-			fun from(commands: List<AgencyCommand.Entry>): List<Entry> {
+			fun from(commands: List<AgencyCommand.Simple>): List<Entry> {
 				return commands.map {
 					Entry(
 						it.agencyId,
@@ -46,7 +46,7 @@ class AgencyResponse {
 				channelCommands: List<ChannelCommand.Simple>,
 			): Detail {
 				val vtuberInfos =
-					vtuberCommands.map { it ->
+					vtuberCommands.map {
 						VtuberInfo(
 							it.vtuberId,
 							it.name,

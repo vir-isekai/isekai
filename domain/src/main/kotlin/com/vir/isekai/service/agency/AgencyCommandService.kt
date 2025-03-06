@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 class AgencyCommandService(
 	private val agencyCustomRepository: AgencyCustomRepository,
 ) {
-	fun getAgencies(): List<AgencyCommand.Entry> {
+	fun getAgencies(): List<AgencyCommand.Simple> {
 		return agencyCustomRepository.getAgencies()
 	}
 

@@ -4,7 +4,6 @@ import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.entity.enums.Generation
 import com.vir.isekai.entity.enums.Platform
-import com.vir.isekai.entity.enums.Race
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.vtuber.VtuberRepository
 import com.vir.isekai.service.vtuber.VtuberQueryService
@@ -27,10 +26,11 @@ class VtuberQueryServiceUnitTest : StringSpec({
 		VtuberCommand.Save(
 			null,
 			"버튜버",
+			"",
 			4,
 			160,
 			Generation.NONE,
-			Race.HUMAN,
+			"인간",
 			Platform.CHZZK,
 		)
 
@@ -38,10 +38,11 @@ class VtuberQueryServiceUnitTest : StringSpec({
 		VtuberCommand.Save(
 			1L,
 			"소속버튜버",
+			"",
 			4,
 			160,
 			Generation.FIRST,
-			Race.HUMAN,
+			"인간",
 			Platform.CHZZK,
 		)
 
