@@ -38,7 +38,6 @@ class VtuberCommand {
 		val age: Int,
 		val height: Int,
 		var race: String,
-		val platform: Platform,
 		val debutDate: LocalDate?,
 		val graduateDate: LocalDate?,
 	)

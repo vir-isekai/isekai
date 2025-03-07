@@ -1,7 +1,9 @@
 package com.vir.isekai.dto.response
 
+import com.vir.isekai.dto.command.ChannelCommand
 import com.vir.isekai.dto.command.FandomCommand
 import com.vir.isekai.dto.command.VtuberCommand
+import com.vir.isekai.dto.response.AgencyResponse.ChannelInfo
 import com.vir.isekai.entity.enums.Platform
 import java.time.LocalDate
 
@@ -12,14 +14,15 @@ class VtuberResponse {
 		val height: Int,
 		val fandom: FandomInfo?,
 		var race: String,
-		val platform: Platform,
 		val debutDate: LocalDate?,
 		val graduateDate: LocalDate?,
+		val channelInfos: List<ChannelInfo>,
 	) {
 		companion object {
 			fun from(
 				command: VtuberCommand.Detail,
 				fandomCommand: FandomCommand.Simple?,
+				channelCommands: List<ChannelCommand.Simple>,
 			): Detail {
 				val fandomInfo =
 					fandomCommand?.let {
@@ -29,15 +32,23 @@ class VtuberResponse {
 						)
 					}
 
+				val channelInfos =
+					channelCommands.map {
+						ChannelInfo(
+							it.type,
+							it.url,
+						)
+					}
+
 				return Detail(
 					command.name,
 					command.age,
 					command.height,
 					fandomInfo,
 					command.race,
-					command.platform,
 					command.debutDate,
 					command.graduateDate,
+					channelInfos,
 				)
 			}
 		}

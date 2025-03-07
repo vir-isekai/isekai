@@ -13,4 +13,8 @@ class ChannelCommandService(
 	fun getChannelsByAgencyId(agencyId: Long): List<ChannelCommand.Simple> {
 		return channelCustomRepository.getChannelsByAgencyId(agencyId)
 	}
+
+	fun getChannelsByVtuberId(vtuberId: Long): List<ChannelCommand.Simple> {
+		return channelCustomRepository.getChannelsByVtuberId(vtuberId)
+	}
 }
