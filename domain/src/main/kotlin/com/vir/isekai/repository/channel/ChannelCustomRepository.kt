@@ -5,7 +5,6 @@ import com.querydsl.jpa.impl.JPAQueryFactory
 import com.vir.isekai.dto.command.ChannelCommand
 import com.vir.isekai.entity.QAgency.agency
 import com.vir.isekai.entity.QChannel.channel
-import com.vir.isekai.entity.QVtuber
 import com.vir.isekai.entity.QVtuber.*
 import org.springframework.stereotype.Repository
 

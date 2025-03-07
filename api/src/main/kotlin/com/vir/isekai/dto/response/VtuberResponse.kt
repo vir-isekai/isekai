@@ -4,7 +4,6 @@ import com.vir.isekai.dto.command.ChannelCommand
 import com.vir.isekai.dto.command.FandomCommand
 import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.dto.response.AgencyResponse.ChannelInfo
-import com.vir.isekai.entity.enums.Platform
 import java.time.LocalDate
 
 class VtuberResponse {

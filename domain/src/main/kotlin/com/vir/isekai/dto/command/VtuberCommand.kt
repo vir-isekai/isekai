@@ -3,7 +3,6 @@ package com.vir.isekai.dto.command
 import com.vir.isekai.entity.Agency
 import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.entity.enums.Generation
-import com.vir.isekai.entity.enums.Platform
 import java.time.LocalDate
 
 class VtuberCommand {
