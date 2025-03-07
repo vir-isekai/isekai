@@ -4,7 +4,6 @@ import com.vir.isekai.entity.Agency
 import com.vir.isekai.entity.Vtuber
 import com.vir.isekai.entity.enums.Generation
 import com.vir.isekai.entity.enums.Platform
-import com.vir.isekai.entity.enums.Race
 import java.time.LocalDate
 
 class VtuberCommand {
@@ -16,7 +15,7 @@ class VtuberCommand {
 		val height: Int,
 		val generation: Generation,
 		val race: String,
-		val platForm: Platform,
+		val channelInfos: List<ChannelCommand.Save>,
 	) {
 		fun toEntity(agency: Agency?): Vtuber {
 			return Vtuber(
@@ -29,7 +28,6 @@ class VtuberCommand {
 				height,
 				generation,
 				race,
-				platForm,
 			)
 		}
 	}
@@ -39,7 +37,7 @@ class VtuberCommand {
 		val name: String,
 		val age: Int,
 		val height: Int,
-		var race: Race,
+		var race: String,
 		val platform: Platform,
 		val debutDate: LocalDate?,
 		val graduateDate: LocalDate?,

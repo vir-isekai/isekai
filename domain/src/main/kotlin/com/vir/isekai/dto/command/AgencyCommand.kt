@@ -5,12 +5,6 @@ import com.vir.isekai.entity.enums.Nation
 import java.time.LocalDate
 
 class AgencyCommand {
-	data class Simple(
-		val agencyId: Long,
-		val name: String,
-		val logoImageUrl: String,
-	)
-
 	data class Save(
 		val name: String,
 		val logoImageUrl: String,
@@ -37,5 +31,11 @@ class AgencyCommand {
 		val nation: Nation,
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
+	)
+
+	data class Simple(
+		val agencyId: Long,
+		val name: String,
+		val logoImageUrl: String,
 	)
 }

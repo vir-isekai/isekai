@@ -3,7 +3,6 @@ package com.vir.isekai.dto.response
 import com.vir.isekai.dto.command.FandomCommand
 import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.enums.Platform
-import com.vir.isekai.entity.enums.Race
 import java.time.LocalDate
 
 class VtuberResponse {
@@ -12,7 +11,7 @@ class VtuberResponse {
 		val age: Int,
 		val height: Int,
 		val fandom: FandomInfo?,
-		var race: Race,
+		var race: String,
 		val platform: Platform,
 		val debutDate: LocalDate?,
 		val graduateDate: LocalDate?,

@@ -1,8 +1,9 @@
 package com.vir.isekai.dto.request
 
+import com.vir.isekai.dto.command.ChannelCommand
 import com.vir.isekai.dto.command.VtuberCommand
+import com.vir.isekai.entity.enums.ChannelType
 import com.vir.isekai.entity.enums.Generation
-import com.vir.isekai.entity.enums.Platform
 
 class VtuberRequest {
 	data class Save(
@@ -13,9 +14,17 @@ class VtuberRequest {
 		val height: Int,
 		val generation: Generation,
 		var race: String,
-		val platform: Platform,
+		val channelInfos: List<ChannelInfo>,
 	) {
 		fun toCommand(): VtuberCommand.Save {
+			val channelInfos =
+				this.channelInfos.map {
+					ChannelCommand.Save(
+						it.type,
+						it.url,
+					)
+				}
+
 			return VtuberCommand.Save(
 				agencyId,
 				name,
@@ -24,8 +33,13 @@ class VtuberRequest {
 				height,
 				generation,
 				race,
-				platform,
+				channelInfos,
 			)
 		}
 	}
+
+	data class ChannelInfo(
+		val type: ChannelType,
+		val url: String,
+	)
 }

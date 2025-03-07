@@ -21,7 +21,6 @@ class VtuberCustomRepository(
 					vtuber.age,
 					vtuber.height,
 					vtuber.race,
-					vtuber.platform,
 					vtuber.debutDate,
 					vtuber.graduateDate,
 				),
@@ -38,6 +37,7 @@ class VtuberCustomRepository(
 					VtuberCommand.Simple::class.java,
 					vtuber.id,
 					vtuber.name,
+					vtuber.profileImageUrl,
 				),
 			)
 			.from(vtuber)
