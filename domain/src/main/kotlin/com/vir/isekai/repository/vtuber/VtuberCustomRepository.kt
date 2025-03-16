@@ -18,6 +18,7 @@ class VtuberCustomRepository(
 					VtuberCommand.Detail::class.java,
 					vtuber.id,
 					vtuber.name,
+					vtuber.profileImageUrl,
 					vtuber.age,
 					vtuber.height,
 					vtuber.race,

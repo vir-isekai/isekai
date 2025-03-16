@@ -4,6 +4,7 @@ import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.vir.isekai.dto.command.AgencyCommand
 import com.vir.isekai.entity.QAgency.agency
+import com.vir.isekai.entity.QVtuber.*
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -42,10 +43,20 @@ class AgencyCustomRepository(
 			.fetchOne()
 	}
 
-	fun getAgencyCount(): Long? {
+	fun getAgencyByVtuberId(vtuberId: Long): AgencyCommand.Simple? {
 		return queryFactory
-			.select(agency.id.count())
+			.select(
+				Projections.constructor(
+					AgencyCommand.Simple::class.java,
+					agency.id,
+					agency.name,
+					agency.logoImageUrl,
+				),
+			)
 			.from(agency)
+			.join(vtuber)
+			.on(vtuber.agency.id.eq(agency.id))
+			.where(vtuber.id.eq(vtuberId))
 			.fetchOne()
 	}
 }

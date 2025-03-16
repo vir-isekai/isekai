@@ -34,6 +34,7 @@ class VtuberCommand {
 	data class Detail(
 		val vtuberId: Long,
 		val name: String,
+		val profileImageUrl: String,
 		val age: Int,
 		val height: Int,
 		var race: String,
