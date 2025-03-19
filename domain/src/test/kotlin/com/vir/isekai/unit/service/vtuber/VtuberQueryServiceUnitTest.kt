@@ -11,6 +11,7 @@ import com.vir.isekai.service.vtuber.VtuberQueryService
 import io.kotest.core.spec.style.StringSpec
 import io.mockk.*
 import org.springframework.data.repository.findByIdOrNull
+import java.time.LocalDate
 
 class VtuberQueryServiceUnitTest : StringSpec({
 	val agencyRepository: AgencyRepository = mockk()
@@ -34,6 +35,7 @@ class VtuberQueryServiceUnitTest : StringSpec({
 			160,
 			Generation.NONE,
 			"인간",
+			LocalDate.now(),
 			mutableListOf(),
 		)
 
@@ -46,6 +48,7 @@ class VtuberQueryServiceUnitTest : StringSpec({
 			160,
 			Generation.FIRST,
 			"인간",
+			LocalDate.now(),
 			mutableListOf(),
 		)
 

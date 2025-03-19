@@ -14,6 +14,7 @@ class VtuberCommand {
 		val height: Int,
 		val generation: Generation,
 		val race: String,
+		val debutDate: LocalDate?,
 		val channelInfos: List<ChannelCommand.Save>,
 	) {
 		fun toEntity(agency: Agency?): Vtuber {
@@ -27,6 +28,7 @@ class VtuberCommand {
 				height,
 				generation,
 				race,
+				debutDate,
 			)
 		}
 	}

@@ -4,6 +4,7 @@ import com.vir.isekai.dto.command.ChannelCommand
 import com.vir.isekai.dto.command.VtuberCommand
 import com.vir.isekai.entity.enums.ChannelType
 import com.vir.isekai.entity.enums.Generation
+import java.time.LocalDate
 
 class VtuberRequest {
 	data class Save(
@@ -13,6 +14,7 @@ class VtuberRequest {
 		val age: Int,
 		val height: Int,
 		val generation: Generation,
+		val debutDate: LocalDate?,
 		var race: String,
 		val channelInfos: List<ChannelInfo>,
 	) {
@@ -33,6 +35,7 @@ class VtuberRequest {
 				height,
 				generation,
 				race,
+				debutDate,
 				channelInfos,
 			)
 		}
