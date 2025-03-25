@@ -2,9 +2,9 @@ package com.vir.isekai.facade
 
 import com.vir.isekai.dto.response.HomeResponse
 import com.vir.isekai.service.home.HomeCommandService
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
-@Service
+@Component
 class HomeFacade(
 	private val homeCommandService: HomeCommandService,
 ) {

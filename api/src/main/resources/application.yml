@@ -12,8 +12,13 @@ spring:
   jackson:
     deserialization:
       fail-on-null-for-primitives: true
+
 management:
   endpoints:
     web:
       exposure:
         include: env
+
+kakao:
+  client_id: 70b5d2ebdeab88e65b4caa45fa39df78
+  redirect_uri: http://localhost:8080/login/kakao/callback
