@@ -10,9 +10,11 @@ private val log = KotlinLogging.logger {}
 class KakaoLoginService(
 	private val oAuthPort: OAuthPort,
 ) {
-	fun getKakaoAccessToken(code: String): String {
+	fun getSNSMemberInfo(code: String): Any {
 		val accessToken = oAuthPort.getAccessToken(code)
 
-		return accessToken
+		val snsMemberInfo = oAuthPort.getSNSMemberInfo(accessToken)
+
+		return snsMemberInfo
 	}
 }

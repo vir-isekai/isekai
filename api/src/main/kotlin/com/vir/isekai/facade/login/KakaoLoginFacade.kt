@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component
 class KakaoLoginFacade(
 	private val kakaoLoginService: KakaoLoginService,
 ) {
-	fun generateKakaoToken(code: String): String {
-		return kakaoLoginService.getKakaoAccessToken(code)
+	fun generateKakaoToken(code: String): Any {
+		val snsMemberInfo = kakaoLoginService.getSNSMemberInfo(code)
+
+		return snsMemberInfo
 	}
 }

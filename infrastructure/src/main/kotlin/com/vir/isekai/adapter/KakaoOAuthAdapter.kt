@@ -15,14 +15,19 @@ class KakaoOAuthAdapter : OAuthPort {
 	@Value("\${kakao.redirect_uri}")
 	lateinit var redirectURI: String
 
+	private val authRestClient: RestClient =
+		RestClient.builder()
+			.baseUrl(BASE_AUTH_URL)
+			.build()
+
 	private val restClient: RestClient =
 		RestClient.builder()
-			.baseUrl(BASE_URL)
+			.baseUrl(BASE_API_URL)
 			.build()
 
 	override fun getAccessToken(code: String): String {
 		val response =
-			restClient.post()
+			authRestClient.post()
 				.uri("/oauth/token")
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				.body(
@@ -35,6 +40,17 @@ class KakaoOAuthAdapter : OAuthPort {
 				.body(KakaoTokenResponse::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
 
 		return response.accessToken
+	}
+
+	override fun getSNSMemberInfo(token: String): String {
+		val response =
+			restClient.get()
+				.uri("/v2/user/me")
+				.header("Authorization", "Bearer $token")
+				.retrieve()
+				.body(String::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
+
+		return response
 	}
 
 	private data class KakaoTokenResponse(
@@ -57,7 +73,12 @@ class KakaoOAuthAdapter : OAuthPort {
 		val refreshTokenExpiresIn: Int? = null,
 	)
 
+	data class KakaoUserResponse(
+		val id: String,
+	)
+
 	companion object {
-		private const val BASE_URL = "https://kauth.kakao.com"
+		private const val BASE_AUTH_URL = "https://kauth.kakao.com"
+		private const val BASE_API_URL = "https://kaapi.kakao.com"
 	}
 }
