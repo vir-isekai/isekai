@@ -1,8 +1,6 @@
 package com.vir.isekai.entity
 
 import com.vir.isekai.entity.enums.Generation
-import com.vir.isekai.entity.enums.Platform
-import com.vir.isekai.entity.enums.Race
 import jakarta.persistence.*
 import java.time.LocalDate
 
@@ -23,6 +21,8 @@ class Vtuber(
 
 	val name: String,
 
+	val profileImageUrl: String,
+
 	val age: Int,
 
 	val height: Int,
@@ -30,11 +30,7 @@ class Vtuber(
 	@Enumerated(EnumType.STRING)
 	val generation: Generation,
 
-	@Enumerated(EnumType.STRING)
-	val race: Race,
-
-	@Enumerated(EnumType.STRING)
-	val platform: Platform,
+	val race: String,
 
 	val debutDate: LocalDate? = null,
 

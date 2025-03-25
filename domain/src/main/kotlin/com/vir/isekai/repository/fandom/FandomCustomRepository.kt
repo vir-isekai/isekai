@@ -19,6 +19,7 @@ class FandomCustomRepository(
 					FandomCommand.Simple::class.java,
 					fandom.id,
 					fandom.name,
+					fandom.logoImageUrl,
 				),
 			)
 			.from(fandom)
@@ -35,6 +36,7 @@ class FandomCustomRepository(
 					FandomCommand.Simple::class.java,
 					fandom.id,
 					fandom.name,
+					fandom.logoImageUrl,
 				),
 			)
 			.from(fandom)

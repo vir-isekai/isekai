@@ -1,7 +1,9 @@
 package com.vir.isekai.service.vtuber
 
 import com.vir.isekai.dto.command.VtuberCommand
+import com.vir.isekai.entity.Channel
 import com.vir.isekai.repository.agency.AgencyRepository
+import com.vir.isekai.repository.channel.ChannelRepository
 import com.vir.isekai.repository.vtuber.VtuberRepository
 import jakarta.transaction.Transactional
 import org.springframework.data.repository.findByIdOrNull
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service
 @Transactional(rollbackOn = [Exception::class])
 class VtuberQueryService(
 	private val agencyRepository: AgencyRepository,
+	private val channelRepository: ChannelRepository,
 	private val vtuberRepository: VtuberRepository,
 ) {
 	fun saveVtuber(command: VtuberCommand.Save) {
@@ -23,6 +26,19 @@ class VtuberQueryService(
 				null
 			}
 
-		vtuberRepository.save(command.toEntity(agency))
+		val vtuber = vtuberRepository.save(command.toEntity(agency))
+
+		val channels =
+			command.channelInfos.map {
+				Channel(
+					null,
+					null,
+					vtuber,
+					it.type,
+					it.url,
+				)
+			}
+
+		channelRepository.saveAll(channels)
 	}
 }

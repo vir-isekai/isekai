@@ -3,9 +3,9 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: ENC(hxCAs/yV5ETBal+XyTOYFXiDmR39boRH5mXns3t6tVSzS89pRPlDURh8uiixa6Qd)
-    username: ENC(7IP2puGkXHgco1sETUYaIQ==)
-    password: ENC(fx1OgWZxV7dB0yf+Z0EaXqEzN+4M/RiF)
+    url: ENC(VhGRQHkSrPWgK7xI0ZJrIZ58Wj7qWqw3W9F45P15j7Moj4mKDwKSBZdwA1yomlSqICINUWYhzBBBazeWsUKkAOn6TklQ4iu/zKlW1xM0KvcnLDG7E6Q65MtemPNJ3URP)
+    username: ENC(mBKCab+egt/g9y9x3k//Jg==)
+    password: ENC(TZiXc8IRxQh8TZoNs0W1tUP6WK1uVUUd)
   flyway:
     enabled: true
     baseline-on-migrate: true
@@ -19,9 +19,9 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: ENC(hxCAs/yV5ETBal+XyTOYFXiDmR39boRH5mXns3t6tVSzS89pRPlDURh8uiixa6Qd)
-    username: ENC(7IP2puGkXHgco1sETUYaIQ==)
-    password: ENC(fx1OgWZxV7dB0yf+Z0EaXqEzN+4M/RiF)
+    url: ENC(VhGRQHkSrPWgK7xI0ZJrIZ58Wj7qWqw3W9F45P15j7Moj4mKDwKSBZdwA1yomlSqICINUWYhzBBBazeWsUKkAOn6TklQ4iu/zKlW1xM0KvcnLDG7E6Q65MtemPNJ3URP)
+    username: ENC(mBKCab+egt/g9y9x3k//Jg==)
+    password: ENC(TZiXc8IRxQh8TZoNs0W1tUP6WK1uVUUd)
   flyway:
     enabled: true
     baseline-on-migrate: true
@@ -43,3 +43,8 @@ spring:
     baseline-on-migrate: true
     baseline-version: 1
     locations: classpath:db/migration/prod
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: false

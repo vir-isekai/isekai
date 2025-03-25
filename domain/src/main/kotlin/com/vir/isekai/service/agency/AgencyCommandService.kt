@@ -10,7 +10,15 @@ import org.springframework.transaction.annotation.Transactional
 class AgencyCommandService(
 	private val agencyCustomRepository: AgencyCustomRepository,
 ) {
+	fun getAgencies(): List<AgencyCommand.Simple> {
+		return agencyCustomRepository.getAgencies()
+	}
+
 	fun getAgencyById(agencyId: Long): AgencyCommand.Detail {
 		return agencyCustomRepository.getAgencyById(agencyId) ?: throw IllegalArgumentException()
+	}
+
+	fun getAgencyByVtuberId(vtuberId: Long): AgencyCommand.Simple {
+		return agencyCustomRepository.getAgencyByVtuberId(vtuberId) ?: throw IllegalArgumentException()
 	}
 }

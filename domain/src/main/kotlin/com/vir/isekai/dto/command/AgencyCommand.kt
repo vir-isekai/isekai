@@ -32,4 +32,10 @@ class AgencyCommand {
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
 	)
+
+	data class Simple(
+		val agencyId: Long,
+		val name: String,
+		val logoImageUrl: String,
+	)
 }

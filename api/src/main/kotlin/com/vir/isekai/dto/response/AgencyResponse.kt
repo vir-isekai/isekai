@@ -9,6 +9,24 @@ import com.vir.isekai.entity.enums.Nation
 import java.time.LocalDate
 
 class AgencyResponse {
+	data class Entry(
+		val agencyId: Long,
+		val name: String,
+		val logoImageUrl: String,
+	) {
+		companion object {
+			fun from(commands: List<AgencyCommand.Simple>): List<Entry> {
+				return commands.map {
+					Entry(
+						it.agencyId,
+						it.name,
+						it.logoImageUrl,
+					)
+				}
+			}
+		}
+	}
+
 	data class Detail(
 		val agencyId: Long,
 		val name: String,
@@ -28,10 +46,11 @@ class AgencyResponse {
 				channelCommands: List<ChannelCommand.Simple>,
 			): Detail {
 				val vtuberInfos =
-					vtuberCommands.map { it ->
+					vtuberCommands.map {
 						VtuberInfo(
 							it.vtuberId,
 							it.name,
+							it.logoImageUrl,
 						)
 					}
 
@@ -40,6 +59,7 @@ class AgencyResponse {
 						FandomInfo(
 							it.fandomId,
 							it.name,
+							it.logoImageUrl,
 						)
 					}
 
@@ -69,11 +89,13 @@ class AgencyResponse {
 	data class VtuberInfo(
 		val vtuberId: Long,
 		val name: String,
+		val logoImageUrl: String,
 	)
 
 	data class FandomInfo(
 		val fandomId: Long,
 		val name: String,
+		val logoImageUrl: String,
 	)
 
 	data class ChannelInfo(

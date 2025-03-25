@@ -45,5 +45,6 @@ class FandomCommand {
 	data class Simple(
 		val fandomId: Long,
 		val name: String,
+		val logoImageUrl: String,
 	)
 }

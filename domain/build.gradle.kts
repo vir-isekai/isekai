@@ -12,6 +12,8 @@ dependencies {
 	kapt("jakarta.persistence:jakarta.persistence-api")
 
 	implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
+	// P6spy
+	implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0")
 }
 
 tasks.named("bootJar") {
