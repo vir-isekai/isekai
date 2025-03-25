@@ -14,9 +14,7 @@ class LoginController(
 	@RequestMapping("/kakao/callback")
 	fun callbackKakaoLogin(
 		@RequestParam code: String,
-	): CommonResponse<Nothing> {
-		kakaoLoginFacade.generateKakaoToken(code)
-
-		return CommonResponse.noContent()
+	): CommonResponse<String> {
+		return CommonResponse.ok(kakaoLoginFacade.generateKakaoToken(code))
 	}
 }

@@ -5,8 +5,6 @@ import com.vir.isekai.port.OAuthPort
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
-import org.springframework.util.LinkedMultiValueMap
-import org.springframework.util.MultiValueMap
 import org.springframework.web.client.RestClient
 
 @Component("kakaoOAuthAdapter")
@@ -23,16 +21,10 @@ class KakaoOAuthAdapter : OAuthPort {
 			.build()
 
 	override fun getAccessToken(code: String): String {
-		val requestParams: MultiValueMap<String, String> = LinkedMultiValueMap()
-		requestParams.add("grant_type", "authorization_code")
-		requestParams.add("code", code)
-		requestParams.add("client_id", clientId)
-		requestParams.add("redirect_uri", redirectURI)
-
 		val response =
 			restClient.post()
 				.uri("/oauth/token")
-				.contentType(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				.body(
 					"grant_type=authorization_code" +
 						"&client_id=$clientId" +

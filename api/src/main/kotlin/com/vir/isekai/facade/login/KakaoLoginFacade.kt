@@ -1,17 +1,13 @@
 package com.vir.isekai.facade.login
 
-import org.springframework.beans.factory.annotation.Value
+import com.vir.isekai.service.login.KakaoLoginService
 import org.springframework.stereotype.Component
 
 @Component
-class KakaoLoginFacade {
-	@Value("\${kakao.rest_api_key}")
-	lateinit var apiKey: String
-
-	@Value("\${kakao.redirect_uri}")
-	lateinit var redirectURL: String
-
-	fun generateKakaoToken(code: String) {
-		TODO("Not yet implemented")
+class KakaoLoginFacade(
+	private val kakaoLoginService: KakaoLoginService,
+) {
+	fun generateKakaoToken(code: String): String {
+		return kakaoLoginService.getKakaoAccessToken(code)
 	}
 }
