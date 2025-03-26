@@ -2,6 +2,7 @@ package com.vir.isekai.entity.member
 
 import com.vir.isekai.entity.BaseTimeEntity
 import com.vir.isekai.entity.enums.SNSType
+import com.vir.isekai.entity.enums.member.MemberStatus
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -22,7 +23,8 @@ class Member(
 
 	val profileImageUrl: String,
 
-	val isActive: Boolean,
+	@Enumerated(EnumType.STRING)
+	val status: MemberStatus,
 
 	val lastLoginAt: LocalDateTime?,
 ) : BaseTimeEntity()

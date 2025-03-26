@@ -5,5 +5,5 @@ import com.vir.isekai.dto.MemberDTO
 interface AuthPort {
 	fun getAccessToken(code: String): String
 
-	fun getSNSMemberInfo(token: String): MemberDTO.Save
+	fun getMemberSaveDTO(token: String): MemberDTO.Save
 }

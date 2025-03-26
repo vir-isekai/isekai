@@ -2,6 +2,7 @@ package com.vir.isekai.adapter
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.vir.isekai.dto.MemberDTO
+import com.vir.isekai.entity.enums.SNSType
 import com.vir.isekai.port.AuthPort
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType
@@ -43,13 +44,12 @@ class KakaoAuthAdapter : AuthPort {
 		return response.accessToken
 	}
 
-	override fun getSNSMemberInfo(token: String): MemberDTO.Save {
+	override fun getMemberSaveDTO(token: String): MemberDTO.Save {
 		val response =
 			restClient.get()
 				.uri("/v2/user/me")
 				.header("Authorization", "Bearer $token")
 				.retrieve()
-// 				.body(String::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
 				.body(KakaoUserResponse::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
 
 		return response.toMemberSaveDTO()
@@ -75,7 +75,7 @@ class KakaoAuthAdapter : AuthPort {
 		val refreshTokenExpiresIn: Int? = null,
 	)
 
-	data class KakaoUserResponse(
+	private data class KakaoUserResponse(
 		val id: String,
 		@field:JsonProperty(value = "kakao_account")
 		val kakaoAccount: KakaoAccount,
@@ -84,16 +84,17 @@ class KakaoAuthAdapter : AuthPort {
 			return MemberDTO.Save(
 				snsId = id,
 				nickname = kakaoAccount.profile.nickname,
+				snsType = SNSType.KAKAO,
 			)
 		}
 	}
 
 	// 추후 프로퍼티 추가
-	data class KakaoAccount(
+	private data class KakaoAccount(
 		val profile: Profile,
 	)
 
-	data class Profile(
+	private data class Profile(
 		val nickname: String,
 	)
 

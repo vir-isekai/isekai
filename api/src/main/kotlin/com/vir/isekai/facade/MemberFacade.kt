@@ -1,4 +1,4 @@
-package com.vir.isekai.facade.login
+package com.vir.isekai.facade
 
 import org.springframework.stereotype.Component
 
