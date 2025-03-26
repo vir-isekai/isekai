@@ -13,7 +13,11 @@ class KakaoLoginService(
 	fun getSNSMemberInfo(code: String): Any {
 		val accessToken = oAuthPort.getAccessToken(code)
 
+		log.info { "Access token: $accessToken" }
+
 		val snsMemberInfo = oAuthPort.getSNSMemberInfo(accessToken)
+
+		log.info { "SNS memberInfo: $snsMemberInfo" }
 
 		return snsMemberInfo
 	}

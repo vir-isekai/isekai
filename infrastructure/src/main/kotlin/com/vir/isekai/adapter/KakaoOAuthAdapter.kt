@@ -1,6 +1,7 @@
 package com.vir.isekai.adapter
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonRawValue
 import com.vir.isekai.port.OAuthPort
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType
@@ -42,13 +43,13 @@ class KakaoOAuthAdapter : OAuthPort {
 		return response.accessToken
 	}
 
-	override fun getSNSMemberInfo(token: String): String {
+	override fun getSNSMemberInfo(token: String): KakaoUserResponse {
 		val response =
 			restClient.get()
 				.uri("/v2/user/me")
 				.header("Authorization", "Bearer $token")
 				.retrieve()
-				.body(String::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
+				.body(KakaoUserResponse::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
 
 		return response
 	}
@@ -74,11 +75,13 @@ class KakaoOAuthAdapter : OAuthPort {
 	)
 
 	data class KakaoUserResponse(
-		val id: String,
+		@field:JsonRawValue
+		val response: String,
+		val status: Int,
 	)
 
 	companion object {
 		private const val BASE_AUTH_URL = "https://kauth.kakao.com"
-		private const val BASE_API_URL = "https://kaapi.kakao.com"
+		private const val BASE_API_URL = "https://kapi.kakao.com"
 	}
 }
