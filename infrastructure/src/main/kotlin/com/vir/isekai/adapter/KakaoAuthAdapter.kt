@@ -1,15 +1,15 @@
 package com.vir.isekai.adapter
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonRawValue
-import com.vir.isekai.port.OAuthPort
+import com.vir.isekai.dto.MemberDTO
+import com.vir.isekai.port.AuthPort
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
 
 @Component("kakaoOAuthAdapter")
-class KakaoOAuthAdapter : OAuthPort {
+class KakaoAuthAdapter : AuthPort {
 	@Value("\${kakao.client_id}")
 	lateinit var clientId: String
 
@@ -43,15 +43,16 @@ class KakaoOAuthAdapter : OAuthPort {
 		return response.accessToken
 	}
 
-	override fun getSNSMemberInfo(token: String): KakaoUserResponse {
+	override fun getSNSMemberInfo(token: String): MemberDTO.Save {
 		val response =
 			restClient.get()
 				.uri("/v2/user/me")
 				.header("Authorization", "Bearer $token")
 				.retrieve()
+// 				.body(String::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
 				.body(KakaoUserResponse::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
 
-		return response
+		return response.toMemberSaveDTO()
 	}
 
 	private data class KakaoTokenResponse(
@@ -75,9 +76,25 @@ class KakaoOAuthAdapter : OAuthPort {
 	)
 
 	data class KakaoUserResponse(
-		@field:JsonRawValue
-		val response: String,
-		val status: Int,
+		val id: String,
+		@field:JsonProperty(value = "kakao_account")
+		val kakaoAccount: KakaoAccount,
+	) {
+		fun toMemberSaveDTO(): MemberDTO.Save {
+			return MemberDTO.Save(
+				snsId = id,
+				nickname = kakaoAccount.profile.nickname,
+			)
+		}
+	}
+
+	// 추후 프로퍼티 추가
+	data class KakaoAccount(
+		val profile: Profile,
+	)
+
+	data class Profile(
+		val nickname: String,
 	)
 
 	companion object {

@@ -5,4 +5,6 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/members")
-class MemberController()
+class MemberController(
+	private val memberFacade: MemberFacade,
+)
