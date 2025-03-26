@@ -21,8 +21,15 @@ class AuthFacade(
 	fun joinMemberOrLogin(code: String): Any {
 		val snsMemberInfo = authClient.getMemberSaveDTO(code)
 
+		val existingMember = memberCommandService.getMemberBySnsId(snsMemberInfo.snsId)
+
 		val member =
-			memberCommandService.getMemberBySnsId(snsMemberInfo.snsId) ?: memberQueryService.saveMember(snsMemberInfo)
+			if (existingMember == null) {
+				memberQueryService.saveMember(snsMemberInfo)
+			} else {
+				existingMember.updateLastLoginAt()
+				existingMember
+			}
 
 		return member.snsId
 	}

@@ -26,5 +26,9 @@ class Member(
 	@Enumerated(EnumType.STRING)
 	val status: MemberStatus,
 
-	val lastLoginAt: LocalDateTime?,
-) : BaseTimeEntity()
+	var lastLoginAt: LocalDateTime?,
+) : BaseTimeEntity() {
+	fun updateLastLoginAt() {
+		this.lastLoginAt = LocalDateTime.now()
+	}
+}
