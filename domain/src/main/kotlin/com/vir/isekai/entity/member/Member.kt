@@ -1,8 +1,10 @@
 package com.vir.isekai.entity.member
 
 import com.vir.isekai.entity.BaseTimeEntity
-import com.vir.isekai.entity.enums.MemberRole
+import com.vir.isekai.entity.enums.SNSType
+import com.vir.isekai.entity.enums.member.MemberStatus
 import jakarta.persistence.*
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "member")
@@ -13,5 +15,20 @@ class Member(
 	val id: Long? = null,
 
 	@Enumerated(EnumType.STRING)
-	val role: MemberRole,
-) : BaseTimeEntity()
+	val snsType: SNSType,
+
+	val snsId: String,
+
+	val nickname: String,
+
+	val profileImageUrl: String,
+
+	@Enumerated(EnumType.STRING)
+	val status: MemberStatus,
+
+	var lastLoginAt: LocalDateTime?,
+) : BaseTimeEntity() {
+	fun updateLastLoginAt() {
+		this.lastLoginAt = LocalDateTime.now()
+	}
+}

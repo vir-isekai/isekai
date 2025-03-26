@@ -2,8 +2,7 @@ package com.vir.isekai.dto
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import jakarta.servlet.http.HttpServletResponse
-import jakarta.servlet.http.HttpServletResponse.SC_CREATED
-import jakarta.servlet.http.HttpServletResponse.SC_OK
+import jakarta.servlet.http.HttpServletResponse.*
 
 data class CommonResponse<T>(
 	@JsonInclude(JsonInclude.Include.NON_NULL)
@@ -13,12 +12,12 @@ data class CommonResponse<T>(
 	constructor(status: Int) : this(null, status)
 
 	companion object {
-		fun <T> ok(): CommonResponse<T> {
-			return CommonResponse(null, SC_OK)
-		}
-
 		fun <T> successSave(): CommonResponse<T> {
 			return CommonResponse(SC_CREATED)
+		}
+
+		fun <T> noContent(): CommonResponse<T> {
+			return CommonResponse(SC_NO_CONTENT)
 		}
 
 		fun <T> ok(status: HttpServletResponse): CommonResponse<T> {

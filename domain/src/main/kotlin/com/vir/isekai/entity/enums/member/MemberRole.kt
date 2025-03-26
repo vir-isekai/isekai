@@ -1,4 +1,6 @@
-package com.vir.isekai.entity.enums
+package com.vir.isekai.entity.enums.member
+
+import com.vir.isekai.entity.enums.Describable
 
 enum class MemberRole(
 	override val description: String,

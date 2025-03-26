@@ -7,9 +7,9 @@ import com.vir.isekai.service.agency.AgencyQueryService
 import com.vir.isekai.service.channel.ChannelCommandService
 import com.vir.isekai.service.fandom.FandomCommandService
 import com.vir.isekai.service.vtuber.VtuberCommandService
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
-@Service
+@Component
 class AgencyFacade(
 	private val agencyCommandService: AgencyCommandService,
 	private val agencyQueryService: AgencyQueryService,
