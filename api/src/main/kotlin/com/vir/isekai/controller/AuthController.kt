@@ -100,8 +100,8 @@ class AuthController(
 		val cookie =
 			ResponseCookie.from("refresh_token", refreshToken)
 				.httpOnly(true)
-				.secure(true) // HTTPS에서만 전송
-				.path("/api/auth/refresh") // 필요한 경로에서만 접근 가능
+				.secure(false)
+				.path("/api/auth/refresh")
 				.maxAge(Duration.ofDays(7))
 				.sameSite("Strict") // CSRF 방지
 				.build()
