@@ -41,7 +41,7 @@ class SecurityConfig(
 	@Bean
 	fun corsConfigurationSource(): CorsConfigurationSource {
 		val configuration = CorsConfiguration()
-		configuration.allowedOrigins = listOf("*") // 실제 환경에서는 특정 도메인만 허용
+		configuration.allowedOriginPatterns = listOf("*") // 실제 환경에서는 특정 도메인만 허용
 		configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
 		configuration.allowedHeaders = listOf("*")
 		configuration.allowCredentials = true
@@ -61,8 +61,8 @@ class SecurityConfig(
 				// 인증 없이 접근 가능한 경로
 				auth.requestMatchers("/api/auth/**").permitAll()
 				auth.requestMatchers("/api/login/**").permitAll()
-				auth.requestMatchers("/login/**").permitAll()
-				
+				auth.requestMatchers("/api/home/**").permitAll()
+
 				// 모든 요청 허용 (개발 중에는 편의를 위해)
 // 				auth.anyRequest().permitAll()
 				
