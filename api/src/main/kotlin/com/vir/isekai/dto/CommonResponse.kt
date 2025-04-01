@@ -27,5 +27,9 @@ data class CommonResponse<T>(
 		fun <T> ok(response: T): CommonResponse<T> {
 			return CommonResponse(response, SC_OK)
 		}
+
+		fun <T> error(message: String): CommonResponse<T> {
+			return CommonResponse(SC_INTERNAL_SERVER_ERROR)
+		}
 	}
 }

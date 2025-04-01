@@ -11,10 +11,10 @@ import org.springframework.web.client.RestClient
 
 @Component("kakaoOAuthAdapter")
 class KakaoAuthAdapter : AuthPort {
-	@Value("\${kakao.client_id}")
+	@Value("\${kakao.client-id}")
 	lateinit var clientId: String
 
-	@Value("\${kakao.redirect_uri}")
+	@Value("\${kakao.redirect-uri}")
 	lateinit var redirectURI: String
 
 	private val authRestClient: RestClient =

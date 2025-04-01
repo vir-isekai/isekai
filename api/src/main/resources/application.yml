@@ -19,6 +19,14 @@ management:
       exposure:
         include: env
 
+# 카카오 OAuth 설정
 kakao:
-  client_id: 70b5d2ebdeab88e65b4caa45fa39df78
-  redirect_uri: http://localhost:8080/login/kakao/callback
+  client-id: 70b5d2ebdeab88e65b4caa45fa39df78
+  redirect-uri: http://localhost:3000/api/auth/kakao/callback
+
+# JWT 설정
+jwt:
+  secret-key: "isekaiSecretKey12345678901234567890123456789012" # 최소 32바이트 이상의 비밀 키 (실제 운영 환경에서는 환경 변수로 관리해야 함)
+  access-token-expiration-ms: 1800000 # 30분 (밀리초 단위)
+  refresh-token-expiration-ms: 604800000 # 7일 (밀리초 단위)
+  issuer: "isekai-api"

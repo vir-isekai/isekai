@@ -13,6 +13,9 @@ class KakaoAuthClient(
 ) : AuthClient {
 	override fun getMemberSaveDTO(code: String): MemberDTO.Save {
 		val accessToken = authPort.getAccessToken(code)
+
+		log.info { "Kakao Access token: $accessToken" }
+
 		val snsMemberInfo = authPort.getMemberSaveDTO(accessToken)
 
 		return snsMemberInfo
