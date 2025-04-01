@@ -18,7 +18,7 @@ class AuthFacade(
 	 *
 	 * 로그인 -> 기존 유저 존재 여부 확인 -> 회원가입 or 로그인 진행
 	 */
-	fun joinMemberOrLogin(code: String): Any {
+	fun handleSocialSignInOrSignUp(code: String): Any {
 		val snsMemberInfo = authClient.getMemberSaveDTO(code)
 		val existingMember = memberCommandService.getMemberBySnsIdAndSNSType(snsMemberInfo.snsId, snsMemberInfo.snsType)
 

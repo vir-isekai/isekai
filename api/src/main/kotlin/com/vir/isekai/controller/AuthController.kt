@@ -27,11 +27,11 @@ class AuthController(
 	private val userDetailsService: UserDetailsService,
 ) {
 	@GetMapping("/login")
-	fun callbackKakaoLogin(
+	fun handleSocialLoginInOrSignUp(
 		@RequestParam code: String,
 		response: HttpServletResponse,
 	): CommonResponse<AuthResponse> {
-		val snsId = authFacade.joinMemberOrLogin(code) as String
+		val snsId = authFacade.handleSocialSignInOrSignUp(code) as String
 
 		val userDetail = UserPrincipal.createFromSnsInfo(snsId, SNSType.KAKAO)
 
@@ -39,6 +39,7 @@ class AuthController(
 		val refreshToken = jwtService.generateRefreshToken(userDetail)
 
 		// 리프레시 토큰을 HTTP-Only 쿠키로 설정
+		// 추후 Redis로 고도화
 		addRefreshTokenCookie(response, refreshToken)
 
 		return CommonResponse.ok(AuthResponse(accessToken))
