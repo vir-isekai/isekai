@@ -1,5 +1,9 @@
 package com.vir.isekai.dto
 
+data class AuthRequest(
+	val code: String,
+)
+
 // 인증 응답 DTO
 data class AuthResponse(
 	val accessToken: String,

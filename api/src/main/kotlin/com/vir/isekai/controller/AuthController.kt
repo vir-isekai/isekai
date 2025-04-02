@@ -1,5 +1,6 @@
 package com.vir.isekai.controller
 
+import com.vir.isekai.dto.AuthRequest
 import com.vir.isekai.dto.AuthResponse
 import com.vir.isekai.dto.CommonResponse
 import com.vir.isekai.dto.TokenRefreshResponse
@@ -9,15 +10,14 @@ import com.vir.isekai.security.JwtService
 import com.vir.isekai.security.UserPrincipal
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
+import mu.KotlinLogging
 import org.springframework.http.HttpHeaders
 import org.springframework.http.ResponseCookie
 import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.time.Duration
+
+private val log = KotlinLogging.logger {}
 
 @RestController
 @RequestMapping("/api/auth")
@@ -26,12 +26,14 @@ class AuthController(
 	private val jwtService: JwtService,
 	private val userDetailsService: UserDetailsService,
 ) {
-	@GetMapping("/login")
+	@PostMapping("/login")
 	fun handleSocialLoginInOrSignUp(
-		@RequestParam code: String,
+		@RequestBody request: AuthRequest,
 		response: HttpServletResponse,
 	): CommonResponse<AuthResponse> {
-		val snsId = authFacade.handleSocialSignInOrSignUp(code) as String
+		log.info { "Code :: ${request.code}" }
+
+		val snsId = authFacade.handleSocialSignInOrSignUp(request.code)
 
 		val userDetail = UserPrincipal.createFromSnsInfo(snsId, SNSType.KAKAO)
 
