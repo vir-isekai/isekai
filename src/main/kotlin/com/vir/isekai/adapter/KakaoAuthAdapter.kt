@@ -1,7 +1,7 @@
 package com.vir.isekai.adapter
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.vir.isekai.dto.MemberDTO
+import com.vir.isekai.dto.response.MemberResponse
 import com.vir.isekai.entity.enums.SNSType
 import com.vir.isekai.port.AuthPort
 import org.springframework.beans.factory.annotation.Value
@@ -44,7 +44,7 @@ class KakaoAuthAdapter : AuthPort {
 		return response.accessToken
 	}
 
-	override fun getMemberSaveDTO(token: String): MemberDTO.Save {
+	override fun getMemberSaveDTO(token: String): MemberResponse.Save {
 		val response =
 			restClient.get()
 				.uri("/v2/user/me")
@@ -80,8 +80,8 @@ class KakaoAuthAdapter : AuthPort {
 		@field:JsonProperty(value = "kakao_account")
 		val kakaoAccount: KakaoAccount,
 	) {
-		fun toMemberSaveDTO(): MemberDTO.Save {
-			return MemberDTO.Save(
+		fun toMemberSaveDTO(): MemberResponse.Save {
+			return MemberResponse.Save(
 				snsId = id,
 				nickname = kakaoAccount.profile.nickname,
 				snsType = SNSType.KAKAO,
