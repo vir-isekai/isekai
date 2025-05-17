@@ -19,7 +19,7 @@ class AgencyController(
 	@GetMapping("/{agencyId}")
 	fun getAgencyById(
 		@PathVariable agencyId: Long,
-	): CommonResponse<AgencyResponse.Detail> {
+	): CommonResponse<AgencyResponse.Detail?> {
 		return CommonResponse.ok(agencyFacade.getAgencyById(agencyId))
 	}
 

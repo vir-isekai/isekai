@@ -1,6 +1,6 @@
 package com.vir.isekai.service.fandom
 
-import com.vir.isekai.dto.command.FandomCommand
+import com.vir.isekai.dto.request.FandomRequest
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.fandom.FandomRepository
 import com.vir.isekai.repository.vtuber.VtuberRepository
@@ -15,22 +15,22 @@ class FandomQueryService(
 	private val fandomRepository: FandomRepository,
 	private val vtuberRepository: VtuberRepository,
 ) {
-	fun saveFandom(command: FandomCommand.Save) {
-		val agencyId = command.agencyId
-		val vtuberId = command.vtuberId
+	fun saveFandom(request: FandomRequest.Save) {
+		val agencyId = request.agencyId
+		val vtuberId = request.vtuberId
 
 		if (agencyId !== null) {
 			val agency = agencyRepository.findByIdOrNull(agencyId) ?: throw IllegalArgumentException()
-			val fandom = fandomRepository.save(command.toEntityWithAgency(agency))
+			val fandom = fandomRepository.save(request.toEntityWithAgency(agency))
 
 			fandom.linkAgency(agency)
 		} else if (vtuberId !== null) {
 			val vtuber = vtuberRepository.findByIdOrNull(vtuberId) ?: throw IllegalArgumentException()
-			val fandom = fandomRepository.save(command.toEntityWithVtuber(vtuber))
+			val fandom = fandomRepository.save(request.toEntityWithVtuber(vtuber))
 
 			fandom.linkVtuber(vtuber)
 		} else {
-			fandomRepository.save(command.toEntity())
+			fandomRepository.save(request.toEntity())
 		}
 	}
 }

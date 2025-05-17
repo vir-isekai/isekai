@@ -1,6 +1,6 @@
 package com.vir.isekai.service.agency
 
-import com.vir.isekai.dto.command.AgencyCommand
+import com.vir.isekai.dto.request.AgencyRequest
 import com.vir.isekai.entity.Channel
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.channel.ChannelRepository
@@ -13,11 +13,11 @@ class AgencyQueryService(
 	private val agencyRepository: AgencyRepository,
 	private val channelRepository: ChannelRepository,
 ) {
-	fun saveAgency(command: AgencyCommand.Save) {
-		val agency = agencyRepository.save(command.toEntity())
+	fun saveAgency(request: AgencyRequest.Save) {
+		val agency = agencyRepository.save(request.toEntity())
 
 		val channels =
-			command.channelInfos.map {
+			request.channelInfos.map {
 				Channel(
 					null,
 					agency,

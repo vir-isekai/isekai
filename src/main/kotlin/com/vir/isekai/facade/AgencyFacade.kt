@@ -21,21 +21,22 @@ class AgencyFacade(
 		return agencyCommandService.getAgencies()
 	}
 
-	fun getAgencyById(agencyId: Long): AgencyResponse.Detail {
+	fun getAgencyById(agencyId: Long): AgencyResponse.Detail? {
 		val agencyCommand = agencyCommandService.getAgencyById(agencyId)
 		val vtuberCommand = vtuberCommandService.getVtubersByAgencyId(agencyId)
 		val fandomCommand = fandomCommandService.getFandomByAgencyId(agencyId)
 		val channelCommand = channelCommandService.getChannelsByAgencyId(agencyId)
-
-		return AgencyResponse.Detail(
-			agencyCommand,
-			vtuberCommand,
-			fandomCommand,
-			channelCommand,
-		)
+		
+		return null
+//		return AgencyResponse.Detail(
+//			agencyCommand.,
+//			vtuberCommand,
+//			fandomCommand,
+//			channelCommand,
+//		)
 	}
 
 	fun saveAgency(request: AgencyRequest.Save) {
-		agencyQueryService.saveAgency(request.toCommand())
+		agencyQueryService.saveAgency(request)
 	}
 }

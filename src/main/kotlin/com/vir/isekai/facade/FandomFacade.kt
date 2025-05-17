@@ -9,6 +9,6 @@ class FandomFacade(
 	private val fandomQueryService: FandomQueryService,
 ) {
 	fun saveFandom(request: FandomRequest.Save) {
-		fandomQueryService.saveFandom(request.toCommand())
+		fandomQueryService.saveFandom(request)
 	}
 }

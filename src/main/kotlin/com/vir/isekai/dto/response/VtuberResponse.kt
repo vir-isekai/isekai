@@ -15,7 +15,7 @@ class VtuberResponse {
 		val agencyInfo: AgencyInfo?,
 		val fandom: FandomInfo?,
 		val channelInfos: List<ChannelInfo>,
-	) 
+	)
 
 	data class FandomInfo(
 		val fandomId: Long?,

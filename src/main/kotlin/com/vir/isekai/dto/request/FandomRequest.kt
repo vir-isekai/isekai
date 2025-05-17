@@ -6,5 +6,13 @@ class FandomRequest {
 		val vtuberId: Long?,
 		val name: String,
 		val logoImageUrl: String,
-	)
+	) {
+		fun toEntityWithAgency() {
+			
+		}
+
+		fun toEntityWithVtuber() {
+
+		}
+	}
 }

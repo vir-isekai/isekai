@@ -2,7 +2,7 @@ package com.vir.isekai.repository.agency
 
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
-import com.vir.isekai.dto.command.AgencyCommand
+import com.vir.isekai.dto.response.AgencyResponse
 import com.vir.isekai.entity.QAgency.agency
 import com.vir.isekai.entity.QVtuber.*
 import org.springframework.stereotype.Repository
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository
 class AgencyCustomRepository(
 	private val queryFactory: JPAQueryFactory,
 ) {
-	fun getAgencies(): List<AgencyCommand.Simple> {
+	fun getAgencies(): List<AgencyResponse.Entry> {
 		return queryFactory
 			.select(
 				Projections.constructor(
-					AgencyCommand.Simple::class.java,
+					AgencyResponse.Entry::class.java,
 					agency.id,
 					agency.name,
 					agency.logoImageUrl,
@@ -25,11 +25,11 @@ class AgencyCustomRepository(
 			.fetch()
 	}
 
-	fun getAgencyById(agencyId: Long): AgencyCommand.Detail? {
+	fun getAgencyById(agencyId: Long): AgencyResponse.Detail? {
 		return queryFactory
 			.select(
 				Projections.constructor(
-					AgencyCommand.Detail::class.java,
+					AgencyResponse.Detail::class.java,
 					agency.id,
 					agency.name,
 					agency.logoImageUrl,
@@ -43,11 +43,11 @@ class AgencyCustomRepository(
 			.fetchOne()
 	}
 
-	fun getAgencyByVtuberId(vtuberId: Long): AgencyCommand.Simple? {
+	fun getAgencyByVtuberId(vtuberId: Long): AgencyResponse.Entry? {
 		return queryFactory
 			.select(
 				Projections.constructor(
-					AgencyCommand.Simple::class.java,
+					AgencyResponse.Entry::class.java,
 					agency.id,
 					agency.name,
 					agency.logoImageUrl,
