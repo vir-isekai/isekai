@@ -28,12 +28,12 @@ class AgencyFacade(
 		val channelCommand = channelCommandService.getChannelsByAgencyId(agencyId)
 		
 		return null
-//		return AgencyResponse.Detail(
-//			agencyCommand.,
-//			vtuberCommand,
-//			fandomCommand,
-//			channelCommand,
-//		)
+// 		return AgencyResponse.Detail(
+// 			agencyCommand.,
+// 			vtuberCommand,
+// 			fandomCommand,
+// 			channelCommand,
+// 		)
 	}
 
 	fun saveAgency(request: AgencyRequest.Save) {

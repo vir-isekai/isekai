@@ -1,6 +1,5 @@
 package com.vir.isekai.service.agency
 
-import com.vir.isekai.dto.command.AgencyCommand
 import com.vir.isekai.dto.response.AgencyResponse
 import com.vir.isekai.repository.agency.AgencyCustomRepository
 import org.springframework.stereotype.Service

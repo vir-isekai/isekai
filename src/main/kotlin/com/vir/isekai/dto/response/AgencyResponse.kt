@@ -19,7 +19,7 @@ class AgencyResponse {
 		val vtuberInfos: List<VtuberInfo>,
 		val fandomInfo: FandomInfo?,
 		val channelInfos: List<ChannelInfo>,
-	) 
+	)
 
 	data class VtuberInfo(
 		val vtuberId: Long,

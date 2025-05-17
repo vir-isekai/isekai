@@ -8,11 +8,9 @@ class FandomRequest {
 		val logoImageUrl: String,
 	) {
 		fun toEntityWithAgency() {
-			
 		}
 
 		fun toEntityWithVtuber() {
-
 		}
 	}
 }
