@@ -3,7 +3,7 @@ package com.vir.isekai.repository.home
 import com.querydsl.core.types.Projections
 import com.querydsl.core.types.dsl.BooleanExpression
 import com.querydsl.jpa.impl.JPAQueryFactory
-import com.vir.isekai.domain.dto.command.HomeCommand
+import com.vir.isekai.domain.dto.response.HomeResponse
 import com.vir.isekai.domain.entity.QAgency.agency
 import com.vir.isekai.domain.entity.QVtuber.vtuber
 import org.springframework.stereotype.Repository
@@ -30,11 +30,11 @@ class HomeCustomRepository(
 			.fetchOne()
 	}
 
-	fun getVtubersWithAgency(): List<HomeCommand.PopularVtuberInfo> {
+	fun getVtubersWithAgency(): List<HomeResponse.PopularVtuberInfo> {
 		return queryFactory
 			.select(
 				Projections.constructor(
-					HomeCommand.PopularVtuberInfo::class.java,
+					HomeResponse.PopularVtuberInfo::class.java,
 					vtuber.id,
 					vtuber.name,
 					vtuber.profileImageUrl,

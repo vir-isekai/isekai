@@ -13,7 +13,7 @@ class HomeController(
 	private val homeFacade: HomeFacade,
 ) {
 	@GetMapping
-	fun getHomeResponse(): CommonResponse<HomeResponse> {
+	fun getHomeResponse(): CommonResponse<HomeResponse?> {
 		return CommonResponse.ok(homeFacade.getHomeResponse())
 	}
 }

@@ -9,8 +9,6 @@ class HomeFacade(
 	private val homeCommandService: HomeCommandService,
 ) {
 	fun getHomeResponse(): HomeResponse {
-		val command = homeCommandService.getHomeCommand()
-
-		return HomeResponse.from(command)
+		return homeCommandService.getHomeCommand()
 	}
 }

@@ -17,21 +17,13 @@ class VtuberFacade(
 	private val vtuberCommandService: VtuberCommandService,
 	private val vtuberQueryService: VtuberQueryService,
 ) {
-	fun getVtuberById(vtuberId: Long): VtuberResponse.Detail {
+	fun getVtuberById(vtuberId: Long): VtuberResponse.Detail? {
 		val agencyCommand = agencyCommandService.getAgencyByVtuberId(vtuberId)
-		val vtuberCommand = vtuberCommandService.getVtuberById(vtuberId)
-		val fandomCommand = fandomCommandService.getFandomByVtuberId(vtuberId)
-		val channelCommand = channelCommandService.getChannelsByVtuberId(vtuberId)
 
-		return VtuberResponse.Detail.from(
-			vtuberCommand,
-			agencyCommand,
-			fandomCommand,
-			channelCommand,
-		)
+		return null
 	}
 
 	fun saveVtuber(request: VtuberRequest.Save) {
-		vtuberQueryService.saveVtuber(request.toCommand())
+		vtuberQueryService.saveVtuber(request)
 	}
 }

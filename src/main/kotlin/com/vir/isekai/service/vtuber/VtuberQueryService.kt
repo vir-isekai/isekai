@@ -1,6 +1,6 @@
 package com.vir.isekai.service.vtuber
 
-import com.vir.isekai.domain.dto.command.VtuberCommand
+import com.vir.isekai.domain.dto.request.VtuberRequest
 import com.vir.isekai.domain.entity.Channel
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.channel.ChannelRepository
@@ -16,7 +16,7 @@ class VtuberQueryService(
 	private val channelRepository: ChannelRepository,
 	private val vtuberRepository: VtuberRepository,
 ) {
-	fun saveVtuber(command: VtuberCommand.Save) {
+	fun saveVtuber(command: VtuberRequest.Save) {
 		val agencyId = command.agencyId
 
 		val agency =

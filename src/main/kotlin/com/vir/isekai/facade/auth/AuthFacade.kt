@@ -24,12 +24,13 @@ class AuthFacade(
 
 		val member =
 			if (existingMember == null) {
-				memberQueryService.saveMember(snsMemberInfo)
+// 				memberQueryService.saveMember(snsMemberInfo)
 			} else {
 				existingMember.updateLastLoginAt()
 				existingMember
 			}
 
-		return member.snsId
+		return 0L
+// 		return member.snsId
 	}
 }

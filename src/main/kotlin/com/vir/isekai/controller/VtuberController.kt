@@ -14,7 +14,7 @@ class VtuberController(
 	@GetMapping("/{vtuberId}")
 	fun getVtuberById(
 		@PathVariable vtuberId: Long,
-	): CommonResponse<VtuberResponse.Detail> {
+	): CommonResponse<VtuberResponse.Detail?> {
 		return CommonResponse.ok(vtuberFacade.getVtuberById(vtuberId))
 	}
 
