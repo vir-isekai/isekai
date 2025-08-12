@@ -37,7 +37,7 @@ class MainDataSourceConfig {
 		builder: EntityManagerFactoryBuilder,
 	): LocalContainerEntityManagerFactoryBean =
 		builder.dataSource(mainDataSource)
-			.packages("com.vir.isekai.entity")
+			.packages("com.vir.isekai.domain.entity")
 			.persistenceUnit("main")
 			.build()
 

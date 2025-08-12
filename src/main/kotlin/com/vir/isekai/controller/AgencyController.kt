@@ -1,8 +1,8 @@
 package com.vir.isekai.controller
 
-import com.vir.isekai.dto.CommonResponse
-import com.vir.isekai.dto.request.AgencyRequest
-import com.vir.isekai.dto.response.AgencyResponse
+import com.vir.isekai.domain.dto.CommonResponse
+import com.vir.isekai.domain.dto.request.AgencyRequest
+import com.vir.isekai.domain.dto.response.AgencyResponse
 import com.vir.isekai.facade.AgencyFacade
 import org.springframework.web.bind.annotation.*
 

@@ -1,6 +1,6 @@
 package com.vir.isekai.facade
 
-import com.vir.isekai.dto.request.FandomRequest
+import com.vir.isekai.domain.dto.request.FandomRequest
 import com.vir.isekai.service.fandom.FandomQueryService
 import org.springframework.stereotype.Component
 

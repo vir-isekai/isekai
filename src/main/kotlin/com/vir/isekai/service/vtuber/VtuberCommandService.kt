@@ -1,6 +1,6 @@
 package com.vir.isekai.service.vtuber
 
-import com.vir.isekai.dto.command.VtuberCommand
+import com.vir.isekai.domain.dto.command.VtuberCommand
 import com.vir.isekai.repository.vtuber.VtuberCustomRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

@@ -1,6 +1,6 @@
 package com.vir.isekai.service.home
 
-import com.vir.isekai.dto.command.HomeCommand
+import com.vir.isekai.domain.dto.command.HomeCommand
 import com.vir.isekai.repository.home.HomeCustomRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

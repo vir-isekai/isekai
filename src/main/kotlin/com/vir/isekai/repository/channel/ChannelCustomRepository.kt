@@ -2,10 +2,10 @@ package com.vir.isekai.repository.channel
 
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
-import com.vir.isekai.dto.command.ChannelCommand
-import com.vir.isekai.entity.QAgency.agency
-import com.vir.isekai.entity.QChannel.channel
-import com.vir.isekai.entity.QVtuber.*
+import com.vir.isekai.domain.dto.command.ChannelCommand
+import com.vir.isekai.domain.entity.QAgency.agency
+import com.vir.isekai.domain.entity.QChannel.channel
+import com.vir.isekai.domain.entity.QVtuber.*
 import org.springframework.stereotype.Repository
 
 @Repository

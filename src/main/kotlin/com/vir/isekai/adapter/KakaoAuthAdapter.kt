@@ -1,8 +1,8 @@
 package com.vir.isekai.adapter
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.vir.isekai.dto.response.MemberResponse
-import com.vir.isekai.entity.enums.SNSType
+import com.vir.isekai.domain.dto.response.MemberResponse
+import com.vir.isekai.domain.entity.enums.SNSType
 import com.vir.isekai.port.AuthPort
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType

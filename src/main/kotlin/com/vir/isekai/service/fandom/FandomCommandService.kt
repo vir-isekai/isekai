@@ -1,6 +1,6 @@
 package com.vir.isekai.service.fandom
 
-import com.vir.isekai.dto.command.FandomCommand
+import com.vir.isekai.domain.dto.command.FandomCommand
 import com.vir.isekai.repository.fandom.FandomCustomRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

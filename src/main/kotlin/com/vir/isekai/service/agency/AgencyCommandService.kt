@@ -1,6 +1,6 @@
 package com.vir.isekai.service.agency
 
-import com.vir.isekai.dto.response.AgencyResponse
+import com.vir.isekai.domain.dto.response.AgencyResponse
 import com.vir.isekai.repository.agency.AgencyCustomRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

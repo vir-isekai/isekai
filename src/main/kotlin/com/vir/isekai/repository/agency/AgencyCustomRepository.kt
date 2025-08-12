@@ -2,9 +2,9 @@ package com.vir.isekai.repository.agency
 
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
-import com.vir.isekai.dto.response.AgencyResponse
-import com.vir.isekai.entity.QAgency.agency
-import com.vir.isekai.entity.QVtuber.*
+import com.vir.isekai.domain.dto.response.AgencyResponse
+import com.vir.isekai.domain.entity.QAgency.agency
+import com.vir.isekai.domain.entity.QVtuber.*
 import org.springframework.stereotype.Repository
 
 @Repository

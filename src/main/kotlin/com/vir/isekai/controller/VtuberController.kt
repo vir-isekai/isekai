@@ -1,8 +1,8 @@
 package com.vir.isekai.controller
 
-import com.vir.isekai.dto.CommonResponse
-import com.vir.isekai.dto.request.VtuberRequest
-import com.vir.isekai.dto.response.VtuberResponse
+import com.vir.isekai.domain.dto.CommonResponse
+import com.vir.isekai.domain.dto.request.VtuberRequest
+import com.vir.isekai.domain.dto.response.VtuberResponse
 import com.vir.isekai.facade.VtuberFacade
 import org.springframework.web.bind.annotation.*
 

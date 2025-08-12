@@ -1,7 +1,7 @@
 package com.vir.isekai.facade
 
-import com.vir.isekai.dto.request.VtuberRequest
-import com.vir.isekai.dto.response.VtuberResponse
+import com.vir.isekai.domain.dto.request.VtuberRequest
+import com.vir.isekai.domain.dto.response.VtuberResponse
 import com.vir.isekai.service.agency.AgencyCommandService
 import com.vir.isekai.service.channel.ChannelCommandService
 import com.vir.isekai.service.fandom.FandomCommandService

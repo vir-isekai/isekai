@@ -1,12 +1,12 @@
 package com.vir.isekai.controller
 
-import com.vir.isekai.dto.AuthResponse
-import com.vir.isekai.dto.CommonResponse
-import com.vir.isekai.dto.TokenRefreshResponse
-import com.vir.isekai.entity.enums.SNSType
+import com.vir.isekai.common.security.JwtService
+import com.vir.isekai.common.security.UserPrincipal
+import com.vir.isekai.domain.dto.AuthResponse
+import com.vir.isekai.domain.dto.CommonResponse
+import com.vir.isekai.domain.dto.TokenRefreshResponse
+import com.vir.isekai.domain.entity.enums.SNSType
 import com.vir.isekai.facade.auth.AuthFacade
-import com.vir.isekai.security.JwtService
-import com.vir.isekai.security.UserPrincipal
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.HttpHeaders

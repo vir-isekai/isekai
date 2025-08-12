@@ -1,6 +1,6 @@
 package com.vir.isekai.service.login.auth
 
-import com.vir.isekai.dto.response.MemberResponse
+import com.vir.isekai.domain.dto.response.MemberResponse
 import com.vir.isekai.port.AuthPort
 import mu.KotlinLogging
 import org.springframework.stereotype.Service

@@ -1,6 +1,6 @@
 package com.vir.isekai.common.config
 
-import com.vir.isekai.security.JwtAuthenticationFilter
+import com.vir.isekai.common.security.JwtAuthenticationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationProvider

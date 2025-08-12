@@ -1,7 +1,7 @@
 package com.vir.isekai.controller
 
-import com.vir.isekai.dto.CommonResponse
-import com.vir.isekai.dto.request.FandomRequest
+import com.vir.isekai.domain.dto.CommonResponse
+import com.vir.isekai.domain.dto.request.FandomRequest
 import com.vir.isekai.facade.FandomFacade
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody

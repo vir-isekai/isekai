@@ -2,10 +2,10 @@ package com.vir.isekai.repository.fandom
 
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
-import com.vir.isekai.dto.command.FandomCommand
-import com.vir.isekai.entity.QAgency.agency
-import com.vir.isekai.entity.QFandom.fandom
-import com.vir.isekai.entity.QVtuber.vtuber
+import com.vir.isekai.domain.dto.command.FandomCommand
+import com.vir.isekai.domain.entity.QAgency.agency
+import com.vir.isekai.domain.entity.QFandom.fandom
+import com.vir.isekai.domain.entity.QVtuber.vtuber
 import org.springframework.stereotype.Repository
 
 @Repository

@@ -1,7 +1,7 @@
 package com.vir.isekai.controller
 
-import com.vir.isekai.dto.CommonResponse
-import com.vir.isekai.dto.response.HomeResponse
+import com.vir.isekai.domain.dto.CommonResponse
+import com.vir.isekai.domain.dto.response.HomeResponse
 import com.vir.isekai.facade.HomeFacade
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

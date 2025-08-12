@@ -1,7 +1,7 @@
 package com.vir.isekai.service.vtuber
 
-import com.vir.isekai.dto.command.VtuberCommand
-import com.vir.isekai.entity.Channel
+import com.vir.isekai.domain.dto.command.VtuberCommand
+import com.vir.isekai.domain.entity.Channel
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.channel.ChannelRepository
 import com.vir.isekai.repository.vtuber.VtuberRepository

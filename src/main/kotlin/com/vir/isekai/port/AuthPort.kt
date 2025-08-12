@@ -1,6 +1,6 @@
 package com.vir.isekai.port
 
-import com.vir.isekai.dto.response.MemberResponse
+import com.vir.isekai.domain.dto.response.MemberResponse
 
 interface AuthPort {
 	fun getAccessToken(code: String): String

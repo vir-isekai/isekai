@@ -1,6 +1,6 @@
 package com.vir.isekai.service.fandom
 
-import com.vir.isekai.dto.request.FandomRequest
+import com.vir.isekai.domain.dto.request.FandomRequest
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.fandom.FandomRepository
 import com.vir.isekai.repository.vtuber.VtuberRepository

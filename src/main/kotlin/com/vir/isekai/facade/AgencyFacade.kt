@@ -1,7 +1,7 @@
 package com.vir.isekai.facade
 
-import com.vir.isekai.dto.request.AgencyRequest
-import com.vir.isekai.dto.response.AgencyResponse
+import com.vir.isekai.domain.dto.request.AgencyRequest
+import com.vir.isekai.domain.dto.response.AgencyResponse
 import com.vir.isekai.service.agency.AgencyCommandService
 import com.vir.isekai.service.agency.AgencyQueryService
 import com.vir.isekai.service.channel.ChannelCommandService

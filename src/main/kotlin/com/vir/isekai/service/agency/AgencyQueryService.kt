@@ -1,7 +1,7 @@
 package com.vir.isekai.service.agency
 
-import com.vir.isekai.dto.request.AgencyRequest
-import com.vir.isekai.entity.Channel
+import com.vir.isekai.domain.dto.request.AgencyRequest
+import com.vir.isekai.domain.entity.Channel
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.channel.ChannelRepository
 import org.springframework.stereotype.Service

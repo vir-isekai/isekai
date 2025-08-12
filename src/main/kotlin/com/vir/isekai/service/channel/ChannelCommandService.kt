@@ -1,6 +1,6 @@
 package com.vir.isekai.service.channel
 
-import com.vir.isekai.dto.command.ChannelCommand
+import com.vir.isekai.domain.dto.command.ChannelCommand
 import com.vir.isekai.repository.channel.ChannelCustomRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
