@@ -1,4 +1,4 @@
-package com.vir.isekai.config
+package com.vir.isekai.common.config
 
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager

@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: Local
   datasource:
-    url: ENC(qhLd025OSs3NHWVK2wWuSdediMyL/6ob+xvld3cAzGlTcamXkrvPurKBPQujRBYsbSJyDWmU0c0=)
+    url: ENC(2FWV1+0LbrFW2Z6jN8GUgWx5A8qAFDtGDRn3e2eKRCEG9RWN7EcpStkfeLgYaHUa)
     username: ENC(AlpFDuy8RsM+TV/c4y6fWQ==)
     password: ENC(lXpfIUtLTf+xXZsrVhFygA==)
   flyway:

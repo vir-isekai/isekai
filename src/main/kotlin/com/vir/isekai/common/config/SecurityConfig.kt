@@ -62,6 +62,7 @@ class SecurityConfig(
 				auth.requestMatchers("/api/auth/**").permitAll()
 				auth.requestMatchers("/api/login/**").permitAll()
 				auth.requestMatchers("/api/home/**").permitAll()
+				auth.requestMatchers("/api/test/**").permitAll()
 
 				// 모든 요청 허용 (개발 중에는 편의를 위해)
 // 				auth.anyRequest().permitAll()

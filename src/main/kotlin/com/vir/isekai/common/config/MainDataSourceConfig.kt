@@ -1,4 +1,4 @@
-package com.vir.isekai.config
+package com.vir.isekai.common.config
 
 import jakarta.persistence.EntityManagerFactory
 import org.springframework.beans.factory.annotation.Qualifier

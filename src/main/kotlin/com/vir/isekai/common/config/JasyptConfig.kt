@@ -1,4 +1,4 @@
-package com.vir.isekai.config
+package com.vir.isekai.common.config
 
 import org.jasypt.encryption.StringEncryptor
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor

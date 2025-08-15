@@ -1,4 +1,4 @@
-package com.vir.isekai.config
+package com.vir.isekai.common.config
 
 import com.p6spy.engine.spy.appender.MessageFormattingStrategy
 import mu.KotlinLogging
