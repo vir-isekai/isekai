@@ -8,15 +8,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/test")
 class TestController {
-	@GetMapping("/public")
+	@GetMapping
 	fun publicEndpoint(): ResponseEntity<Map<String, String>> {
-		return ResponseEntity.ok(mapOf("message" to "This is a public endpoint, accessible to all"))
-	}
-
-	@GetMapping("/secured")
-	fun securedEndpoint(): ResponseEntity<Map<String, String>> {
-		return ResponseEntity.ok(
-			mapOf("message" to "This is a secured endpoint, but currently accessible to all as per configuration"),
-		)
+		return ResponseEntity.ok(mapOf("message" to "정상 호출 200"))
 	}
 }

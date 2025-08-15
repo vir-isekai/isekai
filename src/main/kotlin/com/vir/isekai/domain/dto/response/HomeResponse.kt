@@ -12,8 +12,11 @@ data class HomeResponse(
 	)
 
 	data class PopularVtuberInfo(
-		val vtuberInfo: VtuberInfo,
-		val agencyInfo: AgencyInfo,
+		val vtuberId: Long,
+		val vtuberName: String,
+		val profileImageUrl: String,
+		val agencyId: Long,
+		val agencyName: String,
 	)
 
 	data class VtuberInfo(
