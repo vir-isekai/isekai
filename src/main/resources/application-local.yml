@@ -1,16 +1,16 @@
 spring:
   config:
     activate:
-      on-profile: dev
+      on-profile: Local
   datasource:
-    url: ENC(VhGRQHkSrPWgK7xI0ZJrIZ58Wj7qWqw3W9F45P15j7Moj4mKDwKSBZdwA1yomlSqICINUWYhzBBBazeWsUKkAOn6TklQ4iu/zKlW1xM0KvcnLDG7E6Q65MtemPNJ3URP)
-    username: ENC(mBKCab+egt/g9y9x3k//Jg==)
-    password: ENC(TZiXc8IRxQh8TZoNs0W1tUP6WK1uVUUd)
+    url: ENC(qhLd025OSs3NHWVK2wWuSdediMyL/6ob+xvld3cAzGlTcamXkrvPurKBPQujRBYsbSJyDWmU0c0=)
+    username: ENC(AlpFDuy8RsM+TV/c4y6fWQ==)
+    password: ENC(lXpfIUtLTf+xXZsrVhFygA==)
   flyway:
     enabled: true
     baseline-on-migrate: true
     baseline-version: 1
-    locations: classpath:db/migration/dev
+    locations: classpath:db/migration/local
 
   jpa:
     hibernate:
