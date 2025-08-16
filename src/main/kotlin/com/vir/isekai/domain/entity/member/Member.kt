@@ -2,6 +2,7 @@ package com.vir.isekai.domain.entity.member
 
 import com.vir.isekai.domain.entity.BaseTimeEntity
 import com.vir.isekai.domain.entity.enums.SNSType
+import com.vir.isekai.domain.entity.enums.member.MemberRole
 import com.vir.isekai.domain.entity.enums.member.MemberStatus
 import jakarta.persistence.*
 import java.time.LocalDateTime
@@ -14,6 +15,9 @@ class Member(
 	@Column(name = "member_id")
 	val id: Long? = null,
 
+	@Enumerated(EnumType.STRING)
+	val memberRole: MemberRole,
+	
 	@Enumerated(EnumType.STRING)
 	val snsType: SNSType,
 
