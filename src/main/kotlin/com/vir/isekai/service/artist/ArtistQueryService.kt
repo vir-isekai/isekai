@@ -1,22 +1,22 @@
-package com.vir.isekai.service.vtuber
+package com.vir.isekai.service.artist
 
-import com.vir.isekai.domain.dto.request.VtuberRequest
+import com.vir.isekai.domain.dto.request.ArtistRequest
 import com.vir.isekai.domain.entity.Channel
 import com.vir.isekai.repository.agency.AgencyRepository
+import com.vir.isekai.repository.artist.ArtistRepository
 import com.vir.isekai.repository.channel.ChannelRepository
-import com.vir.isekai.repository.vtuber.VtuberRepository
 import jakarta.transaction.Transactional
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
 @Transactional(rollbackOn = [Exception::class])
-class VtuberQueryService(
+class ArtistQueryService(
 	private val agencyRepository: AgencyRepository,
 	private val channelRepository: ChannelRepository,
-	private val vtuberRepository: VtuberRepository,
+	private val artistRepository: ArtistRepository,
 ) {
-	fun saveVtuber(command: VtuberRequest.Save) {
+	fun saveArtist(command: ArtistRequest.Save) {
 		val agencyId = command.agencyId
 
 		val agency =
@@ -26,14 +26,14 @@ class VtuberQueryService(
 				null
 			}
 
-		val vtuber = vtuberRepository.save(command.toEntity(agency))
+		val artist = artistRepository.save(command.toEntity(agency))
 
 		val channels =
 			command.channelInfos.map {
 				Channel(
 					null,
 					null,
-					vtuber,
+					artist,
 					it.type,
 					it.url,
 				)

@@ -16,8 +16,8 @@ class Channel(
 	var agency: Agency? = null,
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-	@JoinColumn(name = "v_tuber_id")
-	var vtuber: Vtuber? = null,
+	@JoinColumn(name = "artist_id")
+	var artist: Artist? = null,
 
 	@Enumerated(EnumType.STRING)
 	val type: ChannelType,

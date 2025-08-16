@@ -1,2 +1,2 @@
-alter table public.v_tuber
+alter table public.artist
 drop column platform;

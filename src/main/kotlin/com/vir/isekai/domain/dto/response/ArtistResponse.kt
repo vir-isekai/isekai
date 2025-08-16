@@ -3,7 +3,7 @@ package com.vir.isekai.domain.dto.response
 import com.vir.isekai.domain.dto.response.AgencyResponse.ChannelInfo
 import java.time.LocalDate
 
-class VtuberResponse {
+class ArtistResponse {
 	data class Detail(
 		val name: String,
 		val profileImageUrl: String,

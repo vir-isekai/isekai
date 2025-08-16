@@ -25,7 +25,8 @@ class Member(
 
 	val nickname: String,
 
-	val profileImageUrl: String, // Default Image 경로
+	// Default Image 경로 저장되게 만듦
+	val profileImageUrl: String,
 
 	@Enumerated(EnumType.STRING)
 	val status: MemberStatus,

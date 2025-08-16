@@ -1,13 +1,13 @@
 package com.vir.isekai.domain.dto.request
 
 import com.vir.isekai.domain.entity.Agency
+import com.vir.isekai.domain.entity.Artist
 import com.vir.isekai.domain.entity.Fandom
-import com.vir.isekai.domain.entity.Vtuber
 
 class FandomRequest {
 	data class Save(
 		val agencyId: Long?,
-		val vtuberId: Long?,
+		val artistId: Long?,
 		val name: String,
 		val logoImageUrl: String,
 	) {
@@ -21,11 +21,11 @@ class FandomRequest {
 			)
 		}
 
-		fun toEntityWithVtuber(vtuber: Vtuber): Fandom {
+		fun toEntityWithArtist(artist: Artist): Fandom {
 			return Fandom(
 				null,
 				null,
-				vtuber,
+				artist,
 				name,
 				logoImageUrl,
 			)

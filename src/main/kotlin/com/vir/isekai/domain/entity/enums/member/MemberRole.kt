@@ -6,7 +6,7 @@ enum class MemberRole(
 	override val description: String,
 ) : Describable {
 	NORMAL("일반 회원"),
-	VTUBER("버튜버"),
+	ARTIST("아티스트"),
 	CEO("대표"),
 	ILLUSTRATOR("일러스트레이터"),
 	DEVELOPER("개발자"),

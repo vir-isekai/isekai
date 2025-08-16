@@ -16,13 +16,13 @@ class AgencyResponse {
 		val logoImageUrl: String,
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
-		val vtuberInfos: List<VtuberInfo>,
+		val artistInfos: List<ArtistInfo>,
 		val fandomInfo: FandomInfo?,
 		val channelInfos: List<ChannelInfo>,
 	)
 
-	data class VtuberInfo(
-		val vtuberId: Long,
+	data class ArtistInfo(
+		val artistId: Long,
 		val name: String,
 		val logoImageUrl: String,
 	)

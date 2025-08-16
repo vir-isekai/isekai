@@ -5,7 +5,7 @@ import com.querydsl.core.types.dsl.BooleanExpression
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.vir.isekai.domain.dto.response.HomeResponse
 import com.vir.isekai.domain.entity.QAgency.agency
-import com.vir.isekai.domain.entity.QVtuber.vtuber
+import com.vir.isekai.domain.entity.QArtist.*
 import org.springframework.stereotype.Repository
 
 /**
@@ -22,33 +22,33 @@ class HomeCustomRepository(
 			.fetchOne()
 	}
 
-	fun getVtuberCount(): Long? {
+	fun getArtistCount(): Long? {
 		return queryFactory
-			.select(vtuber.id.count())
-			.from(vtuber)
-			.where(isActiveVtuber())
+			.select(artist.id.count())
+			.from(artist)
+			.where(isActiveArtist())
 			.fetchOne()
 	}
 
-	fun getVtubersWithAgency(): List<HomeResponse.PopularVtuberInfo> {
+	fun getArtistsWithAgency(): List<HomeResponse.PopularArtistInfo> {
 		return queryFactory
 			.select(
 				Projections.constructor(
-					HomeResponse.PopularVtuberInfo::class.java,
-					vtuber.id,
-					vtuber.name,
-					vtuber.profileImageUrl,
+					HomeResponse.PopularArtistInfo::class.java,
+					artist.id,
+					artist.name,
+					artist.profileImageUrl,
 					agency.id,
 					agency.name,
 				),
 			)
-			.from(vtuber)
+			.from(artist)
 			.join(agency)
-			.on(agency.id.eq(vtuber.agency.id))
-			.where(isActiveVtuber())
+			.on(agency.id.eq(artist.agency.id))
+			.where(isActiveArtist())
 			.limit(5)
 			.fetch()
 	}
 
-	private fun isActiveVtuber(): BooleanExpression? = vtuber.graduateDate.isNull
+	private fun isActiveArtist(): BooleanExpression? = artist.graduateDate.isNull
 }

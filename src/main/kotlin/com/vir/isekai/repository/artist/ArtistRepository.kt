@@ -1,0 +1,6 @@
+package com.vir.isekai.repository.artist
+
+import com.vir.isekai.domain.entity.Artist
+import org.springframework.data.jpa.repository.JpaRepository
+
+interface ArtistRepository : JpaRepository<Artist, Long>

@@ -17,8 +17,4 @@ class AgencyCommandService(
 	fun getAgencyById(agencyId: Long): AgencyResponse.Detail {
 		return agencyCustomRepository.getAgencyById(agencyId) ?: throw IllegalArgumentException()
 	}
-
-	fun getAgencyByVtuberId(vtuberId: Long): AgencyResponse.Entry {
-		return agencyCustomRepository.getAgencyByVtuberId(vtuberId) ?: throw IllegalArgumentException()
-	}
 }

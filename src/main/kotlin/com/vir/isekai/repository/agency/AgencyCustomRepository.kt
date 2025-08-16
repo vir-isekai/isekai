@@ -4,7 +4,7 @@ import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.vir.isekai.domain.dto.response.AgencyResponse
 import com.vir.isekai.domain.entity.QAgency.agency
-import com.vir.isekai.domain.entity.QVtuber.*
+import com.vir.isekai.domain.entity.QArtist.*
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -43,7 +43,7 @@ class AgencyCustomRepository(
 			.fetchOne()
 	}
 
-	fun getAgencyByVtuberId(vtuberId: Long): AgencyResponse.Entry? {
+	fun getAgencyByArtistId(artistId: Long): AgencyResponse.Entry? {
 		return queryFactory
 			.select(
 				Projections.constructor(
@@ -54,9 +54,9 @@ class AgencyCustomRepository(
 				),
 			)
 			.from(agency)
-			.join(vtuber)
-			.on(vtuber.agency.id.eq(agency.id))
-			.where(vtuber.id.eq(vtuberId))
+			.join(artist)
+			.on(artist.agency.id.eq(agency.id))
+			.where(artist.id.eq(artistId))
 			.fetchOne()
 	}
 }

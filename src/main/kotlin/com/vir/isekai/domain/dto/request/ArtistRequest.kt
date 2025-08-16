@@ -1,12 +1,12 @@
 package com.vir.isekai.domain.dto.request
 
 import com.vir.isekai.domain.entity.Agency
-import com.vir.isekai.domain.entity.Vtuber
+import com.vir.isekai.domain.entity.Artist
 import com.vir.isekai.domain.entity.enums.ChannelType
 import com.vir.isekai.domain.entity.enums.Generation
 import java.time.LocalDate
 
-class VtuberRequest {
+class ArtistRequest {
 	data class Save(
 		val agencyId: Long?,
 		val name: String,
@@ -18,8 +18,8 @@ class VtuberRequest {
 		var race: String,
 		val channelInfos: List<ChannelInfo>,
 	) {
-		fun toEntity(agency: Agency?): Vtuber {
-			return Vtuber(
+		fun toEntity(agency: Agency?): Artist {
+			return Artist(
 				null,
 				agency,
 				null,

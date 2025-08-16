@@ -17,8 +17,6 @@ class AuthFacade(
 	fun joinMemberOrLogin(code: String): String {
 		val snsMemberInfo = authClient.getMemberSaveDTO(code)
 
-		log.info { "Joined Member Or Login: $snsMemberInfo" }
-		
 		val existingMember = memberCommandService.getMemberBySnsIdAndSNSType(snsMemberInfo.snsId, snsMemberInfo.snsType)
 
 		val member =

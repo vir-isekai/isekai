@@ -1,9 +1,9 @@
-package com.vir.isekai.repository.vtuber
+package com.vir.isekai.repository.artist
 
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.stereotype.Repository
 
 @Repository
-class VtuberCustomRepository(
+class ArtistCustomRepository(
 	private val queryFactory: JPAQueryFactory,
 )

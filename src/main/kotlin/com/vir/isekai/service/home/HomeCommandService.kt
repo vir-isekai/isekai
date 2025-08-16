@@ -12,17 +12,17 @@ class HomeCommandService(
 ) {
 	fun getHomeCommand(): HomeResponse {
 		val agencyCount = homeCustomRepository.getAgencyCount()
-		val vtuberCount = homeCustomRepository.getVtuberCount()
-		val vtubersWithAgency = homeCustomRepository.getVtubersWithAgency()
+		val artistCount = homeCustomRepository.getArtistCount()
+		val artistsWithAgency = homeCustomRepository.getArtistsWithAgency()
 
 		return HomeResponse(
 			HomeResponse.CountInfo(
 				agencyCount ?: 0L,
-				vtuberCount ?: 0L,
+				artistCount ?: 0L,
 				0L,
 				0L,
 			),
-			vtubersWithAgency,
+			artistsWithAgency,
 		)
 	}
 }

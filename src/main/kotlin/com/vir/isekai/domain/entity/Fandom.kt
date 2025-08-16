@@ -15,8 +15,8 @@ class Fandom(
 	var agency: Agency? = null,
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-	@JoinColumn(name = "v_tuber_id")
-	var vtuber: Vtuber? = null,
+	@JoinColumn(name = "artist_id")
+	var artist: Artist? = null,
 
 	val name: String,
 
@@ -27,8 +27,8 @@ class Fandom(
 		agency.fandom = this
 	}
 
-	fun linkVtuber(vtuber: Vtuber) {
-		this.vtuber = vtuber
-		vtuber.fandom = this
+	fun linkArtist(artist: Artist) {
+		this.artist = artist
+		artist.fandom = this
 	}
 }
