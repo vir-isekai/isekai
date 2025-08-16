@@ -21,7 +21,7 @@ class Member(
 
 	val nickname: String,
 
-	val profileImageUrl: String,
+	val profileImageUrl: String, // Default Image 경로
 
 	@Enumerated(EnumType.STRING)
 	val status: MemberStatus,

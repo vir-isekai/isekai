@@ -9,6 +9,7 @@ import com.vir.isekai.domain.entity.enums.SNSType
 import com.vir.isekai.facade.auth.AuthFacade
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
+import mu.KotlinLogging
 import org.springframework.http.HttpHeaders
 import org.springframework.http.ResponseCookie
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.time.Duration
+import kotlin.math.log
+
+private val log = KotlinLogging.logger {}
 
 @RestController
 @RequestMapping("/api/auth")
@@ -31,7 +35,9 @@ class AuthController(
 		@RequestParam code: String,
 		response: HttpServletResponse,
 	): CommonResponse<AuthResponse> {
-		val snsId = authFacade.joinMemberOrLogin(code) as String
+		log.info { "code = $code" }
+		
+		val snsId = authFacade.joinMemberOrLogin(code)
 
 		val userDetail = UserPrincipal.createFromSnsInfo(snsId, SNSType.KAKAO)
 
