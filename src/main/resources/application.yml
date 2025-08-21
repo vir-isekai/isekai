@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: local
+
+# 로깅 설정
+logging:
+  level:
+    com.vir.isekai: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    p6spy: INFO

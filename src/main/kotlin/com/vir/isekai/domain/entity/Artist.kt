@@ -19,9 +19,5 @@ class Artist(
 
 	val profileImageUrl: String,
 
-	val age: Int,
-
-	val height: Int,
-
 	val debutDate: LocalDate? = null,
 ) : BaseTimeEntity()

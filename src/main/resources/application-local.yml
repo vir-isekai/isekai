@@ -15,11 +15,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-#    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         format_sql: true
-    open-in-view: true
+    open-in-view: false
   jackson:
     deserialization:
       fail-on-null-for-primitives: true
@@ -45,4 +45,4 @@ jwt:
 decorator:
   datasource:
     p6spy:
-      enable-logging: false
+      enable-logging: true

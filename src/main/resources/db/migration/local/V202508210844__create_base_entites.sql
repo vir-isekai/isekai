@@ -16,8 +16,6 @@ create table artist
 	agency_id         bigint,
 	name              varchar(255) not null,
 	profile_image_url text         not null,
-	age               integer      not null,
-	height            integer      not null,
 	debut_date        date,
 	created_at        timestamp(6) not null,
 	last_modified_at  timestamp(6) not null,
