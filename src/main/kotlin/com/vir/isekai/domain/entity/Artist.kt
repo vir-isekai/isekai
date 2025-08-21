@@ -1,6 +1,5 @@
 package com.vir.isekai.domain.entity
 
-import com.vir.isekai.domain.entity.enums.Generation
 import jakarta.persistence.*
 import java.time.LocalDate
 
@@ -16,9 +15,6 @@ class Artist(
 	@JoinColumn(name = "agency_id")
 	var agency: Agency? = null,
 
-	@OneToOne(mappedBy = "artist", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-	var fandom: Fandom? = null,
-
 	val name: String,
 
 	val profileImageUrl: String,
@@ -27,12 +23,5 @@ class Artist(
 
 	val height: Int,
 
-	@Enumerated(EnumType.STRING)
-	val generation: Generation,
-
-	val race: String,
-
 	val debutDate: LocalDate? = null,
-
-	val graduateDate: LocalDate? = null,
 ) : BaseTimeEntity()

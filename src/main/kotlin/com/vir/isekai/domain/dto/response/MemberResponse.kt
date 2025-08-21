@@ -16,10 +16,10 @@ class MemberResponse {
 			return Member(
 				null,
 				MemberRole.NORMAL,
+				nickname,
 				snsType,
 				snsId,
-				nickname,
-				"",
+				"profileImageUrl",
 				MemberStatus.ACTIVE,
 				LocalDateTime.now(),
 			)

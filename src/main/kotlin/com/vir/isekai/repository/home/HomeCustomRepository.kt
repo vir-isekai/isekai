@@ -1,11 +1,10 @@
 package com.vir.isekai.repository.home
 
 import com.querydsl.core.types.Projections
-import com.querydsl.core.types.dsl.BooleanExpression
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.vir.isekai.domain.dto.response.HomeResponse
 import com.vir.isekai.domain.entity.QAgency.agency
-import com.vir.isekai.domain.entity.QArtist.*
+import com.vir.isekai.domain.entity.QArtist.artist
 import org.springframework.stereotype.Repository
 
 /**
@@ -26,7 +25,6 @@ class HomeCustomRepository(
 		return queryFactory
 			.select(artist.id.count())
 			.from(artist)
-			.where(isActiveArtist())
 			.fetchOne()
 	}
 
@@ -45,10 +43,7 @@ class HomeCustomRepository(
 			.from(artist)
 			.join(agency)
 			.on(agency.id.eq(artist.agency.id))
-			.where(isActiveArtist())
 			.limit(5)
 			.fetch()
 	}
-
-	private fun isActiveArtist(): BooleanExpression? = artist.graduateDate.isNull
 }

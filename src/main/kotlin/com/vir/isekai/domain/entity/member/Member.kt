@@ -16,14 +16,14 @@ class Member(
 	val id: Long? = null,
 
 	@Enumerated(EnumType.STRING)
-	val memberRole: MemberRole,
+	val role: MemberRole,
+	
+	val nickname: String,
 	
 	@Enumerated(EnumType.STRING)
 	val snsType: SNSType,
 
 	val snsId: String,
-
-	val nickname: String,
 
 	// Default Image 경로 저장되게 만듦
 	val profileImageUrl: String,

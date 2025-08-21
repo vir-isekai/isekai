@@ -16,11 +16,10 @@ class AgencyRequest {
 	) {
 		fun toEntity(): Agency {
 			return Agency(
-				name,
-				logoImageUrl,
-				nation,
-				establishedDate,
-				closedDate,
+				name = name,
+				logoImageUrl = logoImageUrl,
+				nation = nation,
+				establishedDate = establishedDate,
 			)
 		}
 	}

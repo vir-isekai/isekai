@@ -22,15 +22,11 @@ class ArtistRequest {
 			return Artist(
 				null,
 				agency,
-				null,
 				name,
 				profileImageUrl,
 				age,
 				height,
-				generation,
-				race,
 				debutDate,
-				null,
 			)
 		}
 	}

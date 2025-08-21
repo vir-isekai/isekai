@@ -35,7 +35,6 @@ class AgencyCustomRepository(
 					agency.logoImageUrl,
 					agency.nation,
 					agency.establishedDate,
-					agency.closedDate,
 				),
 			)
 			.from(agency)

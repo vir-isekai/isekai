@@ -16,8 +16,8 @@ class ArtistQueryService(
 	private val channelRepository: ChannelRepository,
 	private val artistRepository: ArtistRepository,
 ) {
-	fun saveArtist(command: ArtistRequest.Save) {
-		val agencyId = command.agencyId
+	fun saveArtist(request: ArtistRequest.Save) {
+		val agencyId = request.agencyId
 
 		val agency =
 			if (agencyId != null) {
@@ -26,10 +26,10 @@ class ArtistQueryService(
 				null
 			}
 
-		val artist = artistRepository.save(command.toEntity(agency))
+		val artist = artistRepository.save(request.toEntity(agency))
 
 		val channels =
-			command.channelInfos.map {
+			request.channelInfos.map {
 				Channel(
 					null,
 					null,

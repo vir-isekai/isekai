@@ -6,14 +6,12 @@ import com.vir.isekai.service.agency.AgencyCommandService
 import com.vir.isekai.service.artist.ArtistCommandService
 import com.vir.isekai.service.artist.ArtistQueryService
 import com.vir.isekai.service.channel.ChannelCommandService
-import com.vir.isekai.service.fandom.FandomCommandService
 import org.springframework.stereotype.Component
 
 @Component
 class ArtistFacade(
 	private val agencyCommandService: AgencyCommandService,
 	private val channelCommandService: ChannelCommandService,
-	private val fandomCommandService: FandomCommandService,
 	private val artistCommandService: ArtistCommandService,
 	private val artistQueryService: ArtistQueryService,
 ) {

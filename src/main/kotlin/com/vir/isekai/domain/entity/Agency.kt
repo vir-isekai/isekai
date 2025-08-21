@@ -12,33 +12,26 @@ class Agency(
 	@Column(name = "agency_id")
 	val id: Long? = null,
 
-	@OneToOne(mappedBy = "agency", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-	var fandom: Fandom? = null,
-
 	val name: String,
 
+	@Column(name = "logo_image_url")
 	val logoImageUrl: String,
 
 	@Enumerated(EnumType.STRING)
-	val nation: Nation,
+	val nation: Nation = Nation.KOREA,
 
 	val establishedDate: LocalDate? = null,
-
-	val closedDate: LocalDate? = null,
 ) : BaseTimeEntity() {
 	constructor(
 		name: String,
 		logoImageUrl: String,
 		nation: Nation,
 		establishedDate: LocalDate,
-		closedDate: LocalDate? = null,
 	) : this(
-		null,
 		null,
 		name,
 		logoImageUrl,
 		nation,
 		establishedDate,
-		closedDate,
 	)
 }
