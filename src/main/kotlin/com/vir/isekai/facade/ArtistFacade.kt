@@ -15,10 +15,11 @@ class ArtistFacade(
 	private val artistCommandService: ArtistCommandService,
 	private val artistQueryService: ArtistQueryService,
 ) {
-	fun getArtistById(artistId: Long): ArtistResponse.Detail? {
-		val agencyCommand = agencyCommandService.getAgencyById(artistId)
-
-		return null
+	fun getArtistById(artistId: Long): ArtistResponse.Detail {
+// 		val agencyDetail = agencyCommandService.getAgencyById(artistId)
+		val artistDetail = artistCommandService.getArtistById(artistId)
+		
+		return artistDetail
 	}
 
 	fun saveArtist(request: ArtistRequest.Save) {

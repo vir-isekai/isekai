@@ -14,7 +14,7 @@ class ArtistController(
 	@GetMapping("/{artistId}")
 	fun getArtistById(
 		@PathVariable artistId: Long,
-	): CommonResponse<ArtistResponse.Detail?> {
+	): CommonResponse<ArtistResponse.Detail> {
 		return CommonResponse.ok(artistFacade.getArtistById(artistId))
 	}
 
