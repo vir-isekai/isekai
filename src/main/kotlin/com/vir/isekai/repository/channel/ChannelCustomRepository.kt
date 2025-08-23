@@ -3,8 +3,8 @@ package com.vir.isekai.repository.channel
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.vir.isekai.domain.dto.response.ChannelResponse
-import com.vir.isekai.domain.entity.QArtist.artist
-import com.vir.isekai.domain.entity.QChannel.channel
+import com.vir.isekai.domain.entity.business.QArtist.artist
+import com.vir.isekai.domain.entity.business.QChannel.channel
 import org.springframework.stereotype.Repository
 
 @Repository

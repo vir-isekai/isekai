@@ -15,6 +15,12 @@ class BusinessProfile(
 	@JoinColumn(name = "member_id")
 	val member: Member,
 
+	@Column(name = "agency_id")
+	val agencyId: Long? = null,
+
+	@Column(name = "artist_id")
+	val artistId: Long? = null,
+
 	@Enumerated(EnumType.STRING)
 	val type: BusinessType,
 ) : BaseTimeEntity()

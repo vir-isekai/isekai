@@ -3,8 +3,8 @@ package com.vir.isekai.repository.agency
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.vir.isekai.domain.dto.response.AgencyResponse
-import com.vir.isekai.domain.entity.QAgency.agency
-import com.vir.isekai.domain.entity.QArtist.*
+import com.vir.isekai.domain.entity.business.QAgency.*
+import com.vir.isekai.domain.entity.business.QArtist.*
 import org.springframework.stereotype.Repository
 
 @Repository
