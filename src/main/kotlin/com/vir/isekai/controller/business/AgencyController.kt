@@ -1,4 +1,4 @@
-package com.vir.isekai.controller
+package com.vir.isekai.controller.business
 
 import com.vir.isekai.domain.dto.CommonResponse
 import com.vir.isekai.domain.dto.request.AgencyRequest
