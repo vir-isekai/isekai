@@ -6,6 +6,6 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional(readOnly = true, rollbackFor = [Exception::class])
-class ChannelCommandService(
+class ChannelQueryService(
 	private val channelCustomRepository: ChannelCustomRepository,
 )

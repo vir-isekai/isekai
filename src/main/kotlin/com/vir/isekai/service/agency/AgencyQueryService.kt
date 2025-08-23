@@ -1,32 +1,28 @@
 package com.vir.isekai.service.agency
 
-import com.vir.isekai.domain.dto.request.AgencyRequest
-import com.vir.isekai.domain.entity.business.Channel
+import com.vir.isekai.domain.dto.response.AgencyResponse
+import com.vir.isekai.domain.entity.business.Agency
+import com.vir.isekai.repository.agency.AgencyCustomRepository
 import com.vir.isekai.repository.agency.AgencyRepository
-import com.vir.isekai.repository.channel.ChannelRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-@Transactional(rollbackFor = [Exception::class])
+@Transactional(readOnly = true, rollbackFor = [Exception::class])
 class AgencyQueryService(
 	private val agencyRepository: AgencyRepository,
-	private val channelRepository: ChannelRepository,
+	private val agencyCustomRepository: AgencyCustomRepository,
 ) {
-	fun saveAgency(request: AgencyRequest.Save) {
-		val agency = agencyRepository.save(request.toEntity())
+	fun getAgencies(): List<AgencyResponse.Simple> {
+		return agencyCustomRepository.getAgencies()
+	}
 
-		val channels =
-			request.channelInfos.map {
-				Channel(
-					null,
-					agency,
-					null,
-					it.type,
-					it.url,
-				)
-			}
+	fun getAgencyById(agencyId: Long): Agency? {
+		return agencyRepository.findByIdOrNull(agencyId)
+	}
 
-		channelRepository.saveAll(channels)
+	fun getAgencyDetailById(agencyId: Long): AgencyResponse.Detail? {
+		return agencyCustomRepository.getAgencyById(agencyId)
 	}
 }
