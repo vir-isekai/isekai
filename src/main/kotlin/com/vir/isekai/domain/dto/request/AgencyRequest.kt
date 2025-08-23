@@ -11,7 +11,6 @@ class AgencyRequest {
 		val logoImageUrl: String,
 		val nation: Nation,
 		val establishedDate: LocalDate,
-		val closedDate: LocalDate?,
 		val channelInfos: List<ChannelResponse.Simple>,
 	) {
 		fun toEntity(): Agency {
