@@ -17,18 +17,11 @@ class AgencyResponse {
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
 		val artistInfos: List<ArtistInfo>,
-		val fandomInfo: FandomInfo?,
 		val channelInfos: List<ChannelInfo>,
 	)
 
 	data class ArtistInfo(
 		val artistId: Long,
-		val name: String,
-		val logoImageUrl: String,
-	)
-
-	data class FandomInfo(
-		val fandomId: Long,
 		val name: String,
 		val logoImageUrl: String,
 	)

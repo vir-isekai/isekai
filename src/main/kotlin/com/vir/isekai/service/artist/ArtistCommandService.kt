@@ -14,12 +14,11 @@ class ArtistCommandService(
 ) {
 	fun getArtistById(artistId: Long): ArtistResponse.Detail {
 		val artist = artistRepository.findArtistById(artistId) ?: throw IllegalArgumentException("존재하지 않는 아티스트")
-		
+
 		return ArtistResponse.Detail(
 			name = artist.name,
 			profileImageUrl = artist.profileImageUrl,
 			debutDate = artist.debutDate,
-			null,
 			null,
 			emptyList(),
 		)

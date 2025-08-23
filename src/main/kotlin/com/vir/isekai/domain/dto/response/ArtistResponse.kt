@@ -9,13 +9,7 @@ class ArtistResponse {
 		val profileImageUrl: String,
 		val debutDate: LocalDate?,
 		val agencyInfo: AgencyInfo?,
-		val fandom: FandomInfo?,
 		val channelInfos: List<ChannelInfo>,
-	)
-
-	data class FandomInfo(
-		val fandomId: Long?,
-		val name: String?,
 	)
 
 	data class AgencyInfo(

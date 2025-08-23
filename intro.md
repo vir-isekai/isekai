@@ -59,9 +59,7 @@ erDiagram
     }
     
     Agency ||--o{ Artist : manages
-    Agency ||--o| Fandom : owns
     
-    Artist ||--o| Fandom : has
     Artist ||--o{ Channel : operates
     
     Agency {
@@ -77,11 +75,6 @@ erDiagram
         date debutDate
     }
     
-    Fandom {
-        string name
-        string logoImageUrl
-    }
-    
     Channel {
         ChannelType type
         string url
@@ -92,7 +85,6 @@ erDiagram
 - **Member**: 사용자 계정 (카카오 OAuth, 역할 기반)
 - **Agency**: 소속사 (아티스트 관리, 팬덤 운영)
 - **Artist**: 아티스트/VTuber (소속사 소속, 개별 팬덤 보유)
-- **Fandom**: 팬클럽 (소속사 또는 아티스트 단위)
 - **Channel**: SNS/플랫폼 채널 (YouTube, Twitch 등)
 
 ---

@@ -65,7 +65,6 @@ Key architectural patterns:
 - **Artist**: VTuber/Artist profiles with agency relationships
 - **Member**: User accounts with Kakao OAuth integration
 - **Agency**: Organizations that manage artists
-- **Fandom**: Fan communities associated with artists
 - **Channel**: Social media/platform channels for artists
 
 ### Security & Authentication
