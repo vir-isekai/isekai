@@ -1,6 +1,8 @@
 package com.vir.isekai.domain.entity.member
 
 import com.vir.isekai.domain.entity.BaseTimeEntity
+import com.vir.isekai.domain.entity.business.Agency
+import com.vir.isekai.domain.entity.business.Artist
 import com.vir.isekai.domain.entity.enums.member.BusinessType
 import jakarta.persistence.*
 
@@ -15,12 +17,21 @@ class BusinessProfile(
 	@JoinColumn(name = "member_id")
 	val member: Member,
 
-	@Column(name = "agency_id")
-	val agencyId: Long? = null,
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "agency_id")
+	val agency: Agency?,
 
-	@Column(name = "artist_id")
-	val artistId: Long? = null,
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "artist_id")
+	val artist: Artist?,
 
 	@Enumerated(EnumType.STRING)
 	val type: BusinessType,
-) : BaseTimeEntity()
+) : BaseTimeEntity() {
+	init {
+		require(
+			(type == BusinessType.AGENCY && agency != null && artist == null) ||
+				(type == BusinessType.ARTIST && artist != null && agency == null),
+		) { "BusinessProfile must have exactly one business entity matching the type" }
+	}
+}

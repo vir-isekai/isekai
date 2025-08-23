@@ -1,11 +1,10 @@
 package com.vir.isekai.domain.dto
 
 import com.fasterxml.jackson.annotation.JsonInclude
-import jakarta.servlet.http.HttpServletResponse
 import jakarta.servlet.http.HttpServletResponse.*
 
 data class CommonResponse<T>(
-	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@param:JsonInclude(JsonInclude.Include.NON_NULL)
 	val response: T?,
 	val status: Int,
 ) {
@@ -18,10 +17,6 @@ data class CommonResponse<T>(
 
 		fun <T> noContent(): CommonResponse<T> {
 			return CommonResponse(SC_NO_CONTENT)
-		}
-
-		fun <T> ok(status: HttpServletResponse): CommonResponse<T> {
-			return CommonResponse(null, status.status)
 		}
 
 		fun <T> ok(response: T): CommonResponse<T> {

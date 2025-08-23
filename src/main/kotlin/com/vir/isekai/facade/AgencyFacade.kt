@@ -20,7 +20,7 @@ class AgencyFacade(
 	}
 
 	fun getAgencyById(agencyId: Long): AgencyResponse.Detail? {
-		val agencyCommand = agencyCommandService.getAgencyById(agencyId)
+		val agencyCommand = agencyCommandService.getAgencyDetailById(agencyId)
 
 		return null
 	}

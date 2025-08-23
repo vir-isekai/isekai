@@ -1,10 +1,12 @@
 package com.vir.isekai.service.artist
 
 import com.vir.isekai.domain.dto.response.ArtistResponse
+import com.vir.isekai.domain.entity.business.Artist
 import com.vir.isekai.repository.agency.AgencyCustomRepository
 import com.vir.isekai.repository.artist.ArtistCustomRepository
 import com.vir.isekai.repository.artist.ArtistRepository
 import com.vir.isekai.repository.channel.ChannelCustomRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -16,7 +18,11 @@ class ArtistCommandService(
 	private val artistCustomRepository: ArtistCustomRepository,
 	private val channelCustomRepository: ChannelCustomRepository,
 ) {
-	fun getArtistById(artistId: Long): ArtistResponse.Detail {
+	fun getArtistById(artistId: Long): Artist? {
+		return artistRepository.findByIdOrNull(artistId)
+	}
+
+	fun getArtistDetailById(artistId: Long): ArtistResponse.Detail {
 		val artist = artistRepository.findArtistById(artistId) ?: throw IllegalArgumentException("존재하지 않는 아티스트")
 		val agencyInfo = agencyCustomRepository.getAgencyByArtistId(artistId)
 		val channelInfos = channelCustomRepository.getChannelsByArtistId(artistId)
