@@ -1,15 +1,8 @@
 package com.vir.isekai.domain.dto.response
 
-import com.vir.isekai.domain.entity.enums.ChannelType
 import java.time.LocalDate
 
 class AgencyResponse {
-	data class Entry(
-		val agencyId: Long,
-		val name: String,
-		val logoImageUrl: String,
-	)
-
 	data class Detail(
 		val agencyId: Long,
 		val name: String,
@@ -17,7 +10,7 @@ class AgencyResponse {
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
 		val artistInfos: List<ArtistInfo>,
-		val channelInfos: List<ChannelInfo>,
+		val simples: List<ChannelResponse.Simple>,
 	)
 
 	data class ArtistInfo(
@@ -26,8 +19,9 @@ class AgencyResponse {
 		val logoImageUrl: String,
 	)
 
-	data class ChannelInfo(
-		val type: ChannelType,
-		val url: String,
+	data class Simple(
+		val agencyId: Long,
+		val name: String,
+		val logoImageUrl: String,
 	)
 }

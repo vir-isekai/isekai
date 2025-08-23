@@ -15,7 +15,7 @@ class AgencyFacade(
 	private val channelCommandService: ChannelCommandService,
 	private val artistCommandService: ArtistCommandService,
 ) {
-	fun getAgencies(): List<AgencyResponse.Entry> {
+	fun getAgencies(): List<AgencyResponse.Simple> {
 		return agencyCommandService.getAgencies()
 	}
 

@@ -1,8 +1,8 @@
 package com.vir.isekai.domain.dto.request
 
+import com.vir.isekai.domain.dto.response.ChannelResponse
 import com.vir.isekai.domain.entity.Agency
 import com.vir.isekai.domain.entity.Artist
-import com.vir.isekai.domain.entity.enums.ChannelType
 import java.time.LocalDate
 
 class ArtistRequest {
@@ -11,7 +11,7 @@ class ArtistRequest {
 		val name: String,
 		val profileImageUrl: String,
 		val debutDate: LocalDate?,
-		val channelInfos: List<ChannelInfo>,
+		val channelInfos: List<ChannelResponse.Simple>,
 	) {
 		fun toEntity(agency: Agency?): Artist {
 			return Artist(
@@ -23,9 +23,4 @@ class ArtistRequest {
 			)
 		}
 	}
-
-	data class ChannelInfo(
-		val type: ChannelType,
-		val url: String,
-	)
 }

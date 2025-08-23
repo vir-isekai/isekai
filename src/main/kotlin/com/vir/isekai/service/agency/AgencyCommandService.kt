@@ -12,7 +12,7 @@ class AgencyCommandService(
 	private val artistRepository: ArtistRepository,
 	private val agencyCustomRepository: AgencyCustomRepository,
 ) {
-	fun getAgencies(): List<AgencyResponse.Entry> {
+	fun getAgencies(): List<AgencyResponse.Simple> {
 		return agencyCustomRepository.getAgencies()
 	}
 

@@ -1,7 +1,7 @@
 package com.vir.isekai.domain.dto.request
 
+import com.vir.isekai.domain.dto.response.ChannelResponse
 import com.vir.isekai.domain.entity.Agency
-import com.vir.isekai.domain.entity.enums.ChannelType
 import com.vir.isekai.domain.entity.enums.Nation
 import java.time.LocalDate
 
@@ -12,7 +12,7 @@ class AgencyRequest {
 		val nation: Nation,
 		val establishedDate: LocalDate,
 		val closedDate: LocalDate?,
-		val channelInfos: List<ChannelInfo>,
+		val channelInfos: List<ChannelResponse.Simple>,
 	) {
 		fun toEntity(): Agency {
 			return Agency(
@@ -23,9 +23,4 @@ class AgencyRequest {
 			)
 		}
 	}
-
-	data class ChannelInfo(
-		val type: ChannelType,
-		val url: String,
-	)
 }

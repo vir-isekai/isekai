@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository
 class AgencyCustomRepository(
 	private val queryFactory: JPAQueryFactory,
 ) {
-	fun getAgencies(): List<AgencyResponse.Entry> {
+	fun getAgencies(): List<AgencyResponse.Simple> {
 		return queryFactory
 			.select(
 				Projections.constructor(
-					AgencyResponse.Entry::class.java,
+					AgencyResponse.Simple::class.java,
 					agency.id,
 					agency.name,
 					agency.logoImageUrl,
@@ -42,11 +42,11 @@ class AgencyCustomRepository(
 			.fetchOne()
 	}
 
-	fun getAgencyByArtistId(artistId: Long): AgencyResponse.Entry? {
+	fun getAgencyByArtistId(artistId: Long): AgencyResponse.Simple? {
 		return queryFactory
 			.select(
 				Projections.constructor(
-					AgencyResponse.Entry::class.java,
+					AgencyResponse.Simple::class.java,
 					agency.id,
 					agency.name,
 					agency.logoImageUrl,

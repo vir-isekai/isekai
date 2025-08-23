@@ -12,7 +12,7 @@ class AgencyController(
 	private val agencyFacade: AgencyFacade,
 ) {
 	@GetMapping
-	fun getAgencies(): CommonResponse<List<AgencyResponse.Entry>> {
+	fun getAgencies(): CommonResponse<List<AgencyResponse.Simple>> {
 		return CommonResponse.ok(agencyFacade.getAgencies())
 	}
 
