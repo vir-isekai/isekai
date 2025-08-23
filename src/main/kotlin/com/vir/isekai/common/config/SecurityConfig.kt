@@ -59,17 +59,17 @@ class SecurityConfig(
 			.sessionManagement { session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
 			.authorizeHttpRequests { auth ->
 				// 인증 없이 접근 가능한 경로
-				auth.requestMatchers("/api/auth/**").permitAll()
-				auth.requestMatchers("/api/login/**").permitAll()
-				auth.requestMatchers("/api/home/**").permitAll()
-				auth.requestMatchers("/api/test/**").permitAll()
-				auth.requestMatchers("/api/agencies/**").permitAll()
+// 				auth.requestMatchers("/api/auth/**").permitAll()
+// 				auth.requestMatchers("/api/login/**").permitAll()
+// 				auth.requestMatchers("/api/home/**").permitAll()
+// 				auth.requestMatchers("/api/test/**").permitAll()
+// 				auth.requestMatchers("/api/agencies/**").permitAll()
 
 				// 모든 요청 허용 (개발 중에는 편의를 위해)
-// 				auth.anyRequest().permitAll()
+				auth.anyRequest().permitAll()
 				
 				// 실제 운영 환경에서는 아래와 같이 설정
-				auth.anyRequest().authenticated()
+// 				auth.anyRequest().authenticated()
 			}
 			.authenticationProvider(authenticationProvider())
 			.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter::class.java)
