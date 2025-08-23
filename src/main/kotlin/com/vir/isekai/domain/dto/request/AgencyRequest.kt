@@ -1,7 +1,7 @@
 package com.vir.isekai.domain.dto.request
 
 import com.vir.isekai.domain.dto.response.ChannelResponse
-import com.vir.isekai.domain.entity.Agency
+import com.vir.isekai.domain.entity.business.Agency
 import com.vir.isekai.domain.entity.enums.Nation
 import java.time.LocalDate
 

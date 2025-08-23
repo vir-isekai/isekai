@@ -1,7 +1,7 @@
 package com.vir.isekai.service.artist
 
 import com.vir.isekai.domain.dto.request.ArtistRequest
-import com.vir.isekai.domain.entity.Channel
+import com.vir.isekai.domain.entity.business.Channel
 import com.vir.isekai.repository.agency.AgencyRepository
 import com.vir.isekai.repository.artist.ArtistRepository
 import com.vir.isekai.repository.channel.ChannelRepository

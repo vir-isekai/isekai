@@ -1,5 +1,6 @@
-package com.vir.isekai.domain.entity
+package com.vir.isekai.domain.entity.business
 
+import com.vir.isekai.domain.entity.BaseTimeEntity
 import jakarta.persistence.*
 import java.time.LocalDate
 

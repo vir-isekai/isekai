@@ -1,5 +1,6 @@
 package com.vir.isekai.domain.entity.member
 
+import com.vir.isekai.domain.entity.BaseTimeEntity
 import com.vir.isekai.domain.entity.enums.member.BusinessType
 import jakarta.persistence.*
 
@@ -11,11 +12,9 @@ class BusinessProfile(
 	val id: Long? = null,
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = [(CascadeType.REMOVE)])
+	@JoinColumn(name = "member_id")
 	val member: Member,
 
-	val businessType: BusinessType,
-
-	val businessName: String,
-
-	val logoImageUrl: String,
-)
+	@Enumerated(EnumType.STRING)
+	val type: BusinessType,
+) : BaseTimeEntity()

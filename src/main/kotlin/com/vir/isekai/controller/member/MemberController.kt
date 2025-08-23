@@ -1,4 +1,4 @@
-package com.vir.isekai.controller
+package com.vir.isekai.controller.member
 
 import com.vir.isekai.facade.MemberFacade
 import org.springframework.web.bind.annotation.RequestMapping

@@ -1,8 +1,8 @@
 package com.vir.isekai.domain.dto.request
 
 import com.vir.isekai.domain.dto.response.ChannelResponse
-import com.vir.isekai.domain.entity.Agency
-import com.vir.isekai.domain.entity.Artist
+import com.vir.isekai.domain.entity.business.Agency
+import com.vir.isekai.domain.entity.business.Artist
 import java.time.LocalDate
 
 class ArtistRequest {
