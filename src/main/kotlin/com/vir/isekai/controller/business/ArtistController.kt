@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/artists")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('NORMAL')")
 class ArtistController(
 	private val artistFacade: ArtistFacade,
 ) {
 	@GetMapping("/{artistId}")
-	@PreAuthorize("hasRole('ADMIN')")
 	fun getArtistById(
 		@PathVariable artistId: Long,
 	): CommonResponse<ArtistResponse.Detail> {

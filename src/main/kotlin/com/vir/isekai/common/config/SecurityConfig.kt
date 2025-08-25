@@ -3,6 +3,8 @@ package com.vir.isekai.common.config
 import com.vir.isekai.common.security.JwtAuthenticationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl
 import org.springframework.security.authentication.AuthenticationProvider
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
@@ -36,6 +38,11 @@ class SecurityConfig(
 		provider.setUserDetailsService(userDetailsService)
 		provider.setPasswordEncoder(passwordEncoder())
 		return provider
+	}
+
+	@Bean
+	fun roleHierarchy(): RoleHierarchy {
+		return RoleHierarchyImpl.fromHierarchy("ROLE_ADMIN > ROLE_NORMAL")
 	}
 
 	@Bean
