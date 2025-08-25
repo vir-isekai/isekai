@@ -5,7 +5,6 @@ import com.vir.isekai.common.security.UserPrincipal
 import com.vir.isekai.domain.dto.AuthResponse
 import com.vir.isekai.domain.dto.CommonResponse
 import com.vir.isekai.domain.dto.TokenRefreshResponse
-import com.vir.isekai.domain.entity.enums.SNSType
 import com.vir.isekai.facade.auth.AuthFacade
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -32,9 +31,9 @@ class AuthController(
 	): CommonResponse<AuthResponse> {
 		log.info { "code = $code" }
 		
-		val snsId = authFacade.joinMemberOrLogin(code)
+		val member = authFacade.joinMemberOrLogin(code)
 
-		val userDetail = UserPrincipal.createFromSnsInfo(snsId, SNSType.KAKAO)
+		val userDetail = UserPrincipal.createFromMember(member)
 
 		val accessToken = jwtService.generateToken(userDetail)
 		val refreshToken = jwtService.generateRefreshToken(userDetail)

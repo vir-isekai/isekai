@@ -21,8 +21,8 @@ class CustomUserDetailsService(
 				authenticationService.findUserBySnsIdAndType(snsId, SNSType.KAKAO)
 					?: throw UsernameNotFoundException("User not found with snsId: $snsId and snsType: $snsType")
 			
-			// UserDetails 객체 생성
-			return UserPrincipal.createFromSnsInfo(snsId, SNSType.KAKAO)
+			// UserDetails 객체 생성 - 실제 사용자의 권한 정보 사용
+			return UserPrincipal.createFromMember(user)
 		} catch (e: Exception) {
 			throw UsernameNotFoundException("Invalid username format or user not found: $username")
 		}

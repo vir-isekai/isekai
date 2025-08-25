@@ -1,7 +1,7 @@
 package com.vir.isekai.common.security
 
 import com.vir.isekai.domain.entity.enums.SNSType
-import com.vir.isekai.domain.entity.enums.member.MemberRole
+import com.vir.isekai.domain.entity.member.Member
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
@@ -36,16 +36,14 @@ class UserPrincipal(
 	fun getEmail(): String? = email
 
 	companion object {
-		fun createFromSnsInfo(
-			snsId: String,
-			snsType: SNSType,
-		): UserPrincipal {
-			val authorities = listOf(SimpleGrantedAuthority(MemberRole.NORMAL.name))
+		fun createFromMember(member: Member): UserPrincipal {
+			// Member의 실제 role을 사용하여 권한 생성
+			val authorities = listOf(SimpleGrantedAuthority("ROLE_${member.role.name}"))
 			
 			return UserPrincipal(
-				id = null,
-				snsId = snsId,
-				snsType = snsType,
+				id = member.id,
+				snsId = member.snsId,
+				snsType = member.snsType,
 				email = null,
 				authorities = authorities,
 			)

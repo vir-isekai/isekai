@@ -4,10 +4,12 @@ import com.vir.isekai.domain.dto.CommonResponse
 import com.vir.isekai.domain.dto.request.ArtistRequest
 import com.vir.isekai.domain.dto.response.ArtistResponse
 import com.vir.isekai.facade.ArtistFacade
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/artists")
+@PreAuthorize("hasRole('ADMIN')")
 class ArtistController(
 	private val artistFacade: ArtistFacade,
 ) {

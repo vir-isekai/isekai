@@ -1,5 +1,6 @@
 package com.vir.isekai.facade.auth
 
+import com.vir.isekai.domain.entity.member.Member
 import com.vir.isekai.service.login.auth.AuthClient
 import com.vir.isekai.service.member.MemberCommandService
 import com.vir.isekai.service.member.MemberQueryService
@@ -14,7 +15,7 @@ class AuthFacade(
 	private val memberCommandService: MemberCommandService,
 	private val memberQueryService: MemberQueryService,
 ) {
-	fun joinMemberOrLogin(code: String): String {
+	fun joinMemberOrLogin(code: String): Member {
 		val snsMemberInfo = authClient.getMemberSaveDTO(code)
 
 		val existingMember = memberQueryService.getMemberBySnsIdAndSNSType(snsMemberInfo.snsId, snsMemberInfo.snsType)
@@ -27,6 +28,6 @@ class AuthFacade(
 				existingMember
 			}
 
-		return member.snsId
+		return member
 	}
 }
