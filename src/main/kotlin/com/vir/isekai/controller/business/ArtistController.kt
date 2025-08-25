@@ -5,11 +5,8 @@ import com.vir.isekai.domain.dto.CommonResponse
 import com.vir.isekai.domain.dto.request.ArtistRequest
 import com.vir.isekai.domain.dto.response.ArtistResponse
 import com.vir.isekai.facade.ArtistFacade
-import mu.KotlinLogging
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
-
-private val log = KotlinLogging.logger {}
 
 @RestController
 @RequestMapping("/api/artists")

@@ -8,7 +8,10 @@ import org.springframework.stereotype.Component
 class PostFacade(
 	private val postCommandService: PostCommandService,
 ) {
-	fun savePost(request: PostRequest.Save) {
+	fun savePost(
+		request: PostRequest.Save,
+		loginMemberId: Long,
+	) {
 		TODO("Not yet implemented")
 	}
 }

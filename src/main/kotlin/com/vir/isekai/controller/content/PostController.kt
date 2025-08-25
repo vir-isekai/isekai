@@ -25,7 +25,8 @@ class PostController(
 		@RequestBody request: PostRequest.Save,
 		@AuthenticationPrincipal userInfo: UserPrincipal,
 	): CommonResponse<Nothing> {
-		postFacade.savePost(request)
+		postFacade.savePost(request, userInfo.getId())
+		
 		return CommonResponse.successSave()
 	}
 }

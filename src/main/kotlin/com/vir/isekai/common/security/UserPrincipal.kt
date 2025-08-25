@@ -27,7 +27,7 @@ data class UserPrincipal(
 
 	override fun isEnabled(): Boolean = true
 
-	fun getId(): Long? = id
+	fun getId(): Long = id ?: throw IllegalStateException("UserPrincipal ID Should Not be NULL")
 
 	fun getSnsId(): String = snsId
 
