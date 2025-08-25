@@ -30,4 +30,9 @@ class AuthFacade(
 
 		return member
 	}
+
+	fun getMemberById(memberId: Long): Member {
+		return memberQueryService.getMemberById(memberId)
+			?: throw IllegalArgumentException("Member with id: $memberId not found")
+	}
 }

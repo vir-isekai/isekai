@@ -14,11 +14,12 @@ class CustomUserDetailsService(
 	// username 형식: "snsType:snsId" (예: "KAKAO:12345678")
 	override fun loadUserByUsername(username: String): UserDetails {
 		try {
-			val (snsType, snsId) = username.split(":")
+			val (snsTypeString, snsId) = username.split(":")
+			val snsType = SNSType.valueOf(snsTypeString)
 			
 			// 사용자 조회
 			val user =
-				authenticationService.findUserBySnsIdAndType(snsId, SNSType.KAKAO)
+				authenticationService.findUserBySnsIdAndType(snsId, snsType)
 					?: throw UsernameNotFoundException("User not found with snsId: $snsId and snsType: $snsType")
 			
 			// UserDetails 객체 생성 - 실제 사용자의 권한 정보 사용

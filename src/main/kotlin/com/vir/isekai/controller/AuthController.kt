@@ -9,6 +9,7 @@ import com.vir.isekai.facade.auth.AuthFacade
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import mu.KotlinLogging
+import org.springframework.context.annotation.Profile
 import org.springframework.http.HttpHeaders
 import org.springframework.http.ResponseCookie
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -38,7 +39,26 @@ class AuthController(
 		val accessToken = jwtService.generateToken(userDetail)
 		val refreshToken = jwtService.generateRefreshToken(userDetail)
 
-		// 리프레시 토큰을 HTTP-Only 쿠키로 설정
+		addRefreshTokenCookie(response, refreshToken)
+
+		return CommonResponse.ok(AuthResponse(accessToken))
+	}
+
+	@Profile("local", "dev")
+	@PostMapping("/dev-login/{memberId}")
+	fun devLogin(
+		@PathVariable memberId: Long,
+		response: HttpServletResponse,
+	): CommonResponse<AuthResponse> {
+		log.info { "Development login for memberId: $memberId" }
+		
+		val member = authFacade.getMemberById(memberId)
+
+		val userDetail = UserPrincipal.createFromMember(member)
+
+		val accessToken = jwtService.generateToken(userDetail)
+		val refreshToken = jwtService.generateRefreshToken(userDetail)
+
 		addRefreshTokenCookie(response, refreshToken)
 
 		return CommonResponse.ok(AuthResponse(accessToken))
