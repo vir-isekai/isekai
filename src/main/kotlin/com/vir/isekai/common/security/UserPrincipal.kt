@@ -6,7 +6,7 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
-class UserPrincipal(
+data class UserPrincipal(
 	private val id: Long?,
 	private val snsId: String,
 	private val snsType: SNSType,

@@ -67,9 +67,9 @@ class SecurityConfig(
 			.authorizeHttpRequests { auth ->
 				// 인증 없이 접근 가능한 경로
 				auth.requestMatchers("/api/auth/**").permitAll()
-// 				auth.requestMatchers("/api/login/**").permitAll()
-// 				auth.requestMatchers("/api/home/**").permitAll()
-// 				auth.requestMatchers("/api/test/**").permitAll()
+				auth.requestMatchers("/api/login/**").permitAll()
+				auth.requestMatchers("/api/home/**").permitAll()
+				auth.requestMatchers("/api/test/**").permitAll()
 // 				auth.requestMatchers("/api/agencies/**").permitAll()
 
 				// 모든 요청 허용 (개발 중에는 편의를 위해)
