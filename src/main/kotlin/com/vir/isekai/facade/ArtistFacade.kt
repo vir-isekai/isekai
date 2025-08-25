@@ -17,7 +17,7 @@ class ArtistFacade(
 ) {
 	fun getArtistById(artistId: Long): ArtistResponse.Detail {
 		val artistDetail = artistQueryService.getArtistDetailById(artistId)
-		
+
 		return artistDetail
 	}
 
