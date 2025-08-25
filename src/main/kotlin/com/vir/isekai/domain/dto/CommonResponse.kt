@@ -7,8 +7,10 @@ data class CommonResponse<T>(
 	@param:JsonInclude(JsonInclude.Include.NON_NULL)
 	val response: T?,
 	val status: Int,
+	@param:JsonInclude(JsonInclude.Include.NON_NULL)
+	val message: String? = null,
 ) {
-	constructor(status: Int) : this(null, status)
+	constructor(status: Int) : this(null, status, null)
 
 	companion object {
 		fun <T> successSave(): CommonResponse<T> {
@@ -23,8 +25,11 @@ data class CommonResponse<T>(
 			return CommonResponse(response, SC_OK)
 		}
 
-		fun <T> error(message: String): CommonResponse<T> {
-			return CommonResponse(SC_INTERNAL_SERVER_ERROR)
+		fun <T> error(
+			message: String,
+			status: Int = SC_INTERNAL_SERVER_ERROR,
+		): CommonResponse<T> {
+			return CommonResponse(null, status, message)
 		}
 	}
 }

@@ -14,6 +14,7 @@ class ArtistController(
 	private val artistFacade: ArtistFacade,
 ) {
 	@GetMapping("/{artistId}")
+	@PreAuthorize("hasRole('ADMIN')")
 	fun getArtistById(
 		@PathVariable artistId: Long,
 	): CommonResponse<ArtistResponse.Detail> {
