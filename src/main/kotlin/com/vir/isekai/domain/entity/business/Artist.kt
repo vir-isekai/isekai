@@ -12,7 +12,7 @@ class Artist(
 	@Column(name = "artist_id")
 	val id: Long? = null,
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
+	@ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
 	@JoinColumn(name = "agency_id")
 	var agency: Agency? = null,
 
