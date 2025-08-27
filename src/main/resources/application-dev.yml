@@ -14,7 +14,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-#    show-sql: true
+    #    show-sql: true
     properties:
       hibernate:
         format_sql: true
@@ -29,18 +29,21 @@ management:
       exposure:
         include: env
 
-# 카카오 OAuth 설정
 kakao:
-  client-id: 70b5d2ebdeab88e65b4caa45fa39df78
-  redirect-uri: http://localhost:3000/api/auth/kakao/callback
+  client-id: ENC(cLVFyoWHjQ5RCF5yF6P5NlZcj6Kvhc3bbmV+SMzqTz2SCC0n5m+p6wYhI7oedAOd)
+  redirect-uri: ENC(v54Ti44QpNMChiOrJniRTxcaCXZQHx7l+Cw2dKS100p9759397wBo9GOnB3TV16b9QhEqK5U5RQ=)
+google:
+  client-id: ENC(aowBrUXlh+iCUmL27Xc4Js8WNXmBFNftplmBsPsZVLVgBuAopaTsxjycf/bZ7BChuhvnStkDJ+4lz7lvUzrbWhSAz7IOp4ANq/MjCAwAUvX9vjLv1VocZg==)
+  client-secret: ENC(2ecXnz2dS04csOFNNMv2tVxoSV5fFEG1i2pF/im7vLPhbzzVR4F4ygHBnp/hGRvF)
+  redirect-uri: ENC(73yz8L7UO+X5IOszz6vG27NZO97mLSR3dGUoU6GRy23h4Tjlcir7MFaAdoZ/WMFhUnYHzxUg3ys=)
 
 # JWT 설정
 jwt:
-  secret-key: "isekaiSecretKey12345678901234567890123456789012" # 최소 32바이트 이상의 비밀 키 (실제 운영 환경에서는 환경 변수로 관리해야 함)
+  secret-key: ENC(9iHTjzd9MVdMTF4ElPkpKEs5Cnzq9ypnj4ZR0cyCrzSdj5EUgeHPxrYLZIJTyDKYRxsqyJp96ZE=)
   access-token-expiration-ms: 1800000 # 30분 (밀리초 단위)
   refresh-token-expiration-ms: 604800000 # 7일 (밀리초 단위)
-  issuer: "isekai-api"
-  
+  issuer: isekai-api
+
 decorator:
   datasource:
     p6spy:
