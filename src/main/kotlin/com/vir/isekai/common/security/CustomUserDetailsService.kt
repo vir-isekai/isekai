@@ -1,6 +1,6 @@
 package com.vir.isekai.common.security
 
-import com.vir.isekai.domain.entity.enums.SNSType
+import com.vir.isekai.domain.entity.enums.member.SNSType
 import com.vir.isekai.service.login.auth.AuthenticationService
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService

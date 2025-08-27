@@ -12,7 +12,7 @@ class PostMediaCommandService(
 	private val postMediaRepository: PostMediaRepository,
 ) {
 	fun savePostMedia(
-		mediaList: List<PostRequest.MediaRequest>,
+		mediaList: List<PostRequest.Media>,
 		post: Post,
 	) {
 		for (media in mediaList) {

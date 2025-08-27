@@ -1,8 +1,8 @@
 package com.vir.isekai.domain.dto.response
 
-import com.vir.isekai.domain.entity.enums.SNSType
 import com.vir.isekai.domain.entity.enums.member.MemberRole
 import com.vir.isekai.domain.entity.enums.member.MemberStatus
+import com.vir.isekai.domain.entity.enums.member.SNSType
 import com.vir.isekai.domain.entity.member.Member
 import java.time.LocalDateTime
 

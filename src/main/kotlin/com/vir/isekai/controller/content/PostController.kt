@@ -8,6 +8,7 @@ import mu.KotlinLogging
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -26,7 +27,15 @@ class PostController(
 		@AuthenticationPrincipal userInfo: UserPrincipal,
 	): CommonResponse<Nothing> {
 		postFacade.savePost(request, userInfo.getId())
-		
+
 		return CommonResponse.successSave()
+	}
+
+	@PutMapping
+	@PreAuthorize("hasRole('NORMAL')")
+	fun updatePost(
+		@RequestBody request: PostRequest.Update,
+		@AuthenticationPrincipal userInfo: UserPrincipal,
+	) {
 	}
 }

@@ -26,16 +26,13 @@ class AuthController(
 	private val userDetailsService: UserDetailsService,
 ) {
 	@GetMapping("/login")
-	fun callbackKakaoLogin(
+	fun callbackLogin(
 		@RequestParam code: String,
+		@RequestParam provider: String,
 		response: HttpServletResponse,
 	): CommonResponse<AuthResponse> {
-		log.info { "code = $code" }
-		
-		val member = authFacade.joinMemberOrLogin(code)
-
+		val member = authFacade.joinMemberOrLogin(code, provider)
 		val userDetail = UserPrincipal.createFromMember(member)
-
 		val accessToken = jwtService.generateToken(userDetail)
 		val refreshToken = jwtService.generateRefreshToken(userDetail)
 
@@ -50,8 +47,6 @@ class AuthController(
 		@PathVariable memberId: Long,
 		response: HttpServletResponse,
 	): CommonResponse<AuthResponse> {
-		log.info { "Development login for memberId: $memberId" }
-		
 		val member = authFacade.getMemberById(memberId)
 
 		val userDetail = UserPrincipal.createFromMember(member)

@@ -1,7 +1,8 @@
 package com.vir.isekai.facade.auth
 
+import com.vir.isekai.domain.entity.enums.member.SNSType
 import com.vir.isekai.domain.entity.member.Member
-import com.vir.isekai.service.login.auth.AuthClient
+import com.vir.isekai.service.auth.OAuthProviderStrategy
 import com.vir.isekai.service.member.MemberCommandService
 import com.vir.isekai.service.member.MemberQueryService
 import mu.KotlinLogging
@@ -11,12 +12,16 @@ private val log = KotlinLogging.logger {}
 
 @Component
 class AuthFacade(
-	private val authClient: AuthClient,
+	private val oAuthProviderStrategy: OAuthProviderStrategy,
 	private val memberCommandService: MemberCommandService,
 	private val memberQueryService: MemberQueryService,
 ) {
-	fun joinMemberOrLogin(code: String): Member {
-		val snsMemberInfo = authClient.getMemberSaveDTO(code)
+	fun joinMemberOrLogin(
+		code: String,
+		providerName: String,
+	): Member {
+		val provider = SNSType.valueOf(providerName.uppercase())
+		val snsMemberInfo = oAuthProviderStrategy.authenticateUser(provider, code)
 
 		val existingMember = memberQueryService.getMemberBySnsIdAndSNSType(snsMemberInfo.snsId, snsMemberInfo.snsType)
 

@@ -1,6 +1,6 @@
 package com.vir.isekai.service.member
 
-import com.vir.isekai.domain.entity.enums.SNSType
+import com.vir.isekai.domain.entity.enums.member.SNSType
 import com.vir.isekai.domain.entity.member.Member
 import com.vir.isekai.repository.member.MemberRepository
 import org.springframework.data.repository.findByIdOrNull

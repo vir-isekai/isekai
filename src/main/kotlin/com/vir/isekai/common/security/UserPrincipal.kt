@@ -1,6 +1,6 @@
 package com.vir.isekai.common.security
 
-import com.vir.isekai.domain.entity.enums.SNSType
+import com.vir.isekai.domain.entity.enums.member.SNSType
 import com.vir.isekai.domain.entity.member.Member
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority

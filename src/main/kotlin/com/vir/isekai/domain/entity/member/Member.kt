@@ -1,9 +1,9 @@
 package com.vir.isekai.domain.entity.member
 
 import com.vir.isekai.domain.entity.BaseTimeEntity
-import com.vir.isekai.domain.entity.enums.SNSType
 import com.vir.isekai.domain.entity.enums.member.MemberRole
 import com.vir.isekai.domain.entity.enums.member.MemberStatus
+import com.vir.isekai.domain.entity.enums.member.SNSType
 import jakarta.persistence.*
 import java.time.LocalDateTime
 

@@ -10,11 +10,14 @@ import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
 
 @Component
-class KakaoAuthAdapter : AuthPort {
-	@Value("\${kakao.client-id}")
+class GoogleAuthAdapter : AuthPort {
+	@Value("\${google.client-id}")
 	lateinit var clientId: String
 
-	@Value("\${kakao.redirect-uri}")
+	@Value("\${google.client-secret}")
+	lateinit var clientSecret: String
+
+	@Value("\${google.redirect-uri}")
 	lateinit var redirectURI: String
 
 	private val authRestClient: RestClient =
@@ -30,16 +33,17 @@ class KakaoAuthAdapter : AuthPort {
 	override fun getAccessToken(code: String): String {
 		val response =
 			authRestClient.post()
-				.uri("/oauth/token")
+				.uri("/token")
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				.body(
 					"grant_type=authorization_code" +
 						"&client_id=$clientId" +
+						"&client_secret=$clientSecret" +
 						"&redirect_uri=$redirectURI" +
 						"&code=$code",
 				)
 				.retrieve()
-				.body(KakaoTokenResponse::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
+				.body(GoogleTokenResponse::class.java) ?: throw IllegalArgumentException("Google 통신 에러 발생")
 
 		return response.accessToken
 	}
@@ -47,15 +51,15 @@ class KakaoAuthAdapter : AuthPort {
 	override fun getMemberSaveDTO(token: String): MemberResponse.Save {
 		val response =
 			restClient.get()
-				.uri("/v2/user/me")
+				.uri("/userinfo")
 				.header("Authorization", "Bearer $token")
 				.retrieve()
-				.body(KakaoUserResponse::class.java) ?: throw IllegalArgumentException("Kakao 통신 에러 발생")
+				.body(GoogleUserResponse::class.java) ?: throw IllegalArgumentException("Google 통신 에러 발생")
 
 		return response.toMemberSaveDTO()
 	}
 
-	private data class KakaoTokenResponse(
+	private data class GoogleTokenResponse(
 		@field:JsonProperty("access_token")
 		val accessToken: String,
 
@@ -63,43 +67,32 @@ class KakaoAuthAdapter : AuthPort {
 		val tokenType: String,
 
 		@field:JsonProperty("refresh_token")
-		val refreshToken: String,
+		val refreshToken: String? = null,
 
 		@field:JsonProperty("expires_in")
 		val expiresIn: Int,
 
 		@field:JsonProperty("scope")
 		val scope: String? = null,
-
-		@field:JsonProperty("refresh_token_expires_in")
-		val refreshTokenExpiresIn: Int? = null,
 	)
 
-	private data class KakaoUserResponse(
+	private data class GoogleUserResponse(
 		val id: String,
-		@field:JsonProperty(value = "kakao_account")
-		val kakaoAccount: KakaoAccount,
+		val name: String,
+		val email: String? = null,
+		val picture: String? = null,
 	) {
 		fun toMemberSaveDTO(): MemberResponse.Save {
 			return MemberResponse.Save(
 				snsId = id,
-				nickname = kakaoAccount.profile.nickname,
-				snsType = SNSType.KAKAO,
+				nickname = name,
+				snsType = SNSType.GOOGLE,
 			)
 		}
 	}
 
-	// 추후 프로퍼티 추가
-	private data class KakaoAccount(
-		val profile: Profile,
-	)
-
-	private data class Profile(
-		val nickname: String,
-	)
-
 	companion object {
-		private const val BASE_AUTH_URL = "https://kauth.kakao.com"
-		private const val BASE_API_URL = "https://kapi.kakao.com"
+		private const val BASE_AUTH_URL = "https://oauth2.googleapis.com"
+		private const val BASE_API_URL = "https://www.googleapis.com/oauth2/v1"
 	}
 }

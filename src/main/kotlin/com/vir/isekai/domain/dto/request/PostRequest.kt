@@ -9,7 +9,7 @@ class PostRequest {
 	data class Save(
 		val title: String,
 		val content: String,
-		val mediaList: List<MediaRequest> = emptyList(),
+		val mediaList: List<Media> = emptyList(),
 	) {
 		fun toEntity(member: Member): Post {
 			return Post(
@@ -22,7 +22,12 @@ class PostRequest {
 		}
 	}
 
-	data class MediaRequest(
+	data class Update(
+		val title: String,
+		val content: String,
+	)
+
+	data class Media(
 		val mediaType: MediaType,
 		val contentType: String,
 		val originalFileName: String,
