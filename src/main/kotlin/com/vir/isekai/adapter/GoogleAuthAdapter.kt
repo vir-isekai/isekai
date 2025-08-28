@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.vir.isekai.domain.dto.response.MemberResponse
 import com.vir.isekai.domain.entity.enums.member.SNSType
 import com.vir.isekai.port.AuthPort
+import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
+
+private val log = KotlinLogging.logger {}
 
 @Component
 class GoogleAuthAdapter : AuthPort {
@@ -22,7 +25,7 @@ class GoogleAuthAdapter : AuthPort {
 
 	private val authRestClient: RestClient =
 		RestClient.builder()
-			.baseUrl(BASE_AUTH_URL)
+			.baseUrl(BASE_TOKEN_URI)
 			.build()
 
 	private val restClient: RestClient =
@@ -31,6 +34,8 @@ class GoogleAuthAdapter : AuthPort {
 			.build()
 
 	override fun getAccessToken(code: String): String {
+		log.info("Get Access Token")
+		
 		val response =
 			authRestClient.post()
 				.uri("/token")
@@ -66,11 +71,11 @@ class GoogleAuthAdapter : AuthPort {
 		@field:JsonProperty("token_type")
 		val tokenType: String,
 
-		@field:JsonProperty("refresh_token")
-		val refreshToken: String? = null,
-
 		@field:JsonProperty("expires_in")
 		val expiresIn: Int,
+
+		@field:JsonProperty("refresh_token")
+		val refreshToken: String? = null,
 
 		@field:JsonProperty("scope")
 		val scope: String? = null,
@@ -92,7 +97,7 @@ class GoogleAuthAdapter : AuthPort {
 	}
 
 	companion object {
-		private const val BASE_AUTH_URL = "https://oauth2.googleapis.com"
+		private const val BASE_TOKEN_URI = "https://oauth2.googleapis.com"
 		private const val BASE_API_URL = "https://www.googleapis.com/oauth2/v1"
 	}
 }

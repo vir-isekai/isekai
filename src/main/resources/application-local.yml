@@ -37,7 +37,7 @@ kakao:
 google:
   client-id: ENC(aowBrUXlh+iCUmL27Xc4Js8WNXmBFNftplmBsPsZVLVgBuAopaTsxjycf/bZ7BChuhvnStkDJ+4lz7lvUzrbWhSAz7IOp4ANq/MjCAwAUvX9vjLv1VocZg==)
   client-secret: ENC(2ecXnz2dS04csOFNNMv2tVxoSV5fFEG1i2pF/im7vLPhbzzVR4F4ygHBnp/hGRvF)
-  redirect-uri: ENC(73yz8L7UO+X5IOszz6vG27NZO97mLSR3dGUoU6GRy23h4Tjlcir7MFaAdoZ/WMFhUnYHzxUg3ys=)
+  redirect-uri: ENC(15glSpvF6jKoJaWCH7F993yoIjZ07N4n6prtU8UgoXCJwS8sSSW0REjuQ2OlAi49+hYEFTVQ1vA=)
 
 # JWT 설정
 jwt:

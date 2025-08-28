@@ -22,7 +22,6 @@ class AuthFacade(
 	): Member {
 		val provider = SNSType.valueOf(providerName.uppercase())
 		val snsMemberInfo = oAuthProviderStrategy.authenticateUser(provider, code)
-
 		val existingMember = memberQueryService.getMemberBySnsIdAndSNSType(snsMemberInfo.snsId, snsMemberInfo.snsType)
 
 		val member =

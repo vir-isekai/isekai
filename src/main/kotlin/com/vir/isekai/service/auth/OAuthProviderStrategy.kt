@@ -5,7 +5,10 @@ import com.vir.isekai.adapter.KakaoAuthAdapter
 import com.vir.isekai.domain.dto.response.MemberResponse
 import com.vir.isekai.domain.entity.enums.member.SNSType
 import com.vir.isekai.port.AuthPort
+import mu.KotlinLogging
 import org.springframework.stereotype.Component
+
+private val log = KotlinLogging.logger {}
 
 @Component
 class OAuthProviderStrategy(
@@ -27,6 +30,8 @@ class OAuthProviderStrategy(
 	): MemberResponse.Save {
 		val authAdapter = getAuthAdapter(provider)
 		val accessToken = authAdapter.getAccessToken(code)
+		
+		log.info("Access token: $accessToken")
 		
 		return authAdapter.getMemberSaveDTO(accessToken)
 	}

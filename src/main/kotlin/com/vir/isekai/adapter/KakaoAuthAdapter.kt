@@ -19,7 +19,7 @@ class KakaoAuthAdapter : AuthPort {
 
 	private val authRestClient: RestClient =
 		RestClient.builder()
-			.baseUrl(BASE_AUTH_URL)
+			.baseUrl(BASE_TOKEN_URI)
 			.build()
 
 	private val restClient: RestClient =
@@ -99,7 +99,7 @@ class KakaoAuthAdapter : AuthPort {
 	)
 
 	companion object {
-		private const val BASE_AUTH_URL = "https://kauth.kakao.com"
+		private const val BASE_TOKEN_URI = "https://kauth.kakao.com"
 		private const val BASE_API_URL = "https://kapi.kakao.com"
 	}
 }

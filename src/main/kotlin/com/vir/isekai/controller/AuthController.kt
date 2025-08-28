@@ -31,6 +31,9 @@ class AuthController(
 		@RequestParam provider: String,
 		response: HttpServletResponse,
 	): CommonResponse<AuthResponse> {
+		log.info("code :: $code")
+		log.info("code :: $provider")
+		
 		val member = authFacade.joinMemberOrLogin(code, provider)
 		val userDetail = UserPrincipal.createFromMember(member)
 		val accessToken = jwtService.generateToken(userDetail)
@@ -48,9 +51,7 @@ class AuthController(
 		response: HttpServletResponse,
 	): CommonResponse<AuthResponse> {
 		val member = authFacade.getMemberById(memberId)
-
 		val userDetail = UserPrincipal.createFromMember(member)
-
 		val accessToken = jwtService.generateToken(userDetail)
 		val refreshToken = jwtService.generateRefreshToken(userDetail)
 
