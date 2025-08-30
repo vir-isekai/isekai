@@ -30,7 +30,7 @@ management:
       exposure:
         include: env
 
-# 카카오 OAuth 설정
+# OAuth 설정
 kakao:
   client-id: ENC(cLVFyoWHjQ5RCF5yF6P5NlZcj6Kvhc3bbmV+SMzqTz2SCC0n5m+p6wYhI7oedAOd)
   redirect-uri: ENC(v54Ti44QpNMChiOrJniRTxcaCXZQHx7l+Cw2dKS100p9759397wBo9GOnB3TV16b9QhEqK5U5RQ=)
@@ -38,6 +38,10 @@ google:
   client-id: ENC(aowBrUXlh+iCUmL27Xc4Js8WNXmBFNftplmBsPsZVLVgBuAopaTsxjycf/bZ7BChuhvnStkDJ+4lz7lvUzrbWhSAz7IOp4ANq/MjCAwAUvX9vjLv1VocZg==)
   client-secret: ENC(2ecXnz2dS04csOFNNMv2tVxoSV5fFEG1i2pF/im7vLPhbzzVR4F4ygHBnp/hGRvF)
   redirect-uri: ENC(15glSpvF6jKoJaWCH7F993yoIjZ07N4n6prtU8UgoXCJwS8sSSW0REjuQ2OlAi49+hYEFTVQ1vA=)
+naver:
+  client-id: ENC(p9hDy1ZKKtd4l9arBw8hQrIUEQaegRhTd1+OFmK6HDs=)
+  client-secret: ENC(6QIIpxoVBs2ixhOUKyMKxY50xy2Gc62L)
+  redirect-uri: ENC(Lje99YLgnkfojG08uwryVgZ/+9s0ldZOXsMtrfGCtGN5C6n1NRwtVJj+OggUifziRUOjPiT5TIQ=)
 
 # JWT 설정
 jwt:

@@ -2,6 +2,7 @@ package com.vir.isekai.service.auth
 
 import com.vir.isekai.adapter.GoogleAuthAdapter
 import com.vir.isekai.adapter.KakaoAuthAdapter
+import com.vir.isekai.adapter.NaverAuthAdapter
 import com.vir.isekai.domain.dto.response.MemberResponse
 import com.vir.isekai.domain.entity.enums.member.SNSType
 import com.vir.isekai.port.AuthPort
@@ -14,13 +15,14 @@ private val log = KotlinLogging.logger {}
 class OAuthProviderStrategy(
 	private val kakaoAuthAdapter: KakaoAuthAdapter,
 	private val googleAuthAdapter: GoogleAuthAdapter,
+	private val naverAuthAdapter: NaverAuthAdapter,
 ) {
 	fun getAuthAdapter(provider: SNSType): AuthPort {
 		return when (provider) {
 			SNSType.KAKAO -> kakaoAuthAdapter
 			SNSType.GOOGLE -> googleAuthAdapter
+			SNSType.NAVER -> naverAuthAdapter
 			SNSType.APPLE -> throw UnsupportedOperationException("Apple OAuth는 아직 지원하지 않습니다")
-			SNSType.NAVER -> throw UnsupportedOperationException("Naver OAuth는 아직 지원하지 않습니다")
 		}
 	}
 
