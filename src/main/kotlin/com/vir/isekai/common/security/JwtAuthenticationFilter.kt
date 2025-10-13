@@ -24,6 +24,7 @@ class JwtAuthenticationFilter(
 		
 		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
 			filterChain.doFilter(request, response)
+			
 			return
 		}
 		
